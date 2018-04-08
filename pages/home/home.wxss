@@ -1,0 +1,43 @@
+/* pages/home/home.wxss */
+.trainer {
+  background-color: #fff;
+  padding: 30rpx;
+  width: 100%;
+  box-sizing:border-box;
+  position: fixed;
+  bottom: 0;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #000;
+  display: block;
+  width: 128rpx;
+  text-align: center;
+}
+
+.near_pok{
+  display: flex;
+  width: 200rpx;
+  height: 200rpx;
+  justify-content: center;
+  padding-top: 150rpx;
+}
+.type{
+  display:flex;
+  background-color: #fff;
+  justify-content: center;
+  margin-top: 10rpx;
+}
+.type1,.type2{
+  width: 64rpx;
+  height: 28rpx;
+}
+.type2{
+  margin-left: 10rpx;
+}

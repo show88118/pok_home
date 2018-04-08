@@ -9,9 +9,14 @@ Page({
       path: 'pages/index/index'//分享的页面地址
     }
   },
-  click:function(){
+  click_start:function(){
     wx.navigateTo({
-      url: '../catch/catch'
+      url: '../catch/catch',
+    })
+  },
+  bindmy:function(){
+    wx.navigateTo({
+      url: '../home/home',
     })
   },
   data: {
@@ -78,19 +83,17 @@ Page({
     wx.setStorageSync('user', this.data.userInfo.nickName)
     //获取用户当天剩余抽奖次数
     var today = this.get_today()
-    
     var remain_count = wx.getStorageSync(today);
-    if (remain_count){
+    if (remain_count!=""){
       remain_count = remain_count
+      wx.setStorageSync(today, remain_count)
     }else{
-      wx.setStorageSync(today, 5)
+      wx.setStorageSync(today, 5);
       remain_count = 5
     }
     app.globalData.today = today;
-    app.globalData.remain_count = remain_count;
   },
   getUserInfo: function(e) {
-    console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
