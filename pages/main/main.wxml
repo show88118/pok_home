@@ -1,0 +1,11 @@
+<!--pages/main/main.wxml-->
+<view class="container">
+<view class="head">
+    <image mode="aspectFit" catchtap="saveImgToPhotosAlbumTap" src='{{head_image}}'></image>
+</view>
+<view class='btn'>
+<button class="share" style='background-color:#fff000' open-type="share">分享</button>
+<button class="start" style='background-color:#fff000' bindtap="change_head">抽奖</button>
+
+</view>
+</view>

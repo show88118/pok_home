@@ -1,0 +1,807 @@
+﻿001	妙蛙种子	bulbasaur	grass	poison
+002	妙蛙草	ivysaur	grass	poison
+003	妙蛙花	venusaur	grass	poison
+004	小火龙	charmander	fire	
+005	火恐龙	charmeleon	fire	
+006	喷火龙	charizard	fire	fly
+007	杰尼龟	squirtle	water	
+008	卡咪龟	wartortle	water	
+009	水箭龟	blastoise	water	
+010	绿毛虫	caterpie	bug	
+011	铁甲蛹	metapod	bug	
+012	巴大蝶	butterfree	bug	fly
+013	独角虫	weedle	bug	poison
+014	铁壳蛹	kakuna	bug	poison
+015	大针蜂	beedrill	bug	poison
+016	波波	pidgey	normal	fly
+017	比比鸟	pidgeotto	normal	fly
+018	大比鸟	pidgeot	normal	fly
+019	小拉达	rattata	normal	
+020	拉达	raticate	normal	
+021	烈雀	spearow	normal	fly
+022	大嘴雀	fearow	normal	fly
+023	阿柏蛇	ekans	poison	
+024	阿柏怪	arbok	poison	
+025	皮卡丘	pikachu	electric	
+026	雷丘	raichu	electric	
+027	穿山鼠	sandshrew	ground	
+028	穿山王	sandslash	ground	
+029	尼多兰	nidoran♀	poison	
+030	尼多娜	nidorina	poison	
+031	尼多后	nidoqueen	poison	ground
+032	尼多朗	nidoran♂	poison	
+033	尼多力诺	nidorino	poison	
+034	尼多王	nidoking	poison	ground
+035	皮皮	clefairy	fairy	
+036	皮可西	clefable	fairy	
+037	六尾	vulpix	fire	
+038	九尾	ninetales	fire	
+039	胖丁	jigglypuff	normal	fairy
+040	胖可丁	wigglytuff	normal	fairy
+041	超音蝠	zubat	poison	fly
+042	大嘴蝠	golbat	poison	fly
+043	走路草	oddish	grass	poison
+044	臭臭花	gloom	grass	poison
+045	霸王花	vileplume	grass	poison
+046	派拉斯	paras	bug	grass
+047	派拉斯特	parasect	bug	grass
+048	毛球	venonat	bug	poison
+049	摩鲁蛾	venomoth	bug	poison
+050	地鼠	diglett	ground	
+051	三地鼠	dugtrio	ground	
+052	喵喵	meowth	normal	
+053	猫老大	persian	normal	
+054	可达鸭	psyduck	water	
+055	哥达鸭	golduck	water	
+056	猴怪	mankey	fight	
+057	火暴猴	primeape	fight	
+058	卡蒂狗	growlithe	fire	
+059	风速狗	arcanine	fire	
+060	蚊香蝌蚪	poliwag	water	
+061	蚊香君	poliwhirl	water	
+062	蚊香泳士	poliwrath	water	fight
+063	凯西	abra	psychic	
+064	勇基拉	kadabra	psychic	
+065	胡地	alakazam	psychic	
+066	腕力	machop	fight	
+067	豪力	machoke	fight	
+068	怪力	machamp	fight	
+069	喇叭芽	bellsprout	grass	poison
+070	口呆花	weepinbell	grass	poison
+071	大食花	victreebel	grass	poison
+072	玛瑙水母	tentacool	water	poison
+073	毒刺水母	tentacruel	water	poison
+074	小拳石	geodude	rock	ground
+075	隆隆石	graveler	rock	ground
+076	隆隆岩	golem	rock	ground
+077	小火马	ponyta	fire	
+078	烈焰马	rapidash	fire	
+079	呆呆兽	slowpoke	water	psychic
+080	呆壳兽	slowbro	water	psychic
+081	小磁怪	magnemite	electric	steel
+082	三合一磁怪	magneton	electric	steel
+083	大葱鸭	farfetch'd	normal	fly
+084	嘟嘟	doduo	normal	fly
+085	嘟嘟利	dodrio	normal	fly
+086	小海狮	seel	water	
+087	白海狮	dewgong	water	ice
+088	臭泥	grimer	poison	
+089	臭臭泥	muk	poison	
+090	大舌贝	shellder	water	
+091	刺甲贝	cloyster	water	ice
+092	鬼斯	gastly	ghost	poison
+093	鬼斯通	haunter	ghost	poison
+094	耿鬼	gengar	ghost	poison
+095	大岩蛇	onix	rock	ground
+096	催眠貘	drowzee	psychic	
+097	引梦貘人	hypno	psychic	
+098	大钳蟹	krabby	water	
+099	巨钳蟹	kingler	water	
+100	霹雳电球	voltorb	electric	
+101	顽皮雷弹	electrode	electric	
+102	蛋蛋	exeggcute	grass	psychic
+103	椰蛋树	exeggutor	grass	psychic
+104	卡拉卡拉	cubone	ground	
+105	嘎啦嘎啦	marowak	ground	
+106	飞腿郎	hitmonlee	fight	
+107	快拳郎	hitmonchan	fight	
+108	大舌头	lickitung	normal	
+109	瓦斯弹	koffing	poison	
+110	双弹瓦斯	weezing	poison	
+111	独角犀牛	rhyhorn	ground	rock
+112	钻角犀兽	rhydon	ground	rock
+113	吉利蛋	chansey	normal	
+114	蔓藤怪	tangela	grass	
+115	袋兽	kangaskhan	normal	
+116	墨海马	horsea	water	
+117	海刺龙	seadra	water	
+118	角金鱼	goldeen	water	
+119	金鱼王	seaking	water	
+120	海星星	staryu	water	
+121	宝石海星	starmie	water	psychic
+122	魔墙人偶	mr. mime	psychic	fairy
+123	飞天螳螂	scyther	bug	fly
+124	迷唇姐	jynx	ice	psychic
+125	电击兽	electabuzz	electric	
+126	鸭嘴火兽	magmar	fire	
+127	凯罗斯	pinsir	bug	
+128	肯泰罗	tauros	normal	
+129	鲤鱼王	magikarp	water	
+130	暴鲤龙	gyarados	water	fly
+131	拉普拉斯	lapras	water	ice
+132	百变怪	ditto	normal	
+133	伊布	eevee	normal	
+134	水伊布	vaporeon	water	
+135	雷伊布	jolteon	electric	
+136	火伊布	flareon	fire	
+137	多边兽	porygon	normal	
+138	菊石兽	omanyte	rock	water
+139	多刺菊石兽	omastar	rock	water
+140	化石盔	kabuto	rock	water
+141	镰刀盔	kabutops	rock	water
+142	化石翼龙	aerodactyl	rock	fly
+143	卡比兽	snorlax	normal	
+144	急冻鸟	articuno	ice	fly
+145	闪电鸟	zapdos	electric	fly
+146	火焰鸟	moltres	fire	fly
+147	迷你龙	dratini	dragon	
+148	哈克龙	dragonair	dragon	
+149	快龙	dragonite	dragon	fly
+150	超梦	mewtwo	psychic	
+151	梦幻	mew	psychic	
+152	菊草叶	chikorita	grass	
+153	月桂叶	bayleef	grass	
+154	大竺葵	meganium	grass	
+155	火球鼠	cyndaquil	fire	
+156	火岩鼠	quilava	fire	
+157	火暴兽	typhlosion	fire	
+158	小锯鳄	totodile	water	
+159	蓝鳄	croconaw	water	
+160	大力鳄	feraligatr	water	
+161	尾立	sentret	normal	
+162	大尾立	furret	normal	
+163	咕咕	hoothoot	normal	fly
+164	猫头夜鹰	noctowl	normal	fly
+165	芭瓢虫	ledyba	bug	fly
+166	安瓢虫	ledian	bug	fly
+167	圆丝蛛	spinarak	bug	poison
+168	阿利多斯	ariados	bug	poison
+169	叉字蝠	crobat	poison	fly
+170	灯笼鱼	chinchou	water	electric
+171	电灯怪	lanturn	water	electric
+172	皮丘	pichu	electric	
+173	皮宝宝	cleffa	fairy	
+174	宝宝丁	igglybuff	normal	fairy
+175	波克比	togepi	fairy	
+176	波克基古	togetic	fairy	fly
+177	天然雀	natu	psychic	fly
+178	天然鸟	xatu	psychic	fly
+179	咩利羊	mareep	electric	
+180	茸茸羊	flaaffy	electric	
+181	电龙	ampharos	electric	
+182	美丽花	bellossom	grass	
+183	玛力露	marill	water	fairy
+184	玛力露丽	azumarill	water	fairy
+185	树才怪	sudowoodo	rock	
+186	蚊香蛙皇	politoed	water	
+187	毽子草	hoppip	grass	fly
+188	毽子花	skiploom	grass	fly
+189	毽子棉	jumpluff	grass	fly
+190	长尾怪手	aipom	normal	
+191	向日种子	sunkern	grass	
+192	向日花怪	sunflora	grass	
+193	蜻蜻蜓	yanma	bug	fly
+194	乌波	wooper	water	ground
+195	沼王	quagsire	water	ground
+196	太阳伊布	espeon	psychic	
+197	月亮伊布	umbreon	dark	
+198	黑暗鸦	murkrow	dark	fly
+199	呆呆王	slowking	water	psychic
+200	梦妖	misdreavus	ghost	
+201	未知图腾	unown	psychic	
+202	果然翁	wobbuffet	psychic	
+203	麒麟奇	girafarig	normal	psychic
+204	榛果球	pineco	bug	
+205	佛烈托斯	forretress	bug	steel
+206	土龙弟弟	dunsparce	normal	
+207	天蝎	gligar	ground	fly
+208	大钢蛇	steelix	steel	ground
+209	布鲁	snubbull	fairy	
+210	布鲁皇	granbull	fairy	
+211	千针鱼	qwilfish	water	poison
+212	巨钳螳螂	scizor	bug	steel
+213	壶壶	shuckle	bug	rock
+214	赫拉克罗斯	heracross	bug	fight
+215	狃拉	sneasel	dark	ice
+216	熊宝宝	teddiursa	normal	
+217	圈圈熊	ursaring	normal	
+218	熔岩虫	slugma	fire	
+219	熔岩蜗牛	magcargo	fire	rock
+220	小山猪	swinub	ice	ground
+221	长毛猪	piloswine	ice	ground
+222	太阳珊瑚	corsola	water	rock
+223	铁炮鱼	remoraid	water	
+224	章鱼桶	octillery	water	
+225	信使鸟	delibird	ice	fly
+226	巨翅飞鱼	mantine	water	fly
+227	盔甲鸟	skarmory	steel	fly
+228	戴鲁比	houndour	dark	fire
+229	黑鲁加	houndoom	dark	fire
+230	刺龙王	kingdra	water	dragon
+231	小小象	phanpy	ground	
+232	顿甲	donphan	ground	
+233	多边兽Ⅱ	porygon2	normal	
+234	惊角鹿	stantler	normal	
+235	图图犬	smeargle	normal	
+236	无畏小子	tyrogue	fight	
+237	战舞郎	hitmontop	fight	
+238	迷唇娃	smoochum	ice	psychic
+239	电击怪	elekid	electric	
+240	鸭嘴宝宝	magby	fire	
+241	大奶罐	miltank	normal	
+242	幸福蛋	blissey	normal	
+243	雷公	raikou	electric	
+244	炎帝	entei	fire	
+245	水君	suicune	water	
+246	幼基拉斯	larvitar	rock	ground
+247	沙基拉斯	pupitar	rock	ground
+248	班基拉斯	tyranitar	rock	dark
+249	洛奇亚	lugia	psychic	fly
+250	凤王	ho-oh	fire	fly
+251	时拉比	celebi	psychic	grass
+252	木守宫	treecko	grass	
+253	森林蜥蜴	grovyle	grass	
+254	蜥蜴王	sceptile	grass	
+255	火稚鸡	torchic	fire	
+256	力壮鸡	combusken	fire	fight
+257	火焰鸡	blaziken	fire	fight
+258	水跃鱼	mudkip	water	
+259	沼跃鱼	marshtomp	water	ground
+260	巨沼怪	swampert	water	ground
+261	土狼犬	poochyena	dark	
+262	大狼犬	mightyena	dark	
+263	蛇纹熊	zigzagoon	normal	
+264	直冲熊	linoone	normal	
+265	刺尾虫	wurmple	bug	
+266	甲壳茧	silcoon	bug	
+267	狩猎凤蝶	beautifly	bug	fly
+268	盾甲茧	cascoon	bug	
+269	毒粉蛾	dustox	bug	poison
+270	莲叶童子	lotad	water	grass
+271	莲帽小童	lombre	water	grass
+272	乐天河童	ludicolo	water	grass
+273	橡实果	seedot	grass	
+274	长鼻叶	nuzleaf	grass	dark
+275	狡猾天狗	shiftry	grass	dark
+276	傲骨燕	taillow	normal	fly
+277	大王燕	swellow	normal	fly
+278	长翅鸥	wingull	water	fly
+279	大嘴鸥	pelipper	water	fly
+280	拉鲁拉丝	ralts	psychic	fairy
+281	奇鲁莉安	kirlia	psychic	fairy
+282	沙奈朵	gardevoir	psychic	fairy
+283	溜溜糖球	surskit	bug	water
+284	雨翅蛾	masquerain	bug	fly
+285	蘑蘑菇	shroomish	grass	
+286	斗笠菇	breloom	grass	fight
+287	懒人獭	slakoth	normal	
+288	过动猿	vigoroth	normal	
+289	请假王	slaking	normal	
+290	土居忍士	nincada	bug	ground
+291	铁面忍者	ninjask	bug	fly
+292	脱壳忍者	shedinja	bug	ghost
+293	咕妞妞	whismur	normal	
+294	吼爆弹	loudred	normal	
+295	爆音怪	exploud	normal	
+296	幕下力士	makuhita	fight	
+297	铁掌力士	hariyama	fight	
+298	露力丽	azurill	normal	fairy
+299	朝北鼻	nosepass	rock	
+300	向尾喵	skitty	normal	
+301	优雅猫	delcatty	normal	
+302	勾魂眼	sableye	dark	ghost
+303	大嘴娃	mawile	steel	fairy
+304	可可多拉	aron	steel	rock
+305	可多拉	lairon	steel	rock
+306	波士可多拉	aggron	steel	rock
+307	玛沙那	meditite	fight	psychic
+308	恰雷姆	medicham	fight	psychic
+309	落雷兽	electrike	electric	
+310	雷电兽	manectric	electric	
+311	正电拍拍	plusle	electric	
+312	负电拍拍	minun	electric	
+313	电萤虫	volbeat	bug	
+314	甜甜萤	illumise	bug	
+315	毒蔷薇	roselia	grass	poison
+316	溶食兽	gulpin	poison	
+317	吞食兽	swalot	poison	
+318	利牙鱼	carvanha	water	dark
+319	巨牙鲨	sharpedo	water	dark
+320	吼吼鲸	wailmer	water	
+321	吼鲸王	wailord	water	
+322	呆火驼	numel	fire	ground
+323	喷火驼	camerupt	fire	ground
+324	煤炭龟	torkoal	fire	
+325	跳跳猪	spoink	psychic	
+326	噗噗猪	grumpig	psychic	
+327	晃晃斑	spinda	normal	
+328	大颚蚁	trapinch	ground	
+329	超音波幼虫	vibrava	ground	dragon
+330	沙漠蜻蜓	flygon	ground	dragon
+331	刺球仙人掌	cacnea	grass	
+332	梦歌仙人掌	cacturne	grass	dark
+333	青绵鸟	swablu	normal	fly
+334	七夕青鸟	altaria	dragon	fly
+335	猫鼬斩	zangoose	normal	
+336	饭匙蛇	seviper	poison	
+337	月石	lunatone	rock	psychic
+338	太阳岩	solrock	rock	psychic
+339	泥泥鳅	barboach	water	ground
+340	鲶鱼王	whiscash	water	ground
+341	龙虾小兵	corphish	water	
+342	铁螯龙虾	crawdaunt	water	dark
+343	天秤偶	baltoy	ground	psychic
+344	念力土偶	claydol	ground	psychic
+345	触手百合	lileep	rock	grass
+346	摇篮百合	cradily	rock	grass
+347	太古羽虫	anorith	rock	bug
+348	太古盔甲	armaldo	rock	bug
+349	丑丑鱼	feebas	water	
+350	美纳斯	milotic	water	
+351	飘浮泡泡	castform	normal	
+352	变隐龙	kecleon	normal	
+353	怨影娃娃	shuppet	ghost	
+354	诅咒娃娃	banette	ghost	
+355	夜巡灵	duskull	ghost	
+356	彷徨夜灵	dusclops	ghost	
+357	热带龙	tropius	grass	fly
+358	风铃铃	chimecho	psychic	
+359	阿勃梭鲁	absol	dark	
+360	小果然	wynaut	psychic	
+361	雪童子	snorunt	ice	
+362	冰鬼护	glalie	ice	
+363	海豹球	spheal	ice	water
+364	海魔狮	sealeo	ice	water
+365	帝牙海狮	walrein	ice	water
+366	珍珠贝	clamperl	water	
+367	猎斑鱼	huntail	water	
+368	樱花鱼	gorebyss	water	
+369	古空棘鱼	relicanth	water	rock
+370	爱心鱼	luvdisc	water	
+371	宝贝龙	bagon	dragon	
+372	甲壳龙	shelgon	dragon	
+373	暴飞龙	salamence	dragon	fly
+374	铁哑铃	beldum	steel	psychic
+375	金属怪	metang	steel	psychic
+376	巨金怪	metagross	steel	psychic
+377	雷吉洛克	regirock	rock	
+378	雷吉艾斯	regice	ice	
+379	雷吉斯奇鲁	registeel	steel	
+380	拉帝亚斯	latias	dragon	psychic
+381	拉帝欧斯	latios	dragon	psychic
+382	盖欧卡	kyogre	water	
+383	固拉多	groudon	ground	
+384	烈空坐	rayquaza	dragon	fly
+385	基拉祈	jirachi	steel	psychic
+386	代欧奇希斯	deoxys	psychic	
+387	草苗龟	turtwig	grass	
+388	树林龟	grotle	grass	
+389	土台龟	torterra	grass	ground
+390	小火焰猴	chimchar	fire	
+391	猛火猴	monferno	fire	fight
+392	烈焰猴	infernape	fire	fight
+393	波加曼	piplup	water	
+394	波皇子	prinplup	water	
+395	帝王拿波	empoleon	water	steel
+396	姆克儿	starly	normal	fly
+397	姆克鸟	staravia	normal	fly
+398	姆克鹰	staraptor	normal	fly
+399	大牙狸	bidoof	normal	
+400	大尾狸	bibarel	normal	water
+401	圆法师	kricketot	bug	
+402	音箱蟀	kricketune	bug	
+403	小猫怪	shinx	electric	
+404	勒克猫	luxio	electric	
+405	伦琴猫	luxray	electric	
+406	含羞苞	budew	grass	poison
+407	罗丝雷朵	roserade	grass	poison
+408	头盖龙	cranidos	rock	
+409	战槌龙	rampardos	rock	
+410	盾甲龙	shieldon	rock	steel
+411	护城龙	bastiodon	rock	steel
+412	结草儿	burmy	bug	
+413	结草贵妇	wormadam	bug	grass
+414	绅士蛾	mothim	bug	fly
+415	三蜜蜂	combee	bug	fly
+416	蜂女王	vespiquen	bug	fly
+417	帕奇利兹	pachirisu	electric	
+418	泳圈鼬	buizel	water	
+419	浮潜鼬	floatzel	water	
+420	樱花宝	cherubi	grass	
+421	樱花儿	cherrim	grass	
+422	无壳海兔	shellos	water	
+423	海兔兽	gastrodon	water	ground
+424	双尾怪手	ambipom	normal	
+425	飘飘球	drifloon	ghost	fly
+426	随风球	drifblim	ghost	fly
+427	卷卷耳	buneary	normal	
+428	长耳兔	lopunny	normal	
+429	梦妖魔	mismagius	ghost	
+430	乌鸦头头	honchkrow	dark	fly
+431	魅力喵	glameow	normal	
+432	东施喵	purugly	normal	
+433	铃铛响	chingling	psychic	
+434	臭鼬噗	stunky	poison	dark
+435	坦克臭鼬	skuntank	poison	dark
+436	铜镜怪	bronzor	steel	psychic
+437	青铜钟	bronzong	steel	psychic
+438	盆才怪	bonsly	rock	
+439	魔尼尼	mimejr	psychic	fairy
+440	小福蛋	happiny	normal	
+441	聒噪鸟	chatot	normal	fly
+442	花岩怪	spiritomb	ghost	dark
+443	圆陆鲨	gible	dragon	ground
+444	尖牙陆鲨	gabite	dragon	ground
+445	烈咬陆鲨	garchomp	dragon	ground
+446	小卡比兽	munchlax	normal	
+447	利欧路	riolu	fight	
+448	路卡利欧	lucario	fight	steel
+449	沙河马	hippopotas	ground	
+450	河马兽	hippowdon	ground	
+451	钳尾蝎	skorupi	poison	bug
+452	龙王蝎	drapion	poison	dark
+453	不良蛙	croagunk	poison	fight
+454	毒骷蛙	toxicroak	poison	fight
+455	尖牙笼	carnivine	grass	
+456	荧光鱼	finneon	water	
+457	霓虹鱼	lumineon	water	
+458	小球飞鱼	mantyke	water	fly
+459	雪笠怪	snover	grass	ice
+460	暴雪王	abomasnow	grass	ice
+461	玛狃拉	weavile	dark	ice
+462	自爆磁怪	magnezone	electric	steel
+463	大舌舔	lickilicky	normal	
+464	超甲狂犀	rhyperior	ground	rock
+465	巨蔓藤	tangrowth	grass	
+466	电击魔兽	electivire	electric	
+467	鸭嘴炎兽	magmortar	fire	
+468	波克基斯	togekiss	fairy	fly
+469	远古巨蜓	yanmega	bug	fly
+470	叶伊布	leafeon	grass	
+471	冰伊布	glaceon	ice	
+472	天蝎王	gliscor	ground	fly
+473	象牙猪	mamoswine	ice	ground
+474	多边兽Ｚ	porygon-z	normal	
+475	艾路雷朵	gallade	psychic	fight
+476	大朝北鼻	probopass	rock	steel
+477	黑夜魔灵	dusknoir	ghost	
+478	雪妖女	froslass	ice	ghost
+479	洛托姆	rotom	electric	ghost
+480	由克希	uxie	psychic	
+481	艾姆利多	mesprit	psychic	
+482	亚克诺姆	azelf	psychic	
+483	帝牙卢卡	dialga	steel	dragon
+484	帕路奇亚	palkia	water	dragon
+485	席多蓝恩	heatran	fire	steel
+486	雷吉奇卡斯	regigigas	normal	
+487	骑拉帝纳	giratina	ghost	dragon
+488	克雷色利亚	cresselia	psychic	
+489	霏欧纳	phione	water	
+490	玛纳霏	manaphy	water	
+491	达克莱伊	darkrai	dark	
+492	谢米	shaymin	grass	
+493	阿尔宙斯	arceus	normal	
+494	比克提尼	victini	psychic	fire
+495	藤藤蛇	snivy	grass	
+496	青藤蛇	servine	grass	
+497	君主蛇	serperior	grass	
+498	暖暖猪	tepig	fire	
+499	炒炒猪	pignite	fire	fight
+500	炎武王	emboar	fire	fight
+501	水水獭	oshawott	water	
+502	双刃丸	dewott	water	
+503	大剑鬼	samurott	water	
+504	探探鼠	patrat	normal	
+505	步哨鼠	watchog	normal	
+506	小约克	lillipup	normal	
+507	哈约克	herdier	normal	
+508	长毛狗	stoutland	normal	
+509	扒手猫	purrloin	dark	
+510	酷豹	liepard	dark	
+511	花椰猴	pansage	grass	
+512	花椰猿	simisage	grass	
+513	爆香猴	pansear	fire	
+514	爆香猿	simisear	fire	
+515	冷水猴	panpour	water	
+516	冷水猿	simipour	water	
+517	食梦梦	munna	psychic	
+518	梦梦蚀	musharna	psychic	
+519	豆豆鸽	pidove	normal	fly
+520	咕咕鸽	tranquill	normal	fly
+521	高傲雉鸡	unfezant	normal	fly
+522	斑斑马	blitzle	electric	
+523	雷电斑马	zebstrika	electric	
+524	石丸子	roggenrola	rock	
+525	地幔岩	boldore	rock	
+526	庞岩怪	gigalith	rock	
+527	滚滚蝙蝠	woobat	psychic	fly
+528	心蝙蝠	swoobat	psychic	fly
+529	螺钉地鼠	drilbur	ground	
+530	龙头地鼠	excadrill	ground	steel
+531	差不多娃娃	audino	normal	
+532	搬运小匠	timburr	fight	
+533	铁骨土人	gurdurr	fight	
+534	修建老匠	conkeldurr	fight	
+535	圆蝌蚪	tympole	water	
+536	蓝蟾蜍	palpitoad	water	ground
+537	蟾蜍王	seismitoad	water	ground
+538	投摔鬼	throh	fight	
+539	打击鬼	sawk	fight	
+540	虫宝包	sewaddle	bug	grass
+541	宝包茧	swadloon	bug	grass
+542	保姆虫	leavanny	bug	grass
+543	百足蜈蚣	venipede	bug	poison
+544	车轮球	whirlipede	bug	poison
+545	蜈蚣王	scolipede	bug	poison
+546	木棉球	cottonee	grass	fairy
+547	风妖精	whimsicott	grass	fairy
+548	百合根娃娃	petilil	grass	
+549	裙儿小姐	lilligant	grass	
+550	野蛮鲈鱼	basculin	water	
+551	黑眼鳄	sandile	ground	dark
+552	混混鳄	krokorok	ground	dark
+553	流氓鳄	krookodile	ground	dark
+554	火红不倒翁	darumaka	fire	
+555	达摩狒狒	darmanitan	fire	
+556	沙铃仙人掌	maractus	grass	
+557	石居蟹	dwebble	bug	rock
+558	岩殿居蟹	crustle	bug	rock
+559	滑滑小子	scraggy	dark	fight
+560	头巾混混	scrafty	dark	fight
+561	象征鸟	sigilyph	psychic	fly
+562	哭哭面具	yamask	ghost	
+563	死神棺	cofagrigus	ghost	
+564	原盖海龟	tirtouga	water	rock
+565	肋骨海龟	carracosta	water	rock
+566	始祖小鸟	archen	rock	fly
+567	始祖大鸟	archeops	rock	fly
+568	破破袋	trubbish	poison	
+569	灰尘山	garbodor	poison	
+570	索罗亚	zorua	dark	
+571	索罗亚克	zoroark	dark	
+572	泡沫栗鼠	minccino	normal	
+573	奇诺栗鼠	cinccino	normal	
+574	哥德宝宝	gothita	psychic	
+575	哥德小童	gothorita	psychic	
+576	哥德小姐	gothitelle	psychic	
+577	单卵细胞球	solosis	psychic	
+578	双卵细胞球	duosion	psychic	
+579	人造细胞卵	reuniclus	psychic	
+580	鸭宝宝	ducklett	water	fly
+581	舞天鹅	swanna	water	fly
+582	迷你冰	vanillite	ice	
+583	多多冰	vanillish	ice	
+584	双倍多多冰	vanilluxe	ice	
+585	四季鹿	deerling	normal	grass
+586	萌芽鹿	sawsbuck	normal	grass
+587	电飞鼠	emolga	electric	fly
+588	盖盖虫	karrablast	bug	
+589	骑士蜗牛	escavalier	bug	steel
+590	哎呀球菇	foongus	grass	poison
+591	败露球菇	amoonguss	grass	poison
+592	轻飘飘	frillish	water	ghost
+593	胖嘟嘟	jellicent	water	ghost
+594	保姆曼波	alomomola	water	
+595	电电虫	joltik	bug	electric
+596	电蜘蛛	galvantula	bug	electric
+597	种子铁球	ferroseed	grass	steel
+598	坚果哑铃	ferrothorn	grass	steel
+599	齿轮儿	klink	steel	
+600	齿轮组	klang	steel	
+601	齿轮怪	klinklang	steel	
+602	麻麻小鱼	tynamo	electric	
+603	麻麻鳗	eelektrik	electric	
+604	麻麻鳗鱼王	eelektross	electric	
+605	小灰怪	elgyem	psychic	
+606	大宇怪	beheeyem	psychic	
+607	烛光灵	litwick	ghost	fire
+608	灯火幽灵	lampent	ghost	fire
+609	水晶灯火灵	chandelure	ghost	fire
+610	牙牙	axew	dragon	
+611	斧牙龙	fraxure	dragon	
+612	双斧战龙	haxorus	dragon	
+613	喷嚏熊	cubchoo	ice	
+614	冻原熊	beartic	ice	
+615	几何雪花	cryogonal	ice	
+616	小嘴蜗	shelmet	bug	
+617	敏捷虫	accelgor	bug	
+618	泥巴鱼	stunfisk	electric	ground
+619	功夫鼬	mienfoo	fight	
+620	师父鼬	mienshao	fight	
+621	赤面龙	druddigon	dragon	
+622	泥偶小人	golett	ground	ghost
+623	泥偶巨人	golurk	ground	ghost
+624	驹刀小兵	pawniard	dark	steel
+625	劈斩司令	bisharp	dark	steel
+626	爆炸头水牛	bouffalant	normal	
+627	毛头小鹰	rufflet	normal	fly
+628	勇士雄鹰	braviary	normal	fly
+629	秃鹰丫头	vullaby	dark	fly
+630	秃鹰娜	mandibuzz	dark	fly
+631	熔蚁兽	heatmor	fire	
+632	铁蚁	durant	bug	steel
+633	单首龙	deino	dark	dragon
+634	双首暴龙	zweilous	dark	dragon
+635	三首dark龙	hydreigon	dark	dragon
+636	燃烧虫	larvesta	bug	fire
+637	火神蛾	volcarona	bug	fire
+638	勾帕路翁	cobalion	steel	fight
+639	代拉基翁	terrakion	rock	fight
+640	毕力吉翁	virizion	grass	fight
+641	龙卷云	tornadus	fly	
+642	雷电云	thundurus	electric	fly
+643	莱希拉姆	reshiram	dragon	fire
+644	捷克罗姆	zekrom	dragon	electric
+645	土地云	landorus	ground	fly
+646	酋雷姆	kyurem	dragon	ice
+647	凯路迪欧	keldeo	water	fight
+648	美洛耶塔	meloetta	normal	psychic
+649	盖诺赛克特	genesect	bug	steel
+650	哈力栗	chespin	grass	
+651	胖胖哈力	quilladin	grass	
+652	布里卡隆	chesnaught	grass	fight
+653	火狐狸	fennekin	fire	
+654	长尾火狐	braixen	fire	
+655	妖火红狐	delphox	fire	psychic
+656	呱呱泡蛙	froakie	water	
+657	呱头蛙	frogadier	water	
+658	甲贺忍蛙	greninja	water	dark
+659	掘掘兔	bunnelby	normal	
+660	掘地兔	diggersby	normal	ground
+661	小箭雀	fletchling	normal	fly
+662	火箭雀	fletchinder	fire	fly
+663	烈箭鹰	talonflame	fire	fly
+664	粉蝶虫	scatterbug	bug	
+665	粉蝶蛹	spewpa	bug	
+666	彩粉蝶	vivillon	bug	fly
+667	小狮狮	litleo	fire	normal
+668	火炎狮	pyroar	fire	normal
+669	花蓓蓓	flabebe	fairy	
+670	花叶蒂	floette	fairy	
+671	花洁夫人	florges	fairy	
+672	坐骑小羊	skiddo	grass	
+673	坐骑山羊	gogoat	grass	
+674	顽皮熊猫	pancham	fight	
+675	流氓熊猫	pangoro	fight	dark
+676	多丽米亚	furfrou	normal	
+677	妙喵	espurr	psychic	
+678	超能妙喵	meowstic	psychic	
+679	独剑鞘	honedge	steel	ghost
+680	双剑鞘	doublade	steel	ghost
+681	坚盾剑怪	aegislash	steel	ghost
+682	粉香香	spritzee	fairy	
+683	芳香精	aromatisse	fairy	
+684	绵绵泡芙	swirlix	fairy	
+685	胖甜妮	slurpuff	fairy	
+686	好啦鱿	inkay	dark	psychic
+687	乌贼王	malamar	dark	psychic
+688	龟脚脚	binacle	rock	water
+689	龟足巨铠	barbaracle	rock	water
+690	垃垃藻	skrelp	poison	water
+691	毒藻龙	dragalge	poison	dragon
+692	铁臂枪虾	clauncher	water	
+693	钢炮臂虾	clawitzer	water	
+694	伞电蜥	helioptile	electric	normal
+695	光电伞蜥	heliolisk	electric	normal
+696	宝宝暴龙	tyrunt	rock	dragon
+697	怪颚龙	tyrantrum	rock	dragon
+698	冰雪龙	amaura	rock	ice
+699	冰雪巨龙	aurorus	rock	ice
+700	仙子伊布	sylveon	fairy	
+701	摔角鹰人	hawlucha	fight	fly
+702	咚咚鼠	dedenne	electric	fairy
+703	小碎钻	carbink	rock	fairy
+704	黏黏宝	goomy	dragon	
+705	黏美儿	sliggoo	dragon	
+706	黏美龙	goodra	dragon	
+707	钥圈儿	klefki	steel	fairy
+708	小木灵	phantump	ghost	grass
+709	朽木妖	trevenant	ghost	grass
+710	南瓜精	pumpkaboo	ghost	grass
+711	南瓜怪人	gourgeist	ghost	grass
+712	冰宝	bergmite	ice	
+713	冰岩怪	avalugg	ice	
+714	嗡蝠	noibat	fly	dragon
+715	音波龙	noivern	fly	dragon
+716	哲尔尼亚斯	xerneas	fairy	
+717	伊裴尔塔尔	yveltal	dark	fly
+718	基格尔德	zygarde	dragon	ground
+719	蒂安希	diancie	rock	fairy
+720	胡帕	hoopa	psychic	ghost
+721	波尔凯尼恩	volcanion	fire	water
+722	木木枭	rowlet	grass	fly
+723	投羽枭	dartrix	grass	fly
+724	狙射树枭	decidueye	grass	ghost
+725	火斑喵	litten	fire	
+726	炎热喵	torracat	fire	
+727	炽焰咆哮虎	incineroar	fire	dark
+728	球球海狮	popplio	water	
+729	花漾海狮	brionne	water	
+730	西狮海壬	primarina	water	fairy
+731	小笃儿	pikipek	normal	fly
+732	喇叭啄鸟	trumbeak	normal	fly
+733	铳嘴大鸟	toucannon	normal	fly
+734	猫鼬少	yungoos	normal	
+735	猫鼬探长	gumshoos	normal	
+736	强颚鸡母虫	grubbin	bug	
+737	虫电宝	charjabug	bug	electric
+738	锹农炮虫	vikavolt	bug	electric
+739	好胜蟹	crabrawler	fight	
+740	好胜毛蟹	crabominable	fight	ice
+741	花舞鸟	oricorio	fire	fly
+742	萌虻	cutiefly	bug	fairy
+743	蝶结萌虻	ribombee	bug	fairy
+744	岩狗狗	rockruff	rock	
+745	鬃岩狼人	lycanroc	rock	
+746	弱丁鱼	wishiwashi	water	
+747	好坏星	mareanie	poison	water
+748	超坏星	toxapex	poison	water
+749	泥驴仔	mudbray	ground	
+750	重泥挽马	mudsdale	ground	
+751	滴蛛	dewpider	water	bug
+752	滴蛛霸	araquanid	water	bug
+753	伪螳草	fomantis	grass	
+754	兰螳花	lurantis	grass	
+755	睡睡菇	morelull	grass	fairy
+756	灯罩夜菇	shiinotic	grass	fairy
+757	夜盗火蜥	salandit	poison	fire
+758	焰后蜥	salazzle	poison	fire
+759	童偶熊	stufful	normal	fight
+760	穿着熊	bewear	normal	fight
+761	甜竹竹	bounsweet	grass	
+762	甜舞妮	steenee	grass	
+763	甜冷美后	tsareena	grass	
+764	花疗环环	comfey	fairy	
+765	智挥猩	oranguru	normal	psychic
+766	投掷猴	passimian	fight	
+767	胆小虫	wimpod	bug	water
+768	具甲武者	golisopod	bug	water
+769	沙丘娃	sandygast	ghost	ground
+770	噬沙堡爷	palossand	ghost	ground
+771	拳海参	pyukumuku	water	
+772	属性：空	type: null	normal	
+773	银伴战兽	silvally	normal	
+774	小陨星	minior	rock	fly
+775	树枕尾熊	komala	normal	
+776	爆焰龟兽	turtonator	fire	dragon
+777	托戈德玛尔	togedemaru	electric	steel
+778	谜拟Ｑ	mimikyu	ghost	fairy
+779	磨牙彩皮鱼	bruxish	water	psychic
+780	老翁龙	drampa	normal	dragon
+781	破破舵轮	dhelmise	ghost	grass
+782	心鳞宝	jangmoo	dragon	
+783	鳞甲龙	hakamoo	dragon	fight
+784	杖尾鳞甲龙	kommoo	dragon	fight
+785	卡璞・鸣鸣	tapukoko	electric	fairy
+786	卡璞・蝶蝶	tapulele	psychic	fairy
+787	卡璞・哞哞	tapubulu	grass	fairy
+788	卡璞・鳍鳍	tapufini	water	fairy
+789	科斯莫古	cosmog	psychic	
+790	科斯莫姆	cosmoem	psychic	
+791	索尔迦雷欧	solgaleo	psychic	steel
+792	露奈雅拉	lunala	psychic	ghost
+793	虚吾伊德	nihilego	rock	poison
+794	爆肌蚊	buzzwole	bug	fight
+795	费洛美螂	pheromosa	bug	fight
+796	电束木	xurkitree	electric	
+797	铁火辉夜	celesteela	steel	fly
+798	纸御剑	kartana	grass	steel
+799	dark食大王	guzzlord	dark	dragon
+800	奈克洛兹玛	necrozma	psychic	
+801	玛机雅娜	magearna	steel	fairy
+802	玛夏多	marshadow	fight	ghost
+803	毒贝比	poipole	poison	
+804	四颚针龙	naganadel	poison	dragon
+805	垒磊石	stakataka	rock	steel
+806	砰头小丑	blacephalon	fire	ghost
+807	捷拉奥拉	zeraora	electric	

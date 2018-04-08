@@ -1,0 +1,33 @@
+/**index.wxss**/
+.container{
+  background-image: url('http://waaaat.storage.comocloud.net/upload/rss_download/20160720/600_0/201607201601455753.gif');  
+  background-repeat:no-repeat;
+  background-position:center;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+}
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -80px;
+  background-color: #fff;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 330px;
+  font-size: 30px;
+}
