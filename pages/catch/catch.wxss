@@ -12,6 +12,18 @@ page{
 .btn{
   display:flex;
 }
+.type{
+  display:flex;
+  background-color: #fff;
+  justify-content: center;
+}
+.type1,.type2{
+  width: 32px;
+  height: 14px;
+}
+.type2{
+  margin-left: 5px;
+}
 .start{
   margin-left: 100px;
 }

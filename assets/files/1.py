@@ -11,8 +11,9 @@ for idx,i in enumerate(c):
     if idx < 151:
         id = i.split('\t')[0]
         name = i.split('\t')[1].decode("utf8").strip()
+        ename = i.split('\t')[2]
         type = i.split('\t')[3].strip()+"|"+i.split('\t')[4].strip()
-        a.append(dict(id=id,name=name,type=type))
+        a.append(dict(id=id,name=name,type=type,ename=ename))
 result = json.dumps(a, encoding='UTF-8', ensure_ascii=False)
 print result
     

@@ -1,0 +1,14 @@
+<!--pages/main/main.wxml-->
+<view class="container">
+<view class="head">
+    <image mode="aspectFit" catchtap="change_head" src='{{head_image}}'></image>
+</view>
+<view class="type" >
+    <image class="type1" src='{{type1}}'></image>
+    <image class="type2" src='{{type2}}' style="display:{{type2_display}}"></image>
+</view>
+<view class='btn'>
+<button class="share" style='background-color:#fff000' open-type="share">分享</button>
+<button class="start" style='background-color:#fff000' bindtap="change_head">捕捉:{{remain_count}}</button>
+</view>
+</view>
