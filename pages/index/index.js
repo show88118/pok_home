@@ -5,7 +5,7 @@ const app = getApp()
 Page({
   onShareAppMessage: function () {
     return {
-      title: '快来抽取口袋妖怪吧1',
+      title: '快来抽取口袋妖怪吧',
       path: 'pages/index/index'//分享的页面地址
     }
   },
