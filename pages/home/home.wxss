@@ -41,3 +41,15 @@
 .type2{
   margin-left: 10rpx;
 }
+.ball_img{
+  width: 220rpx;
+  height: 220rpx;
+  border-radius: 50%;
+}
+.ball{
+  display:flex;
+  position: fixed;
+  right: -30rpx;
+  bottom: 0;
+  padding: 30rpx;
+}

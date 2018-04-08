@@ -7,14 +7,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    ball_img:"/assets/images/ball/ball_1.png"
   },
   load_trainer:function(){
     this.setData({
       userInfo : app.globalData.userInfo
     })
   },
-  
+  bind_my_pok: function () {
+    wx.navigateTo({
+      url: '../package/package',
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载

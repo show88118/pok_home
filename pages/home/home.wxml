@@ -3,6 +3,8 @@
 <view class="trainer"> 
       <image bindtap="" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      <view class="ball"><image bindtap="bind_my_pok" class="ball_img" src="{{ball_img}}" background-size="cover"></image></view>
+      
 </view>
 <view class="pok">
       <image bindtap="" class="near_pok" src="{{pok_head}}" background-size="cover"></image>
