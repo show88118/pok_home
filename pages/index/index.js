@@ -96,8 +96,9 @@ Page({
       remain_count = remain_count
       wx.setStorageSync(today, remain_count)
     }else{
-      wx.setStorageSync(today, 100);
-      remain_count = 100
+      //每天捕捉次数
+      wx.setStorageSync(today, 10);
+      remain_count = 10
     }
     app.globalData.today = today;
   },
