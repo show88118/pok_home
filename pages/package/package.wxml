@@ -1,2 +1,8 @@
 <!--pages/package/package.wxml-->
-<text>pages/package/package.wxml</text>
+<map id="myMap" show-location />
+<view class="btn_map">
+<button type="primary" bindtap="getCenterLocation">获取位置</button>
+<button type="primary" bindtap="moveToLocation">移动位置</button>
+<button type="primary" bindtap="onCompassChange">移动标注</button>
+<button type="primary" bindtap="includePoints">缩放视野展示所有经纬度</button> 
+</view>

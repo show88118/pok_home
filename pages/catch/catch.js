@@ -93,6 +93,7 @@ Page({
       type2: type2,
       pok_name: pok_name
     })
+    wx.vibrateLong()
   },
   choose:function(){
     wx.showModal({

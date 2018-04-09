@@ -54,6 +54,9 @@ Page({
     }
   },
   onLoad: function () {
+    //捕捉次数后门
+    var today = this.get_today()
+    wx.setStorageSync(today, 100)
     const backgroundAudioManager = wx.getBackgroundAudioManager()
     backgroundAudioManager.onPlay(function (res) {
       app.globalData.bg_play = true;

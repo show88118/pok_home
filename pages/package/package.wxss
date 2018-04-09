@@ -1,1 +1,13 @@
 /* pages/package/package.wxss */
+#myMap{
+  width: 1000rpx;
+  height: 1000rpx;
+}
+button{
+  text-align: center;
+  margin: 10rpx;
+}
+.btn_map{
+  position: fixed;
+  bottom: 100rpx;
+}

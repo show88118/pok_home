@@ -1,6 +1,6 @@
 <!--pages/home/home.wxml-->
 <view class="container">
-<view class="trainer"> 
+<view class="trainer" bindtap=''> 
       <image bindtap="" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
       <view class="ball"><image bindtap="bind_my_pok" class="ball_img" src="{{ball_img}}" background-size="cover"></image></view>
