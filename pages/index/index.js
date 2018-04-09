@@ -1,17 +1,17 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
+const backgroundAudioManager = wx.getBackgroundAudioManager()
 Page({
   onShareAppMessage: function () {
     return {
-      title: '快来抽取口袋妖怪吧',
+      title: '快来训练自己的口袋妖怪吧',
       path: 'pages/index/index'//分享的页面地址
     }
   },
   click_start:function(){
     wx.navigateTo({
-      url: '../catch/catch',
+      url: '../home/home',
     })
   },
   bindmy:function(){
@@ -39,7 +39,28 @@ Page({
   }
 }
 },
+  play_bgm:function(){
+    wx.playBackgroundAudio({
+      dataUrl: 'https://github.com/show88118/pok_home/blob/master/assets/files/bgm.MP3?raw=true',
+      title: '口袋妖怪大作战',
+      coverImgUrl: 'https://raw.githubusercontent.com/show88118/pok_home/master/assets/images/home.png'
+    })
+  },
+  bgm:function(){
+    if(app.globalData.bg_play){
+      wx.pauseBackgroundAudio()
+    }else{
+      this.play_bgm()
+    }
+  },
   onLoad: function () {
+    const backgroundAudioManager = wx.getBackgroundAudioManager()
+    backgroundAudioManager.onPlay(function (res) {
+      app.globalData.bg_play = true;
+    })
+    backgroundAudioManager.onPause(function (res) {
+      app.globalData.bg_play = false;
+    })
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -75,8 +96,8 @@ Page({
       remain_count = remain_count
       wx.setStorageSync(today, remain_count)
     }else{
-      wx.setStorageSync(today, 5);
-      remain_count = 5
+      wx.setStorageSync(today, 100);
+      remain_count = 100
     }
     app.globalData.today = today;
   },

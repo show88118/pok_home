@@ -1,6 +1,6 @@
 /**index.wxss**/
 page{
-  background-image: url("https://i.pinimg.com/originals/34/1b/0f/341b0f0b1fee9d3f2be531a54db0c6f3.jpg");
+  background-image: url("https://raw.githubusercontent.com/show88118/pok_home/master/assets/images/home.png");
   background-repeat: repeat-y;
 }
 .container{
@@ -32,8 +32,31 @@ page{
   font-size: 50rpx;
   border-radius: 100rpx;
   background-color: #EEE685;
-  width: 300rpx;
-  height: 100rpx;
+  width: 400rpx;
+  height: 120rpx;
   text-align: center;
-  line-height: 100rpx;
+  line-height: 120rpx;
+}
+.bgm_btn{
+  position: fixed;
+  right: 10rpx;
+  top: 10rpx;
+}
+.bgm_img{
+  width: 60rpx;
+  height: 60rpx;
+}
+.bgm_img{
+  -webkit-animation: rotating 1.2s linear infinite;
+  -moz-animation: rotating 1.2s linear infinite;
+  o-animation: rotating 1.2s linear infinite;
+  animation: rotating 1.2s linear infinite;
+}
+@-webkit-keyframes rotating{
+  from { -webkit-transform: rotate(0) }
+  to { -webkit-transform: rotate(360deg) }
+}
+@keyframes rotating{
+  from { transform: rotate(0) }
+  to { transform: rotate(360deg) }
 }

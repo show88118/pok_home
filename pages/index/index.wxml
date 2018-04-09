@@ -1,5 +1,8 @@
 <!--index.wxml-->
 <view class="container">
+  <view class="bgm_btn">
+    <image class="bgm_img" bindtap="bgm" src="/assets/images/head/101.png"></image>
+  </view>
   <view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
     <block wx:else>

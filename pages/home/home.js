@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    ball_img:"/assets/images/ball/ball_1.png"
+    ball_img:"/assets/images/ball/ball_1.png",
   },
   load_trainer:function(){
     this.setData({
@@ -16,26 +16,16 @@ Page({
   },
   bind_my_pok: function () {
     wx.navigateTo({
-      url: '../package/package',
+      url: '../catch/catch',
     })
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    this.load_trainer()
-    var haved_pok = util.get_self_pok();
-    if (haved_pok.length == 0){
-      haved_pok = [{"id":"001"}]
-    }
-    var near_pok_idx = haved_pok[haved_pok.length - 1]["id"]
+  refresh_pok_head:function(pok_idx){
     //获取pok_info
-    var pok_info = util.get_pok_info(near_pok_idx);
+    var pok_info = util.get_pok_info(pok_idx);
     var pok_name = pok_info[0]
     var pok_type1 = pok_info[1]
     var pok_type2 = pok_info[2]
-    var pok_head = pok_info[3] 
+    var pok_head = pok_info[3]
     this.setData({
       pok_name: pok_name,
       pok_type1: pok_type1,
@@ -51,6 +41,41 @@ Page({
       type2_display: type2_display,
       type1: type1,
       type2: type2
+    })
+  },
+  change_head:function(event){
+    var pok_list_idx = event["currentTarget"]["dataset"]["idx"]
+    var haved_pok = this.data.haved_pok
+    var target_pok_id = haved_pok[pok_list_idx]["id"]
+    //刷新点击pok
+    this.refresh_pok_head(target_pok_id);
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    this.load_trainer()
+    var haved_pok = util.get_self_pok();
+    var haved_pok_count = haved_pok.length
+    if (haved_pok_count == 0){
+      haved_pok = [{"id":"001"}]
+    }
+    haved_pok = haved_pok.reverse()
+    var near_pok_idx = haved_pok[0]["id"]
+    //获取头像部分数据
+    this.refresh_pok_head(near_pok_idx);
+    //获取我的精灵列表数据
+    var my_pok_list_mini = []
+    for (var i in haved_pok){
+      var pok_id = haved_pok[i]["id"];
+      var mini_img = "/assets/images/mini/" + pok_id+".png";
+      var head_img = "/assets/images/head/" + pok_id + ".png";
+      my_pok_list_mini.push([i,pok_id,mini_img])
+    }
+    this.setData({
+      my_pok_list_mini: my_pok_list_mini,
+      my_pok_list_width: 150 * haved_pok_count,
+      haved_pok: haved_pok
     })
   },
 
@@ -100,6 +125,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+    return {
+      title: '这是我的' + this.data.pok_name + "!",
+      path: 'pages/index/index',//分享的页面地址
+      //imageUrl: '/assets/images/mini/' + this.data.pok_num + ".png",
+    }
   }
 })

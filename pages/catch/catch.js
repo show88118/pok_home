@@ -47,7 +47,7 @@ Page({
       var items = [142,143,144,145,146,147,148,149]
       var pok_num = items[Math.floor(Math.random() * items.length)];
     }else{
-      var pok_num = Math.round(this.randomNum(1, 10000) / 10000 * 141);
+      var pok_num = Math.round(this.randomNum(1, 10000) / 10000 * 141)+1;
     }
     var pok_num_length = pok_num.toString().length
     if (pok_num_length == 1) {

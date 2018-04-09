@@ -1,6 +1,6 @@
 /* pages/home/home.wxss */
 .trainer {
-  background-color: #fff;
+  background-color: #F0F0F0;
   padding: 30rpx;
   width: 100%;
   box-sizing:border-box;
@@ -56,4 +56,21 @@
 .pok_name{
   display: block;
   padding-top: 100rpx;
+}
+.my_pok{
+  width: 150rpx;
+  height: 150rpx;
+  text-align: center;
+}
+.my_pok_list{
+  width: 100%;
+  height: 170rpx;
+  position: fixed;
+  bottom: 300rpx;
+  background-color: #fff;
+  overflow-x:auto;
+  overflow-y: hidden;
+}
+.s_1{
+  display: block;
 }
