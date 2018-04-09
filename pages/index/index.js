@@ -45,25 +45,21 @@ Page({
       title: '口袋妖怪大作战',
       coverImgUrl: 'https://raw.githubusercontent.com/show88118/pok_home/master/assets/images/home.png'
     })
+    
   },
   bgm:function(){
     if(app.globalData.bg_play){
       wx.pauseBackgroundAudio()
+      app.globalData.bg_play = false;
     }else{
       this.play_bgm()
+      app.globalData.bg_play = true;
     }
   },
   onLoad: function () {
     //捕捉次数后门
     var today = this.get_today()
     wx.setStorageSync(today, 100)
-    const backgroundAudioManager = wx.getBackgroundAudioManager()
-    backgroundAudioManager.onPlay(function (res) {
-      app.globalData.bg_play = true;
-    })
-    backgroundAudioManager.onPause(function (res) {
-      app.globalData.bg_play = false;
-    })
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,

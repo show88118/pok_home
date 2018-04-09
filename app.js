@@ -37,6 +37,7 @@ App({
       title: '口袋妖怪大作战',
       coverImgUrl: 'https://raw.githubusercontent.com/show88118/pok_home/master/assets/images/home.png'
     })
+    this.globalData.bg_play = true;
   },
   globalData: {
     bg_play:false,
