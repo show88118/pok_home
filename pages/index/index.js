@@ -20,23 +20,10 @@ Page({
     })
   },
   data: {
-    motto: 'start!',
+    motto: '开始',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    head1:"/assets/images/head/001.png",
-    head2: "/assets/images/head/004.png",
-    head3: "/assets/images/head/007.png",
-  },
-  change_head: function (){
-    for(var idx in [1,2,3]){
-      this.setData({
-        head1: "/assets/images/head/00" + (parseInt(idx) + 1) + ".png",
-        head2: "/assets/images/head/00" + (parseInt(idx) + 4) + ".png",
-        head3: "/assets/images/head/00" + (parseInt(idx) + 7) + ".png"
-      });
-      this.sleep(500);
-    }
   },
   //事件处理函数
   bindViewTap: function() {

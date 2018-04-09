@@ -6,6 +6,11 @@
       <view class="ball"><image bindtap="bind_my_pok" class="ball_img" src="{{ball_img}}" background-size="cover"></image></view>
       
 </view>
+<view>
+<text class="pok_name">
+{{pok_name}}
+</text>
+</view>
 <view class="pok">
       <image bindtap="" class="near_pok" src="{{pok_head}}" background-size="cover"></image>
 </view>

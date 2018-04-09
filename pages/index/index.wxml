@@ -7,11 +7,6 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
-  <view class="head_list">
-  <image class="head" src="{{head1}}"></image>
-  <image class="head" src="{{head2}}"></image>
-  <image class="head" src="{{head3}}"></image>
-  </view>
   <view class="usermotto">
     <text catchtap="click_start" class="user-motto">{{motto}}</text>
   </view>

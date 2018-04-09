@@ -26,7 +26,7 @@
   width: 200rpx;
   height: 200rpx;
   justify-content: center;
-  padding-top: 150rpx;
+  padding-top: 20rpx;
 }
 .type{
   display:flex;
@@ -52,4 +52,8 @@
   right: -30rpx;
   bottom: 0;
   padding: 30rpx;
+}
+.pok_name{
+  display: block;
+  padding-top: 100rpx;
 }

@@ -4,13 +4,10 @@
   width: 200rpx;
   height: 200rpx;
   justify-content: center;
-  padding-top: 150rpx;
+  padding-top: 20rpx;
 }
 .h-img{width: 200rpx;height: 200rpx;}
-/* page{
-  height:100%;
-  width: 100%;
-} */
+
 .btn{
   display:flex;
   position: fixed;bottom: 100rpx;
@@ -19,7 +16,7 @@
   display:flex;
   background-color: #fff;
   justify-content: center;
-  margin-top: 100rpx;
+  margin-top: 10rpx;
 }
 .type1,.type2{
   width: 64rpx;
@@ -30,4 +27,8 @@
 }
 .start{
   margin-left: 200rpx;
+}
+.pok_name{
+  display: block;
+  padding-top: 100rpx;
 }

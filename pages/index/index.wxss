@@ -1,4 +1,8 @@
 /**index.wxss**/
+page{
+  background-image: url("https://i.pinimg.com/originals/34/1b/0f/341b0f0b1fee9d3f2be531a54db0c6f3.jpg");
+  background-repeat: repeat-y;
+}
 .container{
   width: 100%;
   height: 100%;
@@ -10,7 +14,6 @@
   flex-direction: column;
   align-items: center;
   margin-top: 20px;
-  background-color: #fff;
 }
 
 .userinfo-avatar {
@@ -26,13 +29,11 @@
 
 .usermotto {
   position: fixed;bottom: 100rpx;
-  font-size: 60rpx;
-}
-
-.head{
-  width: 200rpx;
-  height: 200rpx;
-}
-.head_list{
-  margin-top: 250rpx;
+  font-size: 50rpx;
+  border-radius: 100rpx;
+  background-color: #EEE685;
+  width: 300rpx;
+  height: 100rpx;
+  text-align: center;
+  line-height: 100rpx;
 }

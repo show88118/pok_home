@@ -32,6 +32,11 @@ App({
         }
       }
     })
+    wx.playBackgroundAudio({
+      dataUrl: '',
+      title: '',
+      coverImgUrl: ''
+    })
   },
   globalData: {
     userInfo: null,
