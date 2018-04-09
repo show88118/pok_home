@@ -40,11 +40,20 @@ Page({
       var pok_num = 151;
     }else if(seed == 9999){
       var pok_num = 150;
-    } else if (seed > 9900 && seed < 9999) {
-      var items = [142,143,144,145,146,147,148,149]
+    } else if (seed == 9998) {
+      var pok_num = 137;
+    } else if (seed > 9847 && seed < 9998) {
+      var items = [142,143,131]
+      var pok_num = items[Math.floor(Math.random() * items.length)];
+    } else if (seed > 9546 && seed < 9848) {
+      var items = [1, 4, 7]
+      var pok_num = items[Math.floor(Math.random() * items.length)];
+    } else if (seed > 7846 && seed < 9547) {
+      var items = [83, 95, 106, 107, 108, 113, 114, 115, 122, 123, 124, 125, 126, 127, 128, 132, 137]
       var pok_num = items[Math.floor(Math.random() * items.length)];
     }else{
-      var pok_num = Math.round(this.randomNum(1, 10000) / 10000 * 141)+1;
+      var items = [10, 13, 16, 19, 21, 23, 27, 29, 32, 41, 43, 46, 48, 50, 52, 54, 56, 60, 63, 66, 69, 72, 74, 77, 79, 81, 84, 86, 88, 92, 96, 98, 100, 104, 109, 111, 116, 118, 129, 138, 140, 147, 25, 30, 33, 35, 37, 39, 44, 58, 61, 70, 90, 102, 120, 133]
+      var pok_num = items[Math.floor(Math.random() * items.length)];
     }
     var pok_num_length = pok_num.toString().length
     if (pok_num_length == 1) {

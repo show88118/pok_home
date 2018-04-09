@@ -101,7 +101,14 @@ Page({
   onShow: function () {
     var haved_pok = util.get_self_pok();
     //倒序排列我的精灵
-    haved_pok = haved_pok.reverse()
+    if (haved_pok.length > 0) {
+      haved_pok = haved_pok.reverse()
+      }else{
+        //赠送御三家
+        var haved_pok = [{"id":"001"}]
+        wx.setStorageSync("pok_id_list", haved_pok)
+      }
+    
     this.setData({
       haved_pok: haved_pok
     })
