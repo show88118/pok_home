@@ -10,7 +10,7 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
-  <view class="usermotto">
-    <text catchtap="click_start" class="user-motto">{{motto}}</text>
+  <view catchtap="click_start" class="usermotto">
+    <text class="user-motto">{{motto}}</text>
   </view>
 </view>

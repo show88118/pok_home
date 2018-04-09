@@ -6,13 +6,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    head_image:"/assets/images/head/001.png",
-    pok_num:"001",
+    head_image:"/assets/images/unknow.png",
+    pok_num:"000",
     pok_idx: app.globalData.pok_idx,
-    pok_name:"妙蛙种子",
-    type1:"/assets/images/type/grass.png",
-    type2:"/assets/images/type/poison.png",
-    type2_display:"inline"
+    pok_name:"未知",
   },
   randomNum:function(minNum, maxNum){ 
     switch(arguments.length) { 
@@ -69,6 +66,7 @@ Page({
       haved_pok = []
     }
     haved_pok.push({ id: this.data.pok_num })
+    //haved_pok入库
     wx.setStorageSync("pok_id_list", haved_pok)
     //console.log(util.get_self_pok())
     //获取pok_info
@@ -131,29 +129,6 @@ Page({
       title: '点击头像开始抽奖',
       duration:1000
     })*/
-  },
-  saveImgToPhotosAlbumTap: function () {
-    console.log(this.data.pok_num);
-    wx.downloadFile({
-      url: this.data.head_image,
-      success: function (res) {
-        console.log(res)
-        wx.saveImageToPhotosAlbum({
-          filePath: res.tempFilePath,
-          success: function (res) {
-            console.log(res)
-          },
-          fail: function (res) {
-            console.log(res)
-            console.log('fail')
-          }
-        })
-      },
-      fail: function () {
-        console.log("")
-      }
-    })
-
   },
 
   /**

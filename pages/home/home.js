@@ -43,6 +43,22 @@ Page({
       type2: type2
     })
   },
+  refresh_pok_list: function (haved_pok){
+    //获取我的精灵列表数据
+    var my_pok_list_mini = []
+    var haved_pok = haved_pok
+    var haved_pok_count = haved_pok.length
+    for (var i in haved_pok) {
+      var pok_id = haved_pok[i]["id"];
+      var mini_img = "/assets/images/mini/" + pok_id + ".png";
+      var head_img = "/assets/images/head/" + pok_id + ".png";
+      my_pok_list_mini.push([i, pok_id, mini_img])
+    }
+    this.setData({
+      my_pok_list_mini: my_pok_list_mini,
+      my_pok_list_width: 150 * haved_pok_count,
+    })
+  },
   change_head:function(event){
     var pok_list_idx = event["currentTarget"]["dataset"]["idx"]
     var haved_pok = this.data.haved_pok
@@ -57,26 +73,19 @@ Page({
     this.load_trainer()
     var haved_pok = util.get_self_pok();
     var haved_pok_count = haved_pok.length
-    if (haved_pok_count == 0){
-      haved_pok = [{"id":"001"}]
+    if (haved_pok_count == 0) {
+      haved_pok = [{ "id": "001" }]
     }
+    //倒序排列我的精灵
     haved_pok = haved_pok.reverse()
     var near_pok_idx = haved_pok[0]["id"]
+    this.setData({
+      haved_pok: haved_pok
+    })
     //获取头像部分数据
     this.refresh_pok_head(near_pok_idx);
     //获取我的精灵列表数据
-    var my_pok_list_mini = []
-    for (var i in haved_pok){
-      var pok_id = haved_pok[i]["id"];
-      var mini_img = "/assets/images/mini/" + pok_id+".png";
-      var head_img = "/assets/images/head/" + pok_id + ".png";
-      my_pok_list_mini.push([i,pok_id,mini_img])
-    }
-    this.setData({
-      my_pok_list_mini: my_pok_list_mini,
-      my_pok_list_width: 150 * haved_pok_count,
-      haved_pok: haved_pok
-    })
+    this.refresh_pok_list(haved_pok);
   },
 
   /**
@@ -90,7 +99,17 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var haved_pok = util.get_self_pok();
+    //倒序排列我的精灵
+    haved_pok = haved_pok.reverse()
+    this.setData({
+      haved_pok: haved_pok
+    })
+    var near_pok_idx = haved_pok[0]["id"]
+    //获取头像部分数据
+    this.refresh_pok_head(near_pok_idx);
+    this.refresh_pok_list(haved_pok);
+
   },
 
   /**
