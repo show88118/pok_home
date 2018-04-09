@@ -1,5 +1,10 @@
 <!--pages/main/main.wxml-->
 <view class="container">
+<view>
+<text class="pok_name">
+{{pok_name}}
+</text>
+</view>
 <view class="head">
     <image mode="aspectFit" catchtap="change_head" src='{{head_image}}' class="h-img"></image>
 </view>

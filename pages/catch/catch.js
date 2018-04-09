@@ -83,7 +83,8 @@ Page({
     this.setData({
       type2_display: type2_display,
       type1: type1,
-      type2: type2
+      type2: type2,
+      pok_name: pok_name
     })
   },
   choose:function(){
