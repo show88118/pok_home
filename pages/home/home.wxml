@@ -8,17 +8,43 @@
       
 </view>
 <view>
-<text class="pok_name">
+<view class="pok_name">
 {{pok_name}}
-</text>
+<text class="g_pname02">Lv{{current_pok_level}}</text>
 </view>
-<view class="pok">
-      <image bindtap="" class="near_pok" src="{{pok_head}}" background-size="cover"></image>
+</view>
+<view class="pok" bindlongpress="longpress_choose">
+      <image class="near_pok" src="{{pok_head}}" background-size="cover"></image>
 </view>
 <view class="type" >
     <image class="type1" src='{{type1}}'></image>
     <image class="type2" src='{{type2}}' style="display:{{type2_display}}"></image>
 </view>
+<view class="pok_data">
+
+</view>
+<view class="g_t-tit">CP:{{current_pok_growup}}</view>
+<view class="g_t-tit">能力值</view>
+<view class="table">
+ 
+  <view class="tr bg-w">
+    <view class="td th">HP</view>
+    <view class="td">{{pok_hp}}</view>
+    <view class="td th">攻击</view>
+    <view class="td ">{{pok_att}}</view>
+  </view>
+    <view class="tr">
+     <view class="td th">防御</view>
+    <view class="td">{{pok_def}}</view>
+    <view class="td th">速度</view>
+    <view class="td ">{{pok_speed}}</view>
+    </view>
+</view>
+<view class="g_t-tit">Exp</view>
+<view class="g_jdt">
+<view class="g_jdt02" style="width:50%"></view>
+</view>
+
 <!-- my_pok -->
 <view class="my_pok_list">
 <view class="s_1" style='width: {{my_pok_list_width}}rpx;'>

@@ -85,6 +85,7 @@ Page({
     }
     //捕捉到的精灵数据
     haved_pok.push({ id: this.data.pok_num, growup: this.get_pok_growup(), level: 1, idx: (parseInt(max_pok_idx)+1).toString()})
+    console.log(haved_pok)
     //haved_pok入库
     wx.setStorageSync("pok_id_list", haved_pok)
     //console.log(util.get_self_pok())
@@ -114,19 +115,6 @@ Page({
       pok_head: pok_head
     })
     wx.vibrateLong()
-  },
-  choose:function(){
-    wx.showModal({
-      title: '你选择了' + this.data.pok_name,
-      content: '确定要选择吗？',
-      success: function (sm) {
-        if (sm.confirm) {
-          // 用户点击了确定 可以调用删除方法了
-        } else if (sm.cancel) {
-          console.log("cancel")
-        }
-      }
-    });
   },
   get_remain_count:function(){
     this.setData({
