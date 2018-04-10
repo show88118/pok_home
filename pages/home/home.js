@@ -148,7 +148,11 @@ Page({
   onShow: function () {
     var haved_pok = util.get_self_pok();
     //老用户清除本地精灵
-    if (haved_pok[0]["level"] == undefined) {
+    try{
+      if (haved_pok[0]["level"] == undefined) {
+        wx.removeStorageSync('pok_id_list')
+      }
+    }catch(err){
       wx.removeStorageSync('pok_id_list')
     }
     //倒序排列我的精灵
