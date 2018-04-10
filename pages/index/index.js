@@ -58,8 +58,8 @@ Page({
     }
   },
   onLoad: function () {
-    //获取精灵能力
-    console.log(util.get_pok_attr("001",50,1))
+    // //获取精灵能力
+    // console.log(util.get_pok_attr("001",50,1))
     //捕捉次数后门
     var today = this.get_today()
     wx.setStorageSync(today, 100)
@@ -89,8 +89,6 @@ Page({
         }
       })
     }
-    //储存用户昵称
-    wx.setStorageSync('user', this.data.userInfo.nickName)
     //获取用户当天剩余抽奖次数
     var today = this.get_today()
     var remain_count = wx.getStorageSync(today);
@@ -110,6 +108,8 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+    //储存用户昵称
+    wx.setStorageSync('user', this.data.userInfo.nickName)
   },
   get_today:function(){
     var timestamp = Date.parse(new Date());

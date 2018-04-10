@@ -1,5 +1,7 @@
 // pages/home/home.js
 var util = require('../../utils/util.js');
+var aes = require('../../utils/aes.js')
+var QR = require("../../utils/qrcode.js");
 const app = getApp()
 Page({
 
@@ -9,6 +11,8 @@ Page({
   data: {
     ball_img:"/assets/images/ball/ball_1.png",
     pok_idx_img: "/assets/images/pok_idx.png",
+    aes_key : aes.CryptoJS.enc.Utf8.parse("1989022819900212"),
+    aes_iv: aes.CryptoJS.enc.Utf8.parse('2016092420160924')
   },
   load_trainer:function(){
     this.setData({
@@ -59,6 +63,8 @@ Page({
       type1: type1,
       type2: type2
     })
+    //获取当前精灵剩余血量
+    this.get_current_pok_hp()
     //设置bar为精灵type_color
     this.setNavigationBarColor(app.globalData.type_color[this.data.pok_type1]);
   },
@@ -89,12 +95,14 @@ Page({
     var current_pok_idx = haved_pok[pok_list_idx]["idx"]
     var current_pok_level = haved_pok[pok_list_idx]["level"]
     var current_pok_growup = haved_pok[pok_list_idx]["growup"]
+    var current_pok_usedhp = haved_pok[pok_list_idx]["usedhp"]
     this.setData({
       haved_pok: haved_pok,
       current_pok_idx: current_pok_idx,
       current_pok_id: current_pok_id,
       current_pok_level: current_pok_level,
-      current_pok_growup: current_pok_growup
+      current_pok_growup: current_pok_growup,
+      current_pok_usedhp: current_pok_usedhp
     })
     //刷新点击pok
     this.refresh_pok_head(current_pok_id);
@@ -117,12 +125,14 @@ Page({
     var current_pok_idx = haved_pok[0]["idx"]
     var current_pok_level = haved_pok[0]["level"]
     var current_pok_growup = haved_pok[0]["growup"]
+    var current_pok_usedhp = haved_pok[0]["usedhp"]
     this.setData({
       haved_pok: haved_pok,
       current_pok_idx: current_pok_idx,
       current_pok_id: current_pok_id,
       current_pok_level: current_pok_level,
-      current_pok_growup: current_pok_growup
+      current_pok_growup: current_pok_growup,
+      current_pok_usedhp: current_pok_usedhp
     })
     //获取头像部分数据
     this.refresh_pok_head(haved_pok[0]["id"]);
@@ -144,10 +154,33 @@ Page({
       }
     });
   },
+  get_current_pok_hp: function(){
+    var current_pok_hp = this.data.pok_hp - this.data.current_pok_usedhp
+    if (current_pok_hp<0){
+      current_pok_hp = 0
+    }
+    this.setData({
+      current_pok_hp :current_pok_hp
+    })
+  },
+  aes_Encrypt: function (word) {
+    var srcs = aes.CryptoJS.enc.Utf8.parse(word);
+    var encrypted = aes.CryptoJS.AES.encrypt(srcs, this.data.aes_key, { iv: this.data.aes_iv, mode: aes.CryptoJS.mode.CBC, padding: aes.CryptoJS.pad.Pkcs7 });
+    return encrypted.ciphertext.toString().toUpperCase();
+  },
+  aes_Decrypt: function (word) {
+    var encryptedHexStr = aes.CryptoJS.enc.Hex.parse(word);
+    var srcs = aes.CryptoJS.enc.Base64.stringify(encryptedHexStr);
+    var decrypt = aes.CryptoJS.AES.decrypt(srcs, this.data.aes_key, { iv: this.data.aes_iv, mode: aes.CryptoJS.mode.CBC, padding: aes.CryptoJS.pad.Pkcs7 });
+    var decryptedStr = decrypt.toString(aes.CryptoJS.enc.Utf8);
+    return decryptedStr.toString();
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(this.aes_Encrypt("你好{}"))
+    console.log(this.aes_Decrypt(this.aes_Encrypt("你好{}")))
     this.load_trainer()
     var haved_pok = util.get_self_pok();
     var haved_pok_count = haved_pok.length
@@ -161,12 +194,14 @@ Page({
     var current_pok_idx = haved_pok[0]["idx"]
     var current_pok_level = haved_pok[0]["level"]
     var current_pok_growup = haved_pok[0]["growup"]
+    var current_pok_usedhp = haved_pok[0]["usedhp"]
     this.setData({
       haved_pok: haved_pok,
       current_pok_idx: current_pok_idx,
       current_pok_id: current_pok_id,
       current_pok_level: current_pok_level,
-      current_pok_growup: current_pok_growup
+      current_pok_growup: current_pok_growup,
+      current_pok_usedhp: current_pok_usedhp
     })
     //获取头像部分数据
     this.refresh_pok_head(current_pok_id);
@@ -188,7 +223,7 @@ Page({
     var haved_pok = util.get_self_pok();
     //老用户清除本地精灵
     try{
-      if (haved_pok[0]["level"] == undefined) {
+      if (haved_pok[0]["usedhp"] == undefined) {
         wx.removeStorageSync('pok_id_list')
       }
     }catch(err){
@@ -199,7 +234,7 @@ Page({
       haved_pok = haved_pok.reverse()
       }else{
         //赠送御三家
-      var haved_pok = [{ "id": "001", "growup": 50, "level": 1, "idx": "1"}]
+      var haved_pok = [{ "id": "001", "growup": 50, "level": 1, "idx": "1", "usedhp": 0}]
         wx.setStorageSync("pok_id_list", haved_pok)
       }
     //设置当前精灵数据
@@ -207,12 +242,14 @@ Page({
     var current_pok_idx = haved_pok[0]["idx"]
     var current_pok_level = haved_pok[0]["level"]
     var current_pok_growup = haved_pok[0]["growup"]
+    var current_pok_usedhp = haved_pok[0]["usedhp"]
     this.setData({
       haved_pok: haved_pok,
       current_pok_idx: current_pok_idx,
       current_pok_id: current_pok_id,
       current_pok_level: current_pok_level,
-      current_pok_growup: current_pok_growup
+      current_pok_growup: current_pok_growup,
+      current_pok_usedhp: current_pok_usedhp
     })
     var near_pok_idx = haved_pok[0]["id"]
     //获取头像部分数据

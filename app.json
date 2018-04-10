@@ -5,7 +5,8 @@
     "pages/catch/catch",
     "pages/home/home",
     "pages/package/package",
-    "pages/pok_idx/pok_idx"
+    "pages/pok_idx/pok_idx",
+    "pages/qr/qr"
   ],
   "window": {
     "backgroundTextStyle": "light",

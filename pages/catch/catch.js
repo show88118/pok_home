@@ -84,7 +84,7 @@ Page({
       haved_pok = []
     }
     //捕捉到的精灵数据
-    haved_pok.push({ id: this.data.pok_num, growup: this.get_pok_growup(), level: 1, idx: (parseInt(max_pok_idx)+1).toString()})
+    haved_pok.push({ id: this.data.pok_num, growup: this.get_pok_growup(), level: 1, idx: (parseInt(max_pok_idx)+1).toString(),usedhp:0})
     console.log(haved_pok)
     //haved_pok入库
     wx.setStorageSync("pok_id_list", haved_pok)

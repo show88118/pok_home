@@ -29,7 +29,7 @@
  
   <view class="tr bg-w">
     <view class="td th">HP</view>
-    <view class="td">{{pok_hp}}</view>
+    <view class="td">{{current_pok_hp}}/{{pok_hp}}</view>
     <view class="td th">攻击</view>
     <view class="td ">{{pok_att}}</view>
   </view>
