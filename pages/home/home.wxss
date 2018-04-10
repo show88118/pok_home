@@ -3,12 +3,13 @@
   background-color: #F0F0F0;
   padding: 30rpx;
   width: 100%;
+  height: 180rpx;
   box-sizing:border-box;
   position: fixed;
   bottom: 0;
 }
 
-.userinfo-avatar {
+/* .userinfo-avatar {
   width: 128rpx;
   height: 128rpx;
   border-radius: 50%;
@@ -19,7 +20,7 @@
   display: block;
   width: 128rpx;
   text-align: center;
-}
+} */
 
 .near_pok{
   display: flex;
@@ -42,16 +43,27 @@
   margin-left: 10rpx;
 }
 .ball_img{
-  width: 220rpx;
-  height: 220rpx;
+  width: 180rpx;
+  height: 180rpx;
   border-radius: 50%;
+}
+.pok_idx_img{
+  width: 200rpx;
+  height: 140rpx;
+}
+.pok_idx{
+  display:flex;
+  position: fixed;
+  left: 10rpx;
+  bottom: 0rpx;
+  padding: 20rpx;
 }
 .ball{
   display:flex;
   position: fixed;
   right: -30rpx;
-  bottom: 0;
-  padding: 30rpx;
+  bottom: -18rpx;
+  padding: 20rpx;
 }
 .pok_name{
   display: block;
@@ -66,7 +78,7 @@
   width: 100%;
   height: 170rpx;
   position: fixed;
-  bottom: 300rpx;
+  bottom: 200rpx;
   background-color: #fff;
   overflow-x:auto;
   overflow-y: hidden;

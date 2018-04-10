@@ -24,10 +24,10 @@ Page({
     break; 
   } 
 },
-  catch_pok:function(pok_idx){
-
+  get_pok_growup:function(){
+    return this.randomNum(1,100)
   },
-  change_head:function(){
+  catch_pok:function(){
     if (this.data.remain_count <= 0){
       wx.showToast({
         title: '今日捕捉次数0',
@@ -42,17 +42,20 @@ Page({
       var pok_num = 150;
     } else if (seed == 9998) {
       var pok_num = 137;
-    } else if (seed > 9847 && seed < 9998) {
+    } else if (seed > 9990 && seed < 9998) {
+      var items = [144, 145, 146]
+      var pok_num = items[Math.floor(Math.random() * items.length)];
+    } else if (seed > 9900 && seed < 9991) {
       var items = [142,143,131]
       var pok_num = items[Math.floor(Math.random() * items.length)];
-    } else if (seed > 9546 && seed < 9848) {
+    } else if (seed > 9546 && seed < 9901) {
       var items = [1, 4, 7]
       var pok_num = items[Math.floor(Math.random() * items.length)];
     } else if (seed > 7846 && seed < 9547) {
-      var items = [83, 95, 106, 107, 108, 113, 114, 115, 122, 123, 124, 125, 126, 127, 128, 132, 137]
+      var items = [83, 95, 106, 107, 108, 113, 114, 115, 122, 123, 124, 125, 126, 127, 128, 132]
       var pok_num = items[Math.floor(Math.random() * items.length)];
     }else{
-      var items = [10, 13, 16, 19, 21, 23, 27, 29, 32, 41, 43, 46, 48, 50, 52, 54, 56, 60, 63, 66, 69, 72, 74, 77, 79, 81, 84, 86, 88, 92, 96, 98, 100, 104, 109, 111, 116, 118, 129, 138, 140, 147, 25, 30, 33, 35, 37, 39, 44, 58, 61, 70, 90, 102, 120, 133]
+      var items = [10, 13, 16, 19, 21, 23, 27, 29, 32, 41, 43, 46, 48, 50, 52, 54, 56, 60, 63, 66, 69, 72, 74, 77, 79, 81, 84, 86, 88, 92, 96, 98, 100, 104, 109, 111, 116, 118, 129, 138, 140, 147, 25, 30, 33, 35, 37, 39, 58, 90, 102, 120, 133]
       var pok_num = items[Math.floor(Math.random() * items.length)];
     }
     var pok_num_length = pok_num.toString().length
@@ -70,11 +73,18 @@ Page({
       pok_num: pok_num.toString()
     })
     //储存训练集的pok_idx
-    var haved_pok = util.get_self_pok()
-    if (haved_pok.length == 0){
+    var haved_pok = util.get_self_pok();
+    var haved_pok_length = haved_pok.length;
+    if (haved_pok_length==1){
+      var max_pok_idx = haved_pok[0]["idx"]
+    }else{
+      var max_pok_idx = haved_pok[haved_pok_length - 1]["idx"]
+    }
+    if (haved_pok_length == 0){
       haved_pok = []
     }
-    haved_pok.push({ id: this.data.pok_num })
+    //捕捉到的精灵数据
+    haved_pok.push({ id: this.data.pok_num, growup: this.get_pok_growup(), level: 1, idx: (parseInt(max_pok_idx)+1).toString()})
     //haved_pok入库
     wx.setStorageSync("pok_id_list", haved_pok)
     //console.log(util.get_self_pok())
@@ -83,6 +93,11 @@ Page({
     var pok_name = pok_info[0];
     var pok_type1 = pok_info[1];
     var pok_type2 = pok_info[2] ;
+    var pok_head = pok_info[3]
+    var hp = pok_info[4];
+    var att = pok_info[5];
+    var def = pok_info[6];
+    var speed = pok_info[7];
     util.pok_type(pok_type1, pok_type2);
     var type2_display = app.globalData.type2_display;
     var type1 = app.globalData.type1;
@@ -91,7 +106,12 @@ Page({
       type2_display: type2_display,
       type1: type1,
       type2: type2,
-      pok_name: pok_name
+      pok_name: pok_name,
+      hp: hp,
+      att: att,
+      def: def,
+      speed: speed,
+      pok_head: pok_head
     })
     wx.vibrateLong()
   },
@@ -152,7 +172,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
   },
 
   /**
@@ -166,7 +186,6 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
   },
 
   /**

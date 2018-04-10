@@ -4,7 +4,8 @@
     "pages/logs/logs",
     "pages/catch/catch",
     "pages/home/home",
-    "pages/package/package"
+    "pages/package/package",
+    "pages/pok_idx/pok_idx"
   ],
   "window": {
     "backgroundTextStyle": "light",

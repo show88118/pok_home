@@ -1,5 +1,6 @@
 //index.js
 //获取应用实例
+var util = require('../../utils/util.js');
 const app = getApp()
 const backgroundAudioManager = wx.getBackgroundAudioManager()
 Page({
@@ -57,6 +58,8 @@ Page({
     }
   },
   onLoad: function () {
+    //获取精灵能力
+    console.log(util.get_pok_attr("001",50,1))
     //捕捉次数后门
     var today = this.get_today()
     wx.setStorageSync(today, 100)

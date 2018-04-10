@@ -1,8 +1,9 @@
 <!--pages/home/home.wxml-->
 <view class="container">
 <view class="trainer" bindtap=''> 
-      <image bindtap="" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      <!-- <image bindtap="" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text> -->
+      <view class="pok_idx"><image bindtap="" class="pok_idx_img" src="{{pok_idx_img}}" background-size="cover"></image></view>
       <view class="ball"><image bindtap="bind_my_pok" class="ball_img" src="{{ball_img}}" background-size="cover"></image></view>
       
 </view>

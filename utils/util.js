@@ -23,10 +23,14 @@ function get_pok_info(idx) {
       var pok_name = pok_dict[i].name;
       var pok_type1 = pok_dict[i].type.split("|")[0];
       var pok_type2 = pok_dict[i].type.split("|")[1];
-      var pok_head = "/assets/images/head/"+idx+".png"
+      var pok_head = "/assets/images/head/"+idx+".png";
+      var hp = pok_dict[i].hp;
+      var att = pok_dict[i].att;
+      var def = pok_dict[i].def;
+      var speed = pok_dict[i].speed;
     }
   }
-  return [pok_name, pok_type1, pok_type2, pok_head];
+  return [pok_name, pok_type1, pok_type2, pok_head, hp,att,def,speed];
 }
 
 function get_self_pok(){
@@ -166,10 +170,28 @@ function set_pok_type(type, two){
     set_pok_type("", "two")
   }
 }
+  function get_pok_attr(id,growup,level){
+    var pok_info = this.get_pok_info(id)
+    var pok_name = pok_info[0];
+    var pok_type1 = pok_info[1];
+    var pok_type2 = pok_info[2];
+    var pok_head = pok_info[3]
+    var hp = pok_info[4];
+    var att = pok_info[5];
+    var def = pok_info[6];
+    var speed = pok_info[7];
+    //计算精灵能力值
+    var pok_hp = (hp * 2 + growup)*level/100+level+10;
+    var pok_att = (att * 2 + growup) * level / 100 + 5;
+    var pok_def = (def * 2 + growup) * level / 100 + 5;
+    var pok_speed = (speed * 2 + growup) * level / 100 + 5;
+    return [Math.floor(pok_hp), Math.floor(pok_att), Math.floor(pok_def), Math.floor(pok_speed)]
+  }
 
 module.exports = {
     formatTime: formatTime,
       get_pok_info: get_pok_info,
       get_self_pok: get_self_pok,
-      pok_type: pok_type
+      pok_type: pok_type,
+      get_pok_attr: get_pok_attr
 }
