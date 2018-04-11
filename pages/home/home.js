@@ -96,13 +96,17 @@ Page({
     var current_pok_level = haved_pok[pok_list_idx]["level"]
     var current_pok_growup = haved_pok[pok_list_idx]["growup"]
     var current_pok_usedhp = haved_pok[pok_list_idx]["usedhp"]
+    var current_pok_sex = haved_pok[pok_list_idx]["sex"]
+    var current_pok_master = haved_pok[pok_list_idx]["master"]
     this.setData({
       haved_pok: haved_pok,
       current_pok_idx: current_pok_idx,
       current_pok_id: current_pok_id,
       current_pok_level: current_pok_level,
       current_pok_growup: current_pok_growup,
-      current_pok_usedhp: current_pok_usedhp
+      current_pok_usedhp: current_pok_usedhp,
+      current_pok_sex: current_pok_sex,
+      current_pok_master: current_pok_master
     })
     //刷新点击pok
     this.refresh_pok_head(current_pok_id);
@@ -126,13 +130,17 @@ Page({
     var current_pok_level = haved_pok[0]["level"]
     var current_pok_growup = haved_pok[0]["growup"]
     var current_pok_usedhp = haved_pok[0]["usedhp"]
+    var current_pok_sex = haved_pok[0]["sex"]
+    var current_pok_master = haved_pok[0]["master"]
     this.setData({
       haved_pok: haved_pok,
       current_pok_idx: current_pok_idx,
       current_pok_id: current_pok_id,
       current_pok_level: current_pok_level,
       current_pok_growup: current_pok_growup,
-      current_pok_usedhp: current_pok_usedhp
+      current_pok_usedhp: current_pok_usedhp,
+      current_pok_sex: current_pok_sex,
+      current_pok_master: current_pok_master
     })
     //获取头像部分数据
     this.refresh_pok_head(haved_pok[0]["id"]);
@@ -195,13 +203,17 @@ Page({
     var current_pok_level = haved_pok[0]["level"]
     var current_pok_growup = haved_pok[0]["growup"]
     var current_pok_usedhp = haved_pok[0]["usedhp"]
+    var current_pok_sex = haved_pok[0]["sex"]
+    var current_pok_master = haved_pok[0]["master"]
     this.setData({
       haved_pok: haved_pok,
       current_pok_idx: current_pok_idx,
       current_pok_id: current_pok_id,
       current_pok_level: current_pok_level,
       current_pok_growup: current_pok_growup,
-      current_pok_usedhp: current_pok_usedhp
+      current_pok_usedhp: current_pok_usedhp,
+      current_pok_sex: current_pok_sex,
+      current_pok_master: current_pok_master
     })
     //获取头像部分数据
     this.refresh_pok_head(current_pok_id);
@@ -223,7 +235,7 @@ Page({
     var haved_pok = util.get_self_pok();
     //老用户清除本地精灵
     try{
-      if (haved_pok[0]["usedhp"] == undefined) {
+      if (haved_pok[0]["master"] == undefined) {
         wx.removeStorageSync('pok_id_list')
       }
     }catch(err){
@@ -234,8 +246,8 @@ Page({
       haved_pok = haved_pok.reverse()
       }else{
         //赠送御三家
-      var haved_pok = [{ "id": "001", "growup": 50, "level": 1, "idx": "1", "usedhp": 0}]
-        wx.setStorageSync("pok_id_list", haved_pok)
+      var haved_pok = [{ "id": "001", "growup": 50, "level": 1, "idx": "1", "usedhp": 0, "sex": 1, "master": wx.getStorageSync("user")}]
+      wx.setStorageSync("pok_id_list", haved_pok)
       }
     //设置当前精灵数据
     var current_pok_id = haved_pok[0]["id"]
@@ -243,13 +255,17 @@ Page({
     var current_pok_level = haved_pok[0]["level"]
     var current_pok_growup = haved_pok[0]["growup"]
     var current_pok_usedhp = haved_pok[0]["usedhp"]
+    var current_pok_sex = haved_pok[0]["sex"]
+    var current_pok_master = haved_pok[0]["master"]
     this.setData({
       haved_pok: haved_pok,
       current_pok_idx: current_pok_idx,
       current_pok_id: current_pok_id,
       current_pok_level: current_pok_level,
       current_pok_growup: current_pok_growup,
-      current_pok_usedhp: current_pok_usedhp
+      current_pok_usedhp: current_pok_usedhp,
+      current_pok_sex: current_pok_sex,
+      current_pok_master: current_pok_master
     })
     var near_pok_idx = haved_pok[0]["id"]
     //获取头像部分数据

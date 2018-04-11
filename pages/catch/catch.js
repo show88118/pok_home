@@ -25,7 +25,48 @@ Page({
   } 
 },
   get_pok_growup:function(){
-    return this.randomNum(1,100)
+    var seed = this.randomNum(1,100)
+    var pok_growup
+    if(seed == 100){
+      pok_growup = this.randomNum(80, 100)
+    }else if(seed >90 && seed <100){
+      pok_growup = this.randomNum(40, 80)
+    }else{
+      pok_growup = this.randomNum(1, 80)
+    }
+    return pok_growup
+  },
+  get_pok_sex: function (pok_id) {
+    var pok_sex
+    if (["032", "033", "034", "106", "107", "128"].indexOf(pok_id) > -1){
+      pok_sex = 1
+    } else if (["029", "030", "031", "113", "115", "124"].indexOf(pok_id) > -1){
+      pok_sex = 0
+    } else if (["001", "002", "003", "004", "005", "006", "007", "008", "009", "133", "134", "135", "136", "138", "139", "140", "141", "142","143"].indexOf(pok_id) > -1) {
+      var seed = this.randomNum(1, 80)
+      if (seed >10){
+        pok_sex = 1
+      }else{
+        pok_sex = 0
+      }
+    } else if (["058", "059", "063", "064", "065", "066", "067", "068", "125", "126"].indexOf(pok_id) > -1) {
+      var seed = this.randomNum(1, 40)
+      if (seed > 10) {
+        pok_sex = 1
+      } else {
+        pok_sex = 0
+      }
+    } else if (["035", "036", "037", "038", "039", "040"].indexOf(pok_id) > -1) {
+      var seed = this.randomNum(1, 40)
+      if (seed > 10) {
+        pok_sex = 0
+      } else {
+        pok_sex = 1
+      }
+    }else{
+      pok_sex = this.randomNum(0, 1)
+    }
+    return pok_sex
   },
   catch_pok:function(){
     if (this.data.remain_count <= 0){
@@ -84,7 +125,7 @@ Page({
       haved_pok = []
     }
     //捕捉到的精灵数据
-    haved_pok.push({ id: this.data.pok_num, growup: this.get_pok_growup(), level: 1, idx: (parseInt(max_pok_idx)+1).toString(),usedhp:0})
+    haved_pok.push({ id: this.data.pok_num, growup: this.get_pok_growup(), level: 1, idx: (parseInt(max_pok_idx) + 1).toString(), usedhp: 0, sex: this.get_pok_sex(this.data.pok_num), master: wx.getStorageSync("user")})
     console.log(haved_pok)
     //haved_pok入库
     wx.setStorageSync("pok_id_list", haved_pok)
