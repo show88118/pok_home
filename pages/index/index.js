@@ -12,7 +12,7 @@ Page({
   },
   click_start:function(){
     wx.navigateTo({
-      url: '../home/home',
+      url: '../book/book',
     })
   },
   bindmy:function(){

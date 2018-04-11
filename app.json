@@ -6,7 +6,8 @@
     "pages/home/home",
     "pages/package/package",
     "pages/pok_idx/pok_idx",
-    "pages/qr/qr"
+    "pages/qr/qr",
+    "pages/book/book"
   ],
   "window": {
     "backgroundTextStyle": "light",
