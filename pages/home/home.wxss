@@ -103,12 +103,12 @@
   margin-top: 7rpx;
 }
 .prop_count{
-  width: 102rpx;
+  width: 100rpx;
   font-size: 25rpx;
   line-height: 28rpx;
-  display: inline-block;
-  margin-left: 5%;
-  margin-top: 0rpx;
+  display: block;
+  margin-left: 19%;
+  margin-top: 10rpx;
 }
 .props{
   position: fixed;

@@ -3,7 +3,7 @@
 <view class="trainer" bindtap=''> 
       <!-- <image bindtap="" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text> -->
-      <view class="pok_idx"><image bindtap="eat_exp" class="pok_idx_img" src="{{pok_idx_img}}" background-size="cover"></image></view>
+      <view class="pok_idx"><image bindtap="" class="pok_idx_img" src="{{pok_idx_img}}" background-size="cover"></image></view>
       <view class="ball"><image bindtap="bind_my_pok" class="ball_img" src="{{ball_img}}" background-size="cover"></image></view>
       
 </view>
@@ -47,30 +47,30 @@
 </view>
 <!--props  -->
 <view class='props'>
-<view class="s_2" style='width: {{my_pok_list_width}}rpx;'>
-<view class='g_props'>
+<view class="s_2" style='width: 400rpx;'>
+<view class='g_props' bindtap='eat_exp'>
 <image class='prop' src="/assets/images/props/candy.png"></image><text class="prop_count">x99</text>
 </view>
 <view class='g_props'>
-<image class='prop' src="/assets/images/props/fire_stone.png"></image><text class="prop_count">x99</text>
+<image class='prop' src="/assets/images/props/fire_stone.png"></image><text class="prop_count">x0</text>
 </view>
 <view class='g_props'>
-<image class='prop' src="/assets/images/props/electric_stone.png"></image><text class="prop_count">x99</text>
+<image class='prop' src="/assets/images/props/electric_stone.png"></image><text class="prop_count">x0</text>
 </view>
 <view class='g_props'>
-<image class='prop' src="/assets/images/props/water_stone.png"></image><text class="prop_count">x99</text>
+<image class='prop' src="/assets/images/props/water_stone.png"></image><text class="prop_count">x0</text>
 </view>
 <view class='g_props'>
-<image class='prop' src="/assets/images/props/grass_stone.png"></image><text class="prop_count">x99</text>
+<image class='prop' src="/assets/images/props/grass_stone.png"></image><text class="prop_count">x0</text>
 </view>
 <view class='g_props'>
-<image class='prop' src="/assets/images/props/moon_stone.png"></image><text class="prop_count">x99</text>
+<image class='prop' src="/assets/images/props/moon_stone.png"></image><text class="prop_count">x0</text>
 </view>
 </view>
 </view>
 <!-- my_pok -->
 <view class="my_pok_list">
-<view class="s_1" style='width: {{my_pok_list_width}}rpx;'>
+<view class="s_1" style='width: 400rpx;'>
 <image class="my_pok" bindtap='change_head' data-idx="{{my_pok[0]}}" wx:key="{{my_pok[0]}}" wx:for="{{my_pok_list_mini}}" wx:for-item="my_pok" src="{{my_pok[2]}}">
 </image>
 </view>
