@@ -1,8 +1,8 @@
 /**index.wxss**/
-page{
+/* page{
   background-image: url("https://raw.githubusercontent.com/show88118/pok_home/master/assets/images/home.png");
   background-repeat: repeat;
-}
+} */
 .container{
   width: 100%;
   height: 100%;
@@ -24,7 +24,7 @@ page{
 }
 
 .userinfo-nickname {
-  color: #aaa;
+  color: #000;
 }
 
 .usermotto {
@@ -46,7 +46,7 @@ page{
   width: 60rpx;
   height: 60rpx;
 }
-.bgm_img{
+#bgm_img{
   -webkit-animation: rotating 1.2s linear infinite;
   -moz-animation: rotating 1.2s linear infinite;
   o-animation: rotating 1.2s linear infinite;
@@ -59,4 +59,33 @@ page{
 @keyframes rotating{
   from { transform: rotate(0) }
   to { transform: rotate(360deg) }
+}
+.signin_img{
+  width: 60rpx;
+  height: 60rpx;
+}
+.signin_text{
+  font-size: 20rpx;
+  display: block
+}
+.signin{
+  display: block;
+  text-align: center;
+  position: fixed;
+  left: 10rpx;
+  top: 10rpx;
+}
+#signin_img{
+  -webkit-animation: signin 1.2s linear infinite;
+  -moz-animation: signin 1.2s linear infinite;
+  o-animation: signin 1.2s linear infinite;
+  animation: signin 1.2s linear infinite;
+}
+@-webkit-keyframes signin{
+  from { -webkit-transform: rotate(0) }
+  to { -webkit-transform: rotate(-360deg) }
+}
+@keyframes signin{
+  from { transform: rotate(0) }
+  to { transform: rotate(-360deg) }
 }

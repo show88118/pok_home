@@ -7,7 +7,8 @@
     "pages/package/package",
     "pages/pok_idx/pok_idx",
     "pages/qr/qr",
-    "pages/book/book"
+    "pages/book/book",
+    "pages/initpok/initpok"
   ],
   "window": {
     "backgroundTextStyle": "light",

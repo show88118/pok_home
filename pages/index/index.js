@@ -11,9 +11,16 @@ Page({
     }
   },
   click_start:function(){
-    wx.navigateTo({
-      url: '../book/book',
-    })
+    if(util.get_self_pok().length>0){
+      wx.navigateTo({
+        url: '../home/home',
+      })
+    }else{
+      wx.navigateTo({
+        url: '../initpok/initpok',
+      })
+    }
+
   },
   bindmy:function(){
     wx.navigateTo({
@@ -48,13 +55,32 @@ Page({
     })
     
   },
+  randomNum: function (minNum, maxNum) {
+    switch (arguments.length) {
+      case 1:
+        return parseInt(Math.random() * minNum + 1, 10);
+        break;
+      case 2:
+        return parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10);
+        break;
+      default:
+        return 0;
+        break;
+    }
+  },
   bgm:function(){
     if(app.globalData.bg_play){
       wx.pauseBackgroundAudio()
       app.globalData.bg_play = false;
+      this.setData({
+        bgm_img_id:"stop"
+      })
     }else{
       this.play_bgm()
       app.globalData.bg_play = true;
+      this.setData({
+        bgm_img_id: "bgm_img"
+      })
     }
   },
   //签到
@@ -76,14 +102,46 @@ Page({
         title: '已签到',
       })
     }
-
+    this.setData({
+      signin_img_id: "stop"
+    })
   },
   onLoad: function () {
     // //获取精灵能力
     // console.log(util.get_pok_attr("001",50,1))
+    //获取是否签到
+    var today = this.get_today()
+    var signin_status = wx.getStorageSync(today);
+    if (signin_status == undefined || signin_status == "") {
+      this.setData({
+        signin_img_id: "signin_img"
+      })
+    }
+    //获取首页签到和音乐随机头像
+    var random_pok_id1 = this.randomNum(1,151)
+    var random_pok_id2 = this.randomNum(1, 151)
+    var random_pok_id1_length = random_pok_id1.toString().length
+    var random_pok_id2_length = random_pok_id2.toString().length
+    if (random_pok_id1_length == 1) {
+      random_pok_id1 = "00" + random_pok_id1;
+    }
+    else if (random_pok_id1_length == 2) {
+      random_pok_id1 = "0" + random_pok_id1;
+    }
+    if (random_pok_id2_length == 1) {
+      random_pok_id2 = "00" + random_pok_id2;
+    }
+    else if (random_pok_id2_length == 2) {
+      random_pok_id2 = "0" + random_pok_id2;
+    }
+    this.setData({
+      random_pok_id1: random_pok_id1,
+      random_pok_id2: random_pok_id2
+
+    })
     //捕捉次数和经验糖后门
-    wx.setStorageSync("remain_count", 100)
-    wx.setStorageSync("candy_count", 100)
+    // wx.setStorageSync("remain_count", 100)
+    // wx.setStorageSync("candy_count", 100)
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -111,7 +169,6 @@ Page({
       })
     }
     //查询用户今天是否签到
-    var today = this.get_today()
     app.globalData.today = today;
     var remain_count = wx.getStorageSync("remain_count")
     var candy_count = wx.getStorageSync("candy_count")

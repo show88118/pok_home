@@ -1,0 +1,16 @@
+<!--pages/initpok/initpok.wxml-->
+<view>
+<view>
+<image style="width:100%" src="/assets/images/init.png"></image>
+</view>
+<view class="init_title">{{title}}</view>
+<view>
+<view>
+<view class="ball-box" style="height:{{device_height*0.3}}rpx">
+<image class="ball" bindtap="miaowa" src="/assets/images/ball/ball_1.png"></image>
+<image class="ball" bindtap="xiaohuo" src="/assets/images/ball/ball_1.png"></image>
+<image class="ball" bindtap="jieni" src="/assets/images/ball/ball_1.png"></image>
+</view>
+</view>
+</view>
+</view>

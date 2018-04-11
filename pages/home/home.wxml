@@ -3,7 +3,7 @@
 <view class="trainer" bindtap=''> 
       <!-- <image bindtap="" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text> -->
-      <view class="pok_idx"><image bindtap="" class="pok_idx_img" src="{{pok_idx_img}}" background-size="cover"></image></view>
+      <view class="pok_idx"><image bindtap="pok_book" class="pok_idx_img" src="{{pok_idx_img}}" background-size="cover"></image></view>
       <view class="ball"><image bindtap="bind_my_pok" class="ball_img" src="{{ball_img}}" background-size="cover"></image></view>
       
 </view>
@@ -71,7 +71,7 @@
 <!-- my_pok -->
 <view class="my_pok_list">
 <view class="s_1" style='width: {{my_pok_list_width}}rpx;'>
-<image class="my_pok" bindtap='change_head' data-idx="{{my_pok[0]}}" wx:key="{{my_pok[0]}}" wx:for="{{my_pok_list_mini}}" wx:for-item="my_pok" src="{{my_pok[2]}}">
+<image class="my_pok" bindtap='change_head' bindlongtap='change_idx' data-idx="{{my_pok[0]}}" wx:key="{{my_pok[0]}}" wx:for="{{my_pok_list_mini}}" wx:for-item="my_pok" src="{{my_pok[2]}}">
 </image>
 </view>
 </view>

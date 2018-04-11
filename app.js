@@ -41,7 +41,7 @@ App({
     // this.globalData.bg_play = true;
   },
   globalData: {
-    signin_gift_remain_count: 10,
+    signin_gift_remain_count: 5,
     signin_gift_candy_count: 10,
     bg_play:false,
     userInfo: null,

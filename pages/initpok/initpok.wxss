@@ -1,0 +1,4 @@
+/* pages/initpok/initpok.wxss */
+.init_title{font-weight: 700;text-align: center;}
+.ball{width: 200rpx;height: 200rpx;float: left;margin-left: 5%;}
+.ball-box{background-color: #8FBE92;position: fixed;bottom: 0;left: 0;right: 0;padding: 200rpx 0;overflow: hidden;border-top:28rpx ridge whitesmoke;border-bottom:28rpx ridge whitesmoke}

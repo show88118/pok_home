@@ -24,6 +24,11 @@ Page({
       url: '../catch/catch',
     })
   },
+  pok_book: function () {
+    wx.navigateTo({
+      url: '../book/book',
+    })
+  },
   //设置bar颜色
   setNavigationBarColor: function (bar_color) {
     wx.setNavigationBarColor({
@@ -333,6 +338,47 @@ Page({
     this.setData({
       exp_ratio: exp_ratio
     }) 
+  },
+  change_idx: function (event){
+    var pok_list_idx = event["currentTarget"]["dataset"]["idx"]
+    var haved_pok = util.get_self_pok();
+    haved_pok = haved_pok.reverse()
+    var change_pok = haved_pok[pok_list_idx]
+    var change_pok_idx = haved_pok[pok_list_idx]["idx"]
+    for (var i in haved_pok) {
+      if (haved_pok[i]["idx"] == change_pok_idx) {
+        haved_pok.splice(i, 1)
+      }
+    }
+    haved_pok = haved_pok.reverse()
+    haved_pok.push(change_pok)
+    wx.setStorageSync("pok_id_list", haved_pok)
+
+    haved_pok = haved_pok.reverse()
+    //设置当前精灵数据
+    var current_pok_id = this.data.current_pok_id
+    var current_pok_idx = this.data.current_pok_idx
+    var current_pok_level = this.data.current_pok_level
+    var current_pok_growup = this.data.current_pok_growup
+    var current_pok_usedhp = this.data.current_pok_usedhp
+    var current_pok_sex = this.data.current_pok_sex
+    var current_pok_master = this.data.current_pok_master
+    var current_pok_exp = this.data.current_pok_exp
+    this.setData({
+      haved_pok: haved_pok,
+      current_pok_idx: current_pok_idx,
+      current_pok_id: current_pok_id,
+      current_pok_level: current_pok_level,
+      current_pok_growup: current_pok_growup,
+      current_pok_usedhp: current_pok_usedhp,
+      current_pok_sex: current_pok_sex,
+      current_pok_master: current_pok_master,
+      current_pok_exp: current_pok_exp
+    })
+    // //获取头像部分数据
+    this.refresh_pok_head(current_pok_id);
+    //获取我的精灵列表数据
+    this.refresh_pok_list(haved_pok);
   },
   /**
    * 生命周期函数--监听页面加载

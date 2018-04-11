@@ -1,7 +1,8 @@
 <!--index.wxml-->
 <view class="container">
   <view class="bgm_btn">
-    <image class="bgm_img" bindtap="bgm" src="/assets/images/head/101.png"></image>
+    <text class="signin_text">music</text>
+    <image class="bgm_img" id="{{bgm_img_id}}" bindtap="bgm" src="/assets/images/head/{{random_pok_id1}}.png"></image>
   </view>
   <view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
@@ -10,8 +11,9 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
-  <view bindtap='signin'>
-  <image src="/assets/images/head/001.png">签到</image>
+  <view bindtap='signin' class="signin">
+  <text class="signin_text">signin</text>
+  <image src="/assets/images/head/{{random_pok_id2}}.png" class="signin_img" id="{{signin_img_id}}"></image>
   </view>
   <view catchtap="click_start" class="usermotto">
     <text class="user-motto">{{motto}}</text>
