@@ -1,0 +1,4 @@
+/* pages/book/book.wxss */
+.g_book{width: 500rpx;height: 500rpx;background-color: #a1db17;margin: auto;border-radius: 10rpx;overflow-y:auto;}
+.g_bimg{width: 100rpx;height: 100rpx;float:left;}
+.g_btit{text-align: center;background-color: #d19ac9;color: #fff;font-size: 30rpx;}

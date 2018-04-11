@@ -1,0 +1,39 @@
+<!--pages/book/book.wxml-->
+<text>pages/book/book.wxml</text>
+<view class="g_book">
+<view class="g_btit">图鉴</view>
+<image class='g_bimg' src="/assets/images/mini/104.png"></image>
+<image class='g_bimg' src="/assets/images/mini/104.png"></image>
+<image class='g_bimg' src="/assets/images/mini/104.png"></image>
+<image class='g_bimg' src="/assets/images/mini/104.png"></image>
+<image class='g_bimg' src="/assets/images/mini/104.png"></image>
+<image class='g_bimg' src="/assets/images/mini/104.png"></image>
+<image class='g_bimg' src="/assets/images/mini/104.png"></image>
+<image class='g_bimg' src="/assets/images/mini/104.png"></image>
+<image class='g_bimg' src="/assets/images/mini/104.png"></image>
+<image class='g_bimg' src="/assets/images/mini/104.png"></image>
+<image class='g_bimg' src="/assets/images/mini/104.png"></image>
+<image class='g_bimg' src="/assets/images/mini/104.png"></image>
+<image class='g_bimg' src="/assets/images/mini/104.png"></image>
+<image class='g_bimg' src="/assets/images/mini/104.png"></image>
+<image class='g_bimg' src="/assets/images/mini/104.png"></image>
+<image class='g_bimg' src="/assets/images/mini/104.png"></image>
+<image class='g_bimg' src="/assets/images/mini/104.png"></image>
+<image class='g_bimg' src="/assets/images/mini/104.png"></image>
+<image class='g_bimg' src="/assets/images/mini/104.png"></image>
+<image class='g_bimg' src="/assets/images/mini/104.png"></image>
+<image class='g_bimg' src="/assets/images/mini/104.png"></image>
+<image class='g_bimg' src="/assets/images/mini/104.png"></image>
+<image class='g_bimg' src="/assets/images/mini/104.png"></image>
+<image class='g_bimg' src="/assets/images/mini/104.png"></image>
+<image class='g_bimg' src="/assets/images/mini/104.png"></image>
+<image class='g_bimg' src="/assets/images/mini/104.png"></image>
+<image class='g_bimg' src="/assets/images/mini/104.png"></image>
+<image class='g_bimg' src="/assets/images/mini/104.png"></image>
+<image class='g_bimg' src="/assets/images/mini/104.png"></image>
+<image class='g_bimg' src="/assets/images/mini/104.png"></image>
+<image class='g_bimg' src="/assets/images/mini/104.png"></image>
+<image class='g_bimg' src="/assets/images/mini/104.png"></image>
+
+
+</view>
