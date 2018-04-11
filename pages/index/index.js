@@ -57,12 +57,33 @@ Page({
       app.globalData.bg_play = true;
     }
   },
+  //签到
+  signin:function(){
+    var signin_status = wx.getStorageSync(app.globalData.today);
+    var remain_count = wx.getStorageSync("remain_count")
+    var candy_count = wx.getStorageSync("candy_count")
+    if (signin_status == undefined || signin_status == "") {
+      remain_count = parseInt(remain_count) + app.globalData.signin_gift_remain_count
+      candy_count = parseInt(candy_count) + app.globalData.signin_gift_candy_count
+      wx.setStorageSync("remain_count", remain_count)
+      wx.setStorageSync("candy_count", candy_count)
+      wx.setStorageSync(app.globalData.today, "signin")
+      wx.showToast({
+        title: '获得签到奖励',
+      })
+    } else {
+      wx.showToast({
+        title: '已签到',
+      })
+    }
+
+  },
   onLoad: function () {
     // //获取精灵能力
     // console.log(util.get_pok_attr("001",50,1))
-    //捕捉次数后门
-    var today = this.get_today()
-    wx.setStorageSync(today, 100)
+    //捕捉次数和经验糖后门
+    wx.setStorageSync("remain_count", 100)
+    wx.setStorageSync("candy_count", 100)
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -89,18 +110,13 @@ Page({
         }
       })
     }
-    //获取用户当天剩余抽奖次数
+    //查询用户今天是否签到
     var today = this.get_today()
-    var remain_count = wx.getStorageSync(today);
-    if (remain_count!=""){
-      remain_count = remain_count
-      wx.setStorageSync(today, remain_count)
-    }else{
-      //每天捕捉次数
-      wx.setStorageSync(today, 10);
-      remain_count = 10
-    }
     app.globalData.today = today;
+    var remain_count = wx.getStorageSync("remain_count")
+    var candy_count = wx.getStorageSync("candy_count")
+    if (remain_count == undefined || remain_count == "") { remain_count = 0; wx.setStorageSync("remain_count",0)}
+    if (candy_count == undefined || candy_count == "") { candy_count = 0; wx.setStorageSync("candy_count", 0) }
   },
   getUserInfo: function(e) {
     app.globalData.userInfo = e.detail.userInfo

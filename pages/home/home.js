@@ -211,6 +211,25 @@ Page({
     var decryptedStr = decrypt.toString(aes.CryptoJS.enc.Utf8);
     return decryptedStr.toString();
   },
+  eat_candy:function(){
+    var candy_count = wx.getStorageSync("candy_count")
+    if (candy_count>0){
+      candy_count = candy_count - 1
+      //消耗一颗经验糖
+      wx.setStorageSync("candy_count", candy_count)
+      //吃糖增加经验
+      this.eat_exp()
+      //设置当前经验糖个数
+      this.setData({
+        candy_count: candy_count
+      })
+    }else{
+      wx.showToast({
+        title: '没有经验糖了',
+      })
+    }
+    
+  },
   //吃经验糖
   eat_exp:function(){
     //设置当前精灵数据
@@ -245,7 +264,7 @@ Page({
         }
         //吃经验糖后设置当前经验
         this.setData({
-          current_pok_exp: haved_pok[i]["exp"]
+          current_pok_exp: haved_pok[i]["exp"],
         })
       }
     }
@@ -277,7 +296,6 @@ Page({
     this.refresh_pok_head(current_pok_id);
     //获取我的精灵列表数据
     this.refresh_pok_list(haved_pok);
-    console.log(this.data.exp_ratio)
   },
   //获取当前等级需要升级的经验糖数量
   get_levelup_eat_count:function(level){
@@ -326,7 +344,8 @@ Page({
     var haved_pok = util.get_self_pok();
     var haved_pok_count = haved_pok.length
     if (haved_pok_count == 0) {
-      haved_pok = [{ "id": "001", "growup":50 ,"level":1 ,"idx":"1"}]
+      //赠送御三家
+      var haved_pok = [{ "id": "001", "growup": 50, "level": 1, "idx": "1", "usedhp": 0, "sex": 1, "master": wx.getStorageSync("user"), "exp": 0 }]
     }
     //倒序排列我的精灵
     haved_pok = haved_pok.reverse()
@@ -367,7 +386,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    //获取我的精灵
     var haved_pok = util.get_self_pok();
+    //获取candy个数
+    var candy_count = wx.getStorageSync("candy_count")
+    this.setData({
+      candy_count: candy_count
+    })
     //老用户清除本地精灵
     try{
       if (haved_pok[0]["exp"] == undefined) {
@@ -380,7 +405,7 @@ Page({
     if (haved_pok.length > 0) {
       haved_pok = haved_pok.reverse()
       }else{
-        //赠送御三家
+      //赠送御三家
       var haved_pok = [{ "id": "001", "growup": 50, "level": 1, "idx": "1", "usedhp": 0, "sex": 1, "master": wx.getStorageSync("user"),"exp":0}]
       wx.setStorageSync("pok_id_list", haved_pok)
       }

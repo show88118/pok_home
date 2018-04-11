@@ -162,24 +162,16 @@ Page({
   },
   get_remain_count:function(){
     this.setData({
-      remain_count: wx.getStorageSync(app.globalData.today)
+      remain_count: wx.getStorageSync("remain_count")
     })
   },
+  //消费捕捉次数
   consume_remain_count: function () {
-    var remain_count = this.data.remain_count;
-    remain_count = remain_count - 1;
-    if (remain_count>0){
-      this.setData({
-        remain_count:remain_count
+    var remain_count = wx.getStorageSync("remain_count") - 1;
+    wx.setStorageSync("remain_count", remain_count)
+    this.setData({
+      remain_count: remain_count
       })
-    }else{
-      this.setData({
-        remain_count: "0"
-      })    
-    }
-    wx.setStorageSync(app.globalData.today, this.data.remain_count);
-    //剩余次数查询
-    //console.log(wx.getStorageSync(app.globalData.today))
   },
 
   /**
@@ -204,7 +196,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.get_remain_count();
   },
 
   /**

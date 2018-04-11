@@ -48,8 +48,8 @@
 <!--props  -->
 <view class='props'>
 <view class="s_2" style='width: 1000rpx;'>
-<view class='g_props' bindtap='eat_exp'>
-<image class='prop' src="/assets/images/props/candy.png"></image><text class="prop_count">x99</text>
+<view class='g_props' bindtap='eat_candy'>
+<image class='prop' src="/assets/images/props/candy.png"></image><text class="prop_count">x{{candy_count}}</text>
 </view>
 <view class='g_props'>
 <image class='prop' src="/assets/images/props/fire_stone.png"></image><text class="prop_count">x0</text>
@@ -70,7 +70,7 @@
 </view>
 <!-- my_pok -->
 <view class="my_pok_list">
-<view class="s_1" style='width: 400rpx;'>
+<view class="s_1" style='width: {{my_pok_list_width}}rpx;'>
 <image class="my_pok" bindtap='change_head' data-idx="{{my_pok[0]}}" wx:key="{{my_pok[0]}}" wx:for="{{my_pok_list_mini}}" wx:for-item="my_pok" src="{{my_pok[2]}}">
 </image>
 </view>

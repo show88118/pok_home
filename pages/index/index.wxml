@@ -10,6 +10,9 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
+  <view bindtap='signin'>
+  <image src="/assets/images/head/001.png">签到</image>
+  </view>
   <view catchtap="click_start" class="usermotto">
     <text class="user-motto">{{motto}}</text>
   </view>

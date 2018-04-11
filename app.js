@@ -41,6 +41,8 @@ App({
     // this.globalData.bg_play = true;
   },
   globalData: {
+    signin_gift_remain_count: 10,
+    signin_gift_candy_count: 10,
     bg_play:false,
     userInfo: null,
     type_color:{"bug": "#A8B820", "dark": "#705848", "dragon": "#7038F8", "electric": "#F8D030", "fairy": "#FF65D5", "fight": "#903028", "fire": "#F05030", "fly": "#A890F0", "ghost": "#705898", "grass": "#78C850", "ground": "#E0C068", "ice": "#98D8D8", "normal": "#A8A878", "poison": "#A040A0", "psychic": "#F85888", "rock": "#B8A038", "steel": "#B8B8D0", "water": "#6890F0" },
