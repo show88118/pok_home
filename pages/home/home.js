@@ -43,15 +43,21 @@ Page({
     var att = pok_info[5];
     var def = pok_info[6];
     var speed = pok_info[7];
+    //根据精灵能力值转换属性
+    var pok_attr = util.get_pok_attr(pok_idx, this.data.current_pok_growup, this.data.current_pok_level)
+    var pok_hp = pok_attr[0]
+    var pok_att = pok_attr[1]
+    var pok_def = pok_attr[2]
+    var pok_speed = pok_attr[3]
     this.setData({
       pok_name: pok_name,
       pok_type1: pok_type1,
       pok_head: pok_head,
       pok_type2: pok_type2,
-      pok_hp: hp,
-      pok_att: att,
-      pok_def: def,
-      pok_speed: speed,
+      pok_hp: pok_hp,
+      pok_att: pok_att,
+      pok_def: pok_def,
+      pok_speed: pok_speed,
     })
     //设置pok_type
     util.pok_type(pok_type1, pok_type2);
@@ -65,6 +71,10 @@ Page({
     })
     //获取当前精灵剩余血量
     this.get_current_pok_hp()
+    //获取当前精灵性别图标
+    this.get_current_pok_sex()
+    //获取当前精灵经验条比例
+    this.get_exp_radio()
     //设置bar为精灵type_color
     this.setNavigationBarColor(app.globalData.type_color[this.data.pok_type1]);
   },
@@ -82,7 +92,7 @@ Page({
     }
     this.setData({
       my_pok_list_mini: my_pok_list_mini,
-      my_pok_list_width: 150 * haved_pok_count,
+      my_pok_list_width: 126 * haved_pok_count,
     })
   },
   //切换当前精灵
@@ -98,6 +108,7 @@ Page({
     var current_pok_usedhp = haved_pok[pok_list_idx]["usedhp"]
     var current_pok_sex = haved_pok[pok_list_idx]["sex"]
     var current_pok_master = haved_pok[pok_list_idx]["master"]
+    var current_pok_exp = haved_pok[pok_list_idx]["exp"]
     this.setData({
       haved_pok: haved_pok,
       current_pok_idx: current_pok_idx,
@@ -106,7 +117,8 @@ Page({
       current_pok_growup: current_pok_growup,
       current_pok_usedhp: current_pok_usedhp,
       current_pok_sex: current_pok_sex,
-      current_pok_master: current_pok_master
+      current_pok_master: current_pok_master,
+      current_pok_exp: current_pok_exp
     })
     //刷新点击pok
     this.refresh_pok_head(current_pok_id);
@@ -132,6 +144,7 @@ Page({
     var current_pok_usedhp = haved_pok[0]["usedhp"]
     var current_pok_sex = haved_pok[0]["sex"]
     var current_pok_master = haved_pok[0]["master"]
+    var current_pok_exp = haved_pok[0]["exp"]
     this.setData({
       haved_pok: haved_pok,
       current_pok_idx: current_pok_idx,
@@ -140,7 +153,8 @@ Page({
       current_pok_growup: current_pok_growup,
       current_pok_usedhp: current_pok_usedhp,
       current_pok_sex: current_pok_sex,
-      current_pok_master: current_pok_master
+      current_pok_master: current_pok_master,
+      current_pok_exp: current_pok_exp
     })
     //获取头像部分数据
     this.refresh_pok_head(haved_pok[0]["id"]);
@@ -171,6 +185,20 @@ Page({
       current_pok_hp :current_pok_hp
     })
   },
+  get_current_pok_sex: function () {
+    var current_pok_sex = this.data.current_pok_sex
+    if (current_pok_sex == 1) {
+      var current_pok_sex_icon = "♂"
+      var current_pok_sex_color = "#3DC5F5"
+    }else{
+      var current_pok_sex_icon = "♀"
+      var current_pok_sex_color = "#F5958D"
+    }
+    this.setData({
+      current_pok_sex_icon: current_pok_sex_icon,
+      current_pok_sex_color: current_pok_sex_color
+    })
+  },
   aes_Encrypt: function (word) {
     var srcs = aes.CryptoJS.enc.Utf8.parse(word);
     var encrypted = aes.CryptoJS.AES.encrypt(srcs, this.data.aes_key, { iv: this.data.aes_iv, mode: aes.CryptoJS.mode.CBC, padding: aes.CryptoJS.pad.Pkcs7 });
@@ -182,6 +210,111 @@ Page({
     var decrypt = aes.CryptoJS.AES.decrypt(srcs, this.data.aes_key, { iv: this.data.aes_iv, mode: aes.CryptoJS.mode.CBC, padding: aes.CryptoJS.pad.Pkcs7 });
     var decryptedStr = decrypt.toString(aes.CryptoJS.enc.Utf8);
     return decryptedStr.toString();
+  },
+  //吃经验糖
+  eat_exp:function(){
+    //设置当前精灵数据
+    var current_pok_id = this.data.current_pok_id
+    var current_pok_idx = this.data.current_pok_idx
+    var current_pok_level = this.data.current_pok_level
+    var current_pok_growup = this.data.current_pok_growup
+    var current_pok_usedhp = this.data.current_pok_usedhp
+    var current_pok_sex = this.data.current_pok_sex
+    var current_pok_master = this.data.current_pok_master
+    var current_pok_exp = this.data.current_pok_exp
+    //获取我拥有的精灵
+    var haved_pok = util.get_self_pok();
+    var levelup_eat_count = this.get_levelup_eat_count(current_pok_level)
+    for (var i in haved_pok){
+      if (haved_pok[i]["idx"] == current_pok_idx){
+        //达到升级经验后exp归0，level+1
+        if (haved_pok[i]["exp"] + 1 >= levelup_eat_count){
+          haved_pok[i]["exp"] = 0
+          haved_pok[i]["level"] = haved_pok[i]["level"] + 1
+          this.setData({
+            exp_ratio: 0,
+            current_pok_level: haved_pok[i]["level"]
+          }) 
+        }else{
+          //未达到升级经验，exp+1
+          haved_pok[i]["exp"] = haved_pok[i]["exp"] + 1
+          var exp_ratio = Math.floor((haved_pok[i]["exp"] / levelup_eat_count)*100)
+          this.setData({
+            exp_ratio: exp_ratio
+          }) 
+        }
+        //吃经验糖后设置当前经验
+        this.setData({
+          current_pok_exp: haved_pok[i]["exp"]
+        })
+      }
+    }
+    //haved_pok入库
+    wx.setStorageSync("pok_id_list", haved_pok)
+    //倒序排列我的精灵
+    haved_pok = haved_pok.reverse()
+    //设置当前精灵数据
+    var current_pok_id = this.data.current_pok_id
+    var current_pok_idx = this.data.current_pok_idx
+    var current_pok_level = this.data.current_pok_level
+    var current_pok_growup = this.data.current_pok_growup
+    var current_pok_usedhp = this.data.current_pok_usedhp
+    var current_pok_sex = this.data.current_pok_sex
+    var current_pok_master = this.data.current_pok_master
+    var current_pok_exp = this.data.current_pok_exp
+    this.setData({
+      haved_pok: haved_pok,
+      current_pok_idx: current_pok_idx,
+      current_pok_id: current_pok_id,
+      current_pok_level: current_pok_level,
+      current_pok_growup: current_pok_growup,
+      current_pok_usedhp: current_pok_usedhp,
+      current_pok_sex: current_pok_sex,
+      current_pok_master: current_pok_master,
+      current_pok_exp: current_pok_exp
+    })
+    //获取头像部分数据
+    this.refresh_pok_head(current_pok_id);
+    //获取我的精灵列表数据
+    this.refresh_pok_list(haved_pok);
+    console.log(this.data.exp_ratio)
+  },
+  //获取当前等级需要升级的经验糖数量
+  get_levelup_eat_count:function(level){
+    var levelup_eat_count
+    level = parseInt(level)
+    if (level<=10){
+      levelup_eat_count = 5
+    } else if (10 < level && level<= 20){
+      levelup_eat_count = 10
+    } else if (20 < level && level <= 30) {
+      levelup_eat_count = 15
+    } else if (30 < level && level <= 40) {
+      levelup_eat_count = 20
+    } else if (40 < level && level <= 50) {
+      levelup_eat_count = 30
+    } else if (50 < level && level <= 60) {
+      levelup_eat_count = 40
+    } else if (60 < level && level <= 70) {
+      levelup_eat_count = 60
+    } else if (70 < level && level <= 80) {
+      levelup_eat_count = 80
+    } else if (80 < level && level <= 90) {
+      levelup_eat_count = 120
+    } else if (90 < level && level <= 100) {
+      levelup_eat_count = 200
+    } else{
+      levelup_eat_count = 1000
+    }
+    return levelup_eat_count
+  },
+  //获取当前经验条比例
+  get_exp_radio:function(){
+    var levelup_eat_count = this.get_levelup_eat_count(this.data.current_pok_level)
+    var exp_ratio = Math.floor((this.data.current_pok_exp / levelup_eat_count) * 100)
+    this.setData({
+      exp_ratio: exp_ratio
+    }) 
   },
   /**
    * 生命周期函数--监听页面加载
@@ -205,6 +338,7 @@ Page({
     var current_pok_usedhp = haved_pok[0]["usedhp"]
     var current_pok_sex = haved_pok[0]["sex"]
     var current_pok_master = haved_pok[0]["master"]
+    var current_pok_exp = haved_pok[0]["exp"]
     this.setData({
       haved_pok: haved_pok,
       current_pok_idx: current_pok_idx,
@@ -213,7 +347,8 @@ Page({
       current_pok_growup: current_pok_growup,
       current_pok_usedhp: current_pok_usedhp,
       current_pok_sex: current_pok_sex,
-      current_pok_master: current_pok_master
+      current_pok_master: current_pok_master,
+      current_pok_exp: current_pok_exp
     })
     //获取头像部分数据
     this.refresh_pok_head(current_pok_id);
@@ -235,7 +370,7 @@ Page({
     var haved_pok = util.get_self_pok();
     //老用户清除本地精灵
     try{
-      if (haved_pok[0]["master"] == undefined) {
+      if (haved_pok[0]["exp"] == undefined) {
         wx.removeStorageSync('pok_id_list')
       }
     }catch(err){
@@ -246,7 +381,7 @@ Page({
       haved_pok = haved_pok.reverse()
       }else{
         //赠送御三家
-      var haved_pok = [{ "id": "001", "growup": 50, "level": 1, "idx": "1", "usedhp": 0, "sex": 1, "master": wx.getStorageSync("user")}]
+      var haved_pok = [{ "id": "001", "growup": 50, "level": 1, "idx": "1", "usedhp": 0, "sex": 1, "master": wx.getStorageSync("user"),"exp":0}]
       wx.setStorageSync("pok_id_list", haved_pok)
       }
     //设置当前精灵数据
@@ -257,6 +392,7 @@ Page({
     var current_pok_usedhp = haved_pok[0]["usedhp"]
     var current_pok_sex = haved_pok[0]["sex"]
     var current_pok_master = haved_pok[0]["master"]
+    var current_pok_exp = haved_pok[0]["exp"]
     this.setData({
       haved_pok: haved_pok,
       current_pok_idx: current_pok_idx,
@@ -265,7 +401,8 @@ Page({
       current_pok_growup: current_pok_growup,
       current_pok_usedhp: current_pok_usedhp,
       current_pok_sex: current_pok_sex,
-      current_pok_master: current_pok_master
+      current_pok_master: current_pok_master,
+      current_pok_exp: current_pok_exp
     })
     var near_pok_idx = haved_pok[0]["id"]
     //获取头像部分数据

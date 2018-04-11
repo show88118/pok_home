@@ -3,7 +3,7 @@
 <view class="trainer" bindtap=''> 
       <!-- <image bindtap="" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text> -->
-      <view class="pok_idx"><image bindtap="" class="pok_idx_img" src="{{pok_idx_img}}" background-size="cover"></image></view>
+      <view class="pok_idx"><image bindtap="eat_exp" class="pok_idx_img" src="{{pok_idx_img}}" background-size="cover"></image></view>
       <view class="ball"><image bindtap="bind_my_pok" class="ball_img" src="{{ball_img}}" background-size="cover"></image></view>
       
 </view>
@@ -11,6 +11,7 @@
 <view class="pok_name">
 {{pok_name}}
 <text class="g_pname02">Lv{{current_pok_level}}</text>
+<text class="g_pname03" style='color:{{current_pok_sex_color}}'>{{current_pok_sex_icon}}</text>
 </view>
 </view>
 <view class="pok" bindlongpress="longpress_choose">
@@ -23,7 +24,7 @@
 <view class="pok_data">
 
 </view>
-<view class="g_t-tit">CP:{{current_pok_growup}}</view>
+<view class="g_t-tit">CP: {{current_pok_growup}}</view>
 <view class="g_t-tit">能力值</view>
 <view class="table">
  
@@ -40,11 +41,33 @@
     <view class="td ">{{pok_speed}}</view>
     </view>
 </view>
-<view class="g_t-tit">Exp</view>
+<view class="g_t-tit">Exp: {{exp_ratio}}%</view>
 <view class="g_jdt">
-<view class="g_jdt02" style="width:50%"></view>
+<view class="g_jdt02" style="width:{{exp_ratio}}%"></view>
 </view>
-
+<!--props  -->
+<view class='props'>
+<view class="s_1" style='width: {{my_pok_list_width}}rpx;'>
+<view class='g_props'>
+<image class='prop' src="/assets/images/props/candy.png"></image><text class="prop_count">x99</text>
+</view>
+<view class='g_props'>
+<image class='prop' src="/assets/images/props/fire_stone.png"></image><text class="prop_count">x99</text>
+</view>
+<view class='g_props'>
+<image class='prop' src="/assets/images/props/electric_stone.png"></image><text class="prop_count">x99</text>
+</view>
+<view class='g_props'>
+<image class='prop' src="/assets/images/props/water_stone.png"></image><text class="prop_count">x99</text>
+</view>
+<view class='g_props'>
+<image class='prop' src="/assets/images/props/grass_stone.png"></image><text class="prop_count">x99</text>
+</view>
+<view class='g_props'>
+<image class='prop' src="/assets/images/props/moon_stone.png"></image><text class="prop_count">x99</text>
+</view>
+</view>
+</view>
 <!-- my_pok -->
 <view class="my_pok_list">
 <view class="s_1" style='width: {{my_pok_list_width}}rpx;'>

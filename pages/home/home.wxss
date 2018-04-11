@@ -70,15 +70,15 @@
   font-weight: 700;
 }
 .my_pok{
-  width: 150rpx;
-  height: 150rpx;
+  width: 126rpx;
+  height: 126rpx;
   text-align: center;
 }
 .my_pok_list{
   width: 100%;
-  height: 170rpx;
+  height: 150rpx;
   position: fixed;
-  bottom: 200rpx;
+  bottom: 180rpx;
   background-color: #fff;
   overflow-x:auto;
   overflow-y: hidden;
@@ -92,4 +92,31 @@
 .th{background-color: pink;}
 .g_jdt{width: 400rpx;height: 15rpx;border-radius: 15rpx;background-color: #2F4F4F;position: relative;}
 .g_jdt02{background-color: #00FF00;position:absolute;left: 0;top: 0;height: 15rpx;border-radius: 15rpx;}
-.g_pname02{font-size: 20rpx;font-weight: 1000;font-style: oblique}
+.g_pname02{font-size: 20rpx;font-weight: 1000;font-style: oblique;color: #708090}
+.g_pname03{font-size: 20rpx;font-weight: 2000;margin-left: 10rpx}
+
+.prop{
+  width: 100rpx;
+  height: 100rpx;
+  margin-left: 20%;
+  display:block;
+  background-color: #00FF00
+}
+.prop_count{
+  width: 102rpx;
+  font-size: 25rpx;
+  line-height: 28rpx;
+  display: inline-block;
+  margin-left: 5%;
+  padding-top: -100rpx;
+  background-color: #00FF00
+}
+.props{
+  margin-top: 100rpx;
+  width: 100%;
+  height: 160rpx;
+  background-color: #FFEFDB;
+  overflow-x:auto;
+  overflow-y: hidden;
+}
+.g_props{width: 150rpx;float:left;text-align: center;}

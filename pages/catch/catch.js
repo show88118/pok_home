@@ -24,6 +24,7 @@ Page({
     break; 
   } 
 },
+  //获取随机精灵成长cp
   get_pok_growup:function(){
     var seed = this.randomNum(1,100)
     var pok_growup
@@ -36,6 +37,7 @@ Page({
     }
     return pok_growup
   },
+  //获取精灵随机性别
   get_pok_sex: function (pok_id) {
     var pok_sex
     if (["032", "033", "034", "106", "107", "128"].indexOf(pok_id) > -1){
@@ -68,6 +70,7 @@ Page({
     }
     return pok_sex
   },
+  //捕捉精灵
   catch_pok:function(){
     if (this.data.remain_count <= 0){
       wx.showToast({
@@ -125,7 +128,7 @@ Page({
       haved_pok = []
     }
     //捕捉到的精灵数据
-    haved_pok.push({ id: this.data.pok_num, growup: this.get_pok_growup(), level: 1, idx: (parseInt(max_pok_idx) + 1).toString(), usedhp: 0, sex: this.get_pok_sex(this.data.pok_num), master: wx.getStorageSync("user")})
+    haved_pok.push({ id: this.data.pok_num, growup: this.get_pok_growup(), level: 1, idx: (parseInt(max_pok_idx) + 1).toString(), usedhp: 0, sex: this.get_pok_sex(this.data.pok_num), master: wx.getStorageSync("user"), "exp":0})
     console.log(haved_pok)
     //haved_pok入库
     wx.setStorageSync("pok_id_list", haved_pok)
