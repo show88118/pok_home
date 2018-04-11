@@ -47,7 +47,7 @@
 </view>
 <!--props  -->
 <view class='props'>
-<view class="s_1" style='width: {{my_pok_list_width}}rpx;'>
+<view class="s_2" style='width: {{my_pok_list_width}}rpx;'>
 <view class='g_props'>
 <image class='prop' src="/assets/images/props/candy.png"></image><text class="prop_count">x99</text>
 </view>

@@ -1,7 +1,7 @@
 /**index.wxss**/
 page{
   background-image: url("https://raw.githubusercontent.com/show88118/pok_home/master/assets/images/home.png");
-  background-repeat: repeat-y;
+  background-repeat: repeat;
 }
 .container{
   width: 100%;

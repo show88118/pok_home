@@ -100,7 +100,7 @@
   height: 100rpx;
   margin-left: 20%;
   display:block;
-  background-color: #00FF00
+  margin-top: 7rpx;
 }
 .prop_count{
   width: 102rpx;
@@ -108,11 +108,11 @@
   line-height: 28rpx;
   display: inline-block;
   margin-left: 5%;
-  padding-top: -100rpx;
-  background-color: #00FF00
+  margin-top: 0rpx;
 }
 .props{
-  margin-top: 100rpx;
+  position: fixed;
+  bottom: 330rpx;
   width: 100%;
   height: 160rpx;
   background-color: #FFEFDB;
@@ -120,3 +120,6 @@
   overflow-y: hidden;
 }
 .g_props{width: 150rpx;float:left;text-align: center;}
+.s_2{
+  display: block;
+}
