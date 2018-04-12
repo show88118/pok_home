@@ -10,22 +10,13 @@ Page({
     pok_idx: app.globalData.pok_idx,
     evo_list: app.globalData.evo_list
   },
-  get_current_pok_hp: function () {
-    var current_pok_hp = this.data.pok_hp - this.data.current_pok_usedhp
-    if (current_pok_hp < 0) {
-      current_pok_hp = 0
-    }
-    this.setData({
-      current_pok_hp: current_pok_hp
-    })
-  },
   change_idx: function (event){
-    var pok_id = event["currentTarget"]["dataset"]["id"]
-    console.log(pok_id)
+    try { var pok_id = event["currentTarget"]["dataset"]["id"]}
+    catch (e) { pok_id = "001"}
+    
     //if (pok_id == "" || pok_id == undefined) { pok_id="001"}
     var pok_idx = this.data.pok_idx
     for (var i in pok_idx){
-      //console.log("liufan" + pok_idx[i]["id"])
       if (pok_idx[i]["id"] == pok_id){
         //获取pok_info
         console.log(pok_id)
@@ -58,7 +49,7 @@ Page({
       pok_hp: pok_hp,
       pok_att: pok_att,
       pok_def: pok_def,
-      pok_peed: pok_speed,
+      pok_speed: pok_speed,
       pok_att1: pok_att1,
       pok_att2: pok_att2,
       pok_def1: pok_def1,
@@ -75,12 +66,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //获取当前精灵剩余血量
-    this.get_current_pok_hp()
-
+    //初始化默认精灵
+    this.change_idx()
     var id_exised_list=[]
     var pok_idx_list = wx.getStorageSync("pok_idx_list")
-    for(var i=0;i<=151;i++){
+    for(var i=1;i<=151;i++){
       var i_length = i.toString().length
       if (i_length == 1) {
         i = "00" + i;

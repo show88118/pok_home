@@ -9,8 +9,8 @@
 <view class="pok_name">{{pok_name}}</view>
 <image src="/assets/images/head/{{pok_id}}.png" class="g_bo-img"></image>
 <view class="type">
-<image src="/assets/images/type/bug.png" class="g_bo-tick g_bt01"></image>
-<image src="/assets/images/type/bug.png" class="g_bo-tick"></image>
+<image src="/assets/images/type/{{pok_type1}}.png" class="g_bo-tick g_bt01"></image>
+<image src="/assets/images/type/{{pok_type2}}.png" class="g_bo-tick"></image>
 </view>
 </view>
 <view class="g_table">
@@ -19,19 +19,19 @@
 <view class="g_th g_td">体重</view>
 </view>
 <view class="g_tr">
-<view class="g_td">{{pok_height}}</view>
-<view class="g_td">{{pok_weight}}</view>
+<view class="g_td">{{pok_height}}m</view>
+<view class="g_td">{{pok_weight}}kg</view>
 </view>
 </view>
 <view class="g_bo-btit">
 <view class="g_td02 g_th02">合计</view>
-<view class="g_td02">{{total}}</view>
+<view class="g_td02">{{pok_total}}</view>
 </view>
 
 <view class="table">
   <view class="tr bg-w">
     <view class="td th">HP</view>
-    <view class="td">{{current_pok_hp}}/{{pok_hp}}</view>
+    <view class="td">{{pok_hp}}</view>
     <view class="td th">物攻</view>
     <view class="td ">{{pok_att1}}</view>
   </view>
@@ -53,6 +53,6 @@
 
 <view class="g_bo-block">
 
-<view class='g_txt'></view>
+<view class='g_txt'>{{pok_describe}}</view>
 
 </view>
