@@ -257,12 +257,24 @@ Page({
       if (haved_pok[i]["idx"] == current_pok_idx){
         //达到升级经验后exp归0，level+1
         if (haved_pok[i]["exp"] + 1 >= levelup_eat_count){
+          var [int_pok_id,evolution_level] = this.get_evolution_level(current_pok_id)
           haved_pok[i]["exp"] = 0
           haved_pok[i]["level"] = haved_pok[i]["level"] + 1
           this.setData({
             exp_ratio: 0,
             current_pok_level: haved_pok[i]["level"]
-          }) 
+          })
+          //判断是否进化
+          if (haved_pok[i]["level"] >= parseInt(evolution_level)){
+            haved_pok[i]["id"] = this.int_pok_id_to_str(int_pok_id + 1)
+            haved_pok[i]["usedhp"] = 0
+            this.setData({
+              current_pok_id: haved_pok[i]["id"],
+              current_pok_usedhp : 0
+            })
+            //将已有精灵转化为图签list
+            util.refresh_pok_book()
+          }
         }else{
           //未达到升级经验，exp+1
           haved_pok[i]["exp"] = haved_pok[i]["exp"] + 1
@@ -279,6 +291,8 @@ Page({
     }
     //haved_pok入库
     wx.setStorageSync("pok_id_list", haved_pok)
+    //将已有精灵转化为图签list
+    util.refresh_pok_book()
     //倒序排列我的精灵
     haved_pok = haved_pok.reverse()
     //设置当前精灵数据
@@ -384,6 +398,29 @@ Page({
     //获取我的精灵列表数据
     this.refresh_pok_list(haved_pok);
   },
+  get_evolution_level: function (id) {
+    var evo_list = app.globalData.evo_list
+    for (var i in evo_list) {
+      if (evo_list[i]["id"] == id.toString()) {
+        var evo_level = evo_list[i]["evo"]
+      }
+    }
+    return [parseInt(id),evo_level]
+  }
+  ,
+  int_pok_id_to_str:function(int_pok_id){
+    var int_pok_id_length = int_pok_id.toString().length
+    if (int_pok_id_length == 1) {
+      int_pok_id = "00" + int_pok_id;
+    }
+    else if (int_pok_id_length == 2) {
+      int_pok_id = "0" + int_pok_id;
+    }else{
+      int_pok_id = int_pok_id.toString()
+    }
+    return int_pok_id
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -426,7 +463,6 @@ Page({
     //获取我的精灵列表数据
     this.refresh_pok_list(haved_pok);
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

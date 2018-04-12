@@ -189,20 +189,29 @@ function set_pok_type(type, two){
   }
 
   function refresh_pok_book() {
-    var pok_book_list = []
+    var pok_book_list = wx.getStorageSync("pok_idx_list")
+    if (pok_book_list == "" || pok_book_list == undefined){
+      var pok_book_list = []
+    }
     var haved_pok = this.get_self_pok();
     for (var i in haved_pok) {
       pok_book_list.push(haved_pok[i]["id"])
     }
+    //去重
+    pok_book_list = Array.from(new Set(pok_book_list))
     //拥有图签数据入库
     wx.setStorageSync("pok_idx_list", pok_book_list)
   }
 
+  function set_pok_book(){
+
+  }
 module.exports = {
     formatTime: formatTime,
       get_pok_info: get_pok_info,
       get_self_pok: get_self_pok,
       pok_type: pok_type,
       get_pok_attr: get_pok_attr,
-      refresh_pok_book: refresh_pok_book
+      refresh_pok_book: refresh_pok_book,
+      set_pok_book: set_pok_book
 }
