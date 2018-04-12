@@ -2,3 +2,27 @@
 .g_book{width: 100%;height: 500rpx;background-color: #a1db17;margin: auto;overflow-y:auto;position: fixed;bottom: 0}
 .g_bimg{width: 100rpx;height: 100rpx;float:left;margin-left: 20rpx;}
 .g_btit{text-align: center;background-color: #d19ac9;color: #fff;font-size: 30rpx;position: fixed;bottom: 500rpx;width: 100%;border-top-left-radius: 10rpx;border-top-right-radius: 10rpx}
+
+.pok_name{
+  font-size: 28rpx;font-weight: 700;text-align: center;}
+.g_pname02{font-size: 20rpx;font-style: oblique;color: #708090;}
+.g_pname03{font-size: 20rpx;margin-left: 10rpx;}
+
+.g_bo-img{width: 200rpx;height: 200rpx;display: block;margin: auto;}
+.g_bo-tick{width: 64rpx;height: 26rpx;display: inline-block;}
+.g_bt01{margin-right: 10rpx;}
+.type{text-align: center;margin-top: -10rpx;}
+.g_botitle{width: 200rpx;text-align: center;float: left;margin-right: 50rpx;}
+.g_bo-box{padding: 30rpx 30rpx 0 100rpx;overflow: hidden;}
+.g_td{float:left;width: 100rpx;height: 50rpx;text-align: center;line-height: 50rpx;font-size: 20rpx;}
+.g_th{background-color:pink; }
+.g_table{border:1px solid #f0f0f0;border-radius: 10rpx;overflow: hidden;width: 200rpx;margin-left: 30rpx;margin-top: 50rpx;}
+.g_tr{display: block;overflow: hidden;width: 400rpx;}
+.g_td02{width: 100rpx;float:left;height: 50rpx;text-align: center;line-height: 50rpx;font-size: 20rpx;}
+.g_th02{background-color: #a1db17;}
+.g_bo-btit{overflow: hidden;border:1px solid #f0f0f0;border-radius: 10rpx;width: 200rpx;float: left;margin-top:10rpx; }
+.g_bo-block{padding: 30rpx;overflow: hidden;}
+.td{float:left;width:60rpx;height: 50rpx;background-color: #fff;text-align: center;line-height: 50rpx;font-size:20rpx;}
+.table{border: 1px solid #F0F0F0;border-radius: 10rpx;overflow: hidden;width: 240rpx;float: left}
+.th{background-color: pink;}
+.g_txt{width:350rpx;height: 250rpx;font-size: 32rpx;color: #999;float: left;border: 1px solid #d19ac9;background-color: pink;border-radius: 10rpx;padding: 20rpx;margin-left: 20rpx;}

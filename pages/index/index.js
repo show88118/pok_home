@@ -24,7 +24,7 @@ Page({
   },
   bindmy:function(){
     wx.navigateTo({
-      url: '../home/home',
+      url: '../map/map',
     })
   },
   data: {
