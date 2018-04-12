@@ -1,24 +1,10 @@
 // pages/map/map.js
 Page({
   data: {
-    centerX: 113.3245211,
-    centerY: 23.10229,
     markers: [],
-    // polyline: [{
-    //   points: [{
-    //     longitude: 113.3245211,
-    //     latitude: 23.10229
-    //   }, {
-    //     longitude: 113.324520,
-    //     latitude: 23.21229
-    //   }],
-    //   color:"#FF0000DD",
-    //   width: 2,
-    //   dottedLine: true
-    // }],
     controls: [{
-      id: 1,
-      iconPath: '/image/location-control.png',
+      id: 0,
+      iconPath: '/assets/images/mini/001.png',
       position: {
         left: 0,
         top: 10,
@@ -28,27 +14,58 @@ Page({
       clickable: true
     }]
   },
+
   onReady: function (e) {
     // 使用 wx.createMapContext 获取 map 上下文 
-    this.mapCtx = wx.createMapContext('myMap')
-  },
-  onLoad: function () {
+    this.mapCtx = wx.createMapContext('map')
     console.log('地图定位！')
-    let that = this
     wx.getLocation({
       type: 'gcj02', //返回可以用于wx.openLocation的经纬度
       success: (res) => {
         console.log(res)
-        let latitude = res.latitude;
-        let longitude = res.longitude;
-        let marker = this.createMarker(res);
+        var latitude = res.latitude;
+        var longitude = res.longitude;
+        console.log(latitude, longitude)
+        //let marker = this.createMarker(res);
+        // wx.openLocation({
+        //   longitude: longitude,
+        //   latitude: latitude
+        // })
         this.setData({
-          centerX: longitude,
-          centerY: latitude,
+          longitude: longitude,
+          latitude: latitude,
           markers: this.getSchoolMarkers()
         })
+        console.log(this.data.longitude + "liufan")
+        this.mapCtx.moveToLocation()
       }
     });
+  },
+  onLoad: function () {
+    // 使用 wx.createMapContext 获取 map 上下文 
+    // this.mapCtx = wx.createMapContext('map')
+    // console.log('地图定位！')
+    // wx.getLocation({
+    //   type: 'gcj02', //返回可以用于wx.openLocation的经纬度
+    //   success: (res) => {
+    //     console.log(res)
+    //     var latitude = res.latitude;
+    //     var longitude = res.longitude;
+    //     console.log(latitude, longitude)
+    //     //let marker = this.createMarker(res);
+    //     // wx.openLocation({
+    //     //   longitude: longitude,
+    //     //   latitude: latitude
+    //     // })
+    //     this.setData({
+    //       longitude: longitude,
+    //       latitude: latitude,
+    //       markers: this.getSchoolMarkers()
+    //     })
+    //     console.log(this.data.longitude+"liufan")
+    //     this.mapCtx.moveToLocation()
+    //   }
+    // });
   },
   regionchange(e) {
     console.log(e.type)
@@ -58,25 +75,23 @@ Page({
   },
   controltap(e) {
     console.log(e.controlId)
-    this.moveToLocation()
+    this.mapCtx = wx.createMapContext('map')
+    this.mapCtx.moveToLocation()
   },
   getSchoolMarkers() {
     let markers = [{
       "id": 1,
       "name": "北京大学",
-      "longitude": "116.316176",
-      "latitude": "39.997741"
+      "longitude": "116.39845",
+      "latitude": "39.95933"
     }];
     return markers;
-  },
-  moveToLocation: function () {
-    this.mapCtx.moveToLocation()
   },
   createMarker(point) {
     let latitude = point.latitude;
     let longitude = point.longitude;
     let marker = {
-      iconPath: "/image/location.png",
+      iconPath: "/assets/image/mini/001.png",
       id: point.id || 0,
       name: point.name || '',
       latitude: latitude,
@@ -90,7 +105,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
   },
 
   /**
