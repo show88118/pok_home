@@ -24,6 +24,12 @@ Page({
       url: '../catch/catch',
     })
   },
+  outdoor: function () {
+    this.set_current_pok()
+    wx.navigateTo({
+      url: '../map/map',
+    })
+  },
   pok_book: function () {
     wx.navigateTo({
       url: '../book/book',
@@ -218,7 +224,12 @@ Page({
     var decryptedStr = decrypt.toString(aes.CryptoJS.enc.Utf8);
     return decryptedStr.toString();
   },
-  eat_candy:function(){
+  eat_candy: util.throttle(function(){
+    //闪烁动效
+    this.setData({ candy_id:"twinkle2"})
+    util.sleep(300)
+    this.setData({ candy_id: "stop" })
+    //
     var candy_count = wx.getStorageSync("candy_count")
     if (candy_count>0){
       candy_count = candy_count - 1
@@ -231,14 +242,13 @@ Page({
         candy_count: candy_count
       })
       //震动
-      wx.vibrateLong()
+      //wx.vibrateLong()
     }else{
       wx.showToast({
         title: '没有经验糖了',
       })
     }
-    
-  },
+  }, 500),
   //吃经验糖
   eat_exp:function(){
     //设置当前精灵数据
@@ -257,6 +267,11 @@ Page({
       if (haved_pok[i]["idx"] == current_pok_idx){
         //达到升级经验后exp归0，level+1
         if (haved_pok[i]["exp"] + 1 >= levelup_eat_count){
+          //升级闪烁动效
+          this.setData({ level_id:"twinkle2"})
+          util.sleep(300)
+          this.setData({ level_id: "stop" })
+          //
           var [int_pok_id,evolution_level] = this.get_evolution_level(current_pok_id)
           haved_pok[i]["exp"] = 0
           haved_pok[i]["level"] = haved_pok[i]["level"] + 1
@@ -266,6 +281,20 @@ Page({
           })
           //判断是否进化
           if (haved_pok[i]["level"] >= parseInt(evolution_level)){
+            var that = this
+            //抖动动效
+            this.setData({pok_head_id:"shake"})
+            util.sleep(1000)
+            this.setData({ pok_head_id: "stop" })
+            this.setData({ pok_head_id: "shake" })
+            util.sleep(1000)
+            this.setData({ pok_head_id: "stop" })
+            this.setData({ pok_head_id: "shake" })
+            util.sleep(1000)
+            this.setData({ pok_head_id: "stop" })
+            this.setData({ pok_head_id: "twinkle" })
+            //
+            //进化，变更pok的id和usehp
             haved_pok[i]["id"] = this.int_pok_id_to_str(int_pok_id + 1)
             haved_pok[i]["usedhp"] = 0
             this.setData({
@@ -319,6 +348,7 @@ Page({
     this.refresh_pok_head(current_pok_id);
     //获取我的精灵列表数据
     this.refresh_pok_list(haved_pok);
+
   },
   //获取当前等级需要升级的经验糖数量
   get_levelup_eat_count:function(level){
@@ -420,6 +450,26 @@ Page({
     }
     return int_pok_id
   },
+  //当前精灵数据入库，传递当前精灵时使用，比如去野外练级战斗
+  set_current_pok:function(){
+    //设置当前精灵数据
+    var current_pok_id = this.data.current_pok_id
+    var current_pok_idx = this.data.current_pok_idx
+    var current_pok_level = this.data.current_pok_level
+    var current_pok_growup = this.data.current_pok_growup
+    var current_pok_usedhp = this.data.current_pok_usedhp
+    var current_pok_sex = this.data.current_pok_sex
+    var current_pok_master = this.data.current_pok_master
+    var current_pok_exp = this.data.current_pok_exp
+    wx.setStorageSync("current_pok_id", current_pok_id)
+    wx.setStorageSync("current_pok_idx", current_pok_idx)
+    wx.setStorageSync("current_pok_level", current_pok_level)
+    wx.setStorageSync("current_pok_growup", current_pok_growup)
+    wx.setStorageSync("current_pok_usedhp", current_pok_usedhp)
+    wx.setStorageSync("current_pok_sex", current_pok_sex)
+    wx.setStorageSync("current_pok_master", current_pok_master)
+    wx.setStorageSync("current_pok_exp", current_pok_exp)
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -478,6 +528,7 @@ Page({
     var haved_pok = util.get_self_pok();
     //获取candy个数
     var candy_count = wx.getStorageSync("candy_count")
+    if (candy_count == "") { candy_count=0}
     this.setData({
       candy_count: candy_count
     })

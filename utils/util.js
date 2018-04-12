@@ -16,6 +16,16 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+function sleep(numberMillis) {
+  var now = new Date();
+  var exitTime = now.getTime() + numberMillis;
+  while (true) {
+    now = new Date();
+    if (now.getTime() > exitTime)
+      return;
+  }
+}
+
 function get_pok_info(idx) {
   var pok_dict = app.globalData.pok_idx;
   for (var i in pok_dict) {
@@ -28,9 +38,17 @@ function get_pok_info(idx) {
       var att = pok_dict[i].att;
       var def = pok_dict[i].def;
       var speed = pok_dict[i].speed;
+      var att1 = pok_dict[i].att1;
+      var att2 = pok_dict[i].att2;
+      var def1 = pok_dict[i].def1;
+      var def2 = pok_dict[i].def2;
+      var total = pok_dict[i].total;
+      var describe = pok_dict[i].describe;
+      var height = pok_dict[i].height;
+      var weight = pok_dict[i].weight;
     }
   }
-  return [pok_name, pok_type1, pok_type2, pok_head, hp,att,def,speed];
+  return [pok_name, pok_type1, pok_type2, pok_head, hp, att, def, speed, att1, att2, def1, def2, total, describe, height, weight];
 }
 
 function get_self_pok(){
@@ -203,9 +221,23 @@ function set_pok_type(type, two){
     wx.setStorageSync("pok_idx_list", pok_book_list)
   }
 
-  function set_pok_book(){
-
+function throttle(fn, gapTime) {
+  if (gapTime == null || gapTime == undefined) {
+    gapTime = 1500
   }
+
+  let _lastTime = null
+
+  // 返回新的函数
+  return function () {
+    let _nowTime = + new Date()
+    if (_nowTime - _lastTime > gapTime || !_lastTime) {
+      fn.apply(this, arguments)   //将this和参数传给原函数
+      _lastTime = _nowTime
+    }
+  }
+}
+
 module.exports = {
     formatTime: formatTime,
       get_pok_info: get_pok_info,
@@ -213,5 +245,6 @@ module.exports = {
       pok_type: pok_type,
       get_pok_attr: get_pok_attr,
       refresh_pok_book: refresh_pok_book,
-      set_pok_book: set_pok_book
+      sleep: sleep,
+      throttle: throttle
 }

@@ -10,12 +10,12 @@
 <view>
 <view class="pok_name">
 {{pok_name}}
-<text class="g_pname02">Lv{{current_pok_level}}</text>
+<text id="{{level_id}}" class="g_pname02">Lv{{current_pok_level}}</text>
 <text class="g_pname03" style='color:{{current_pok_sex_color}}'>{{current_pok_sex_icon}}</text>
 </view>
 </view>
 <view class="pok" bindlongpress="longpress_choose">
-      <image class="near_pok" src="{{pok_head}}" background-size="cover"></image>
+      <image id="{{pok_head_id}}" class="near_pok" src="{{pok_head}}" background-size="cover"></image>
 </view>
 <view class="type" >
     <image class="type1" src='{{type1}}'></image>
@@ -49,7 +49,7 @@
 <view class='props'>
 <view class="s_2" style='width: 1000rpx;'>
 <view class='g_props' bindtap='eat_candy'>
-<image class='prop' src="/assets/images/props/candy.png"></image><text class="prop_count">x{{candy_count}}</text>
+<image id="{{candy_id}}" class='prop' src="/assets/images/props/candy.png"></image><text class="prop_count">x{{candy_count}}</text>
 </view>
 <view class='g_props'>
 <image class='prop' src="/assets/images/props/fire_stone.png"></image><text class="prop_count">x0</text>

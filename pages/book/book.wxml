@@ -1,13 +1,13 @@
 <!--pages/book/book.wxml-->
 <view class="g_btit">图鉴</view>
 <view class="g_book">
-<image class="g_bimg" bindtap='' bindlongtap='' wx:key="pok_id" data-idx="pok_id" wx:for="{{id_exised_list}}" wx:for-item="pok_id" src="/assets/images/mini/{{pok_id}}.png"></image>
+<image class="g_bimg" bindtap='change_idx' bindlongtap='' wx:key="{{pok_id}}" data-id="{{pok_id}}" wx:for="{{id_exised_list}}" wx:for-item="pok_id" src="/assets/images/mini/{{pok_id}}.png"></image>
 </view>
 
 <view class="g_bo-box">
 <view class="g_botitle">
-<view class="pok_name">绿毛虫</view>
-<image src="/assets/images/head/002.png" class="g_bo-img"></image>
+<view class="pok_name">{{pok_name}}</view>
+<image src="/assets/images/head/{{pok_id}}.png" class="g_bo-img"></image>
 <view class="type">
 <image src="/assets/images/type/bug.png" class="g_bo-tick g_bt01"></image>
 <image src="/assets/images/type/bug.png" class="g_bo-tick"></image>
@@ -15,46 +15,44 @@
 </view>
 <view class="g_table">
 <view class="g_tr">
-<view class="g_th g_td">1</view>
-<view class="g_td">1</view>
+<view class="g_th g_td">身高</view>
+<view class="g_th g_td">体重</view>
 </view>
 <view class="g_tr">
-<view class="g_th g_td">1</view>
-<view class="g_td">1</view>
-</view>
-<view class="g_tr">
-<view class="g_th g_td">1</view>
-<view class="g_td">1</view>
+<view class="g_td">{{pok_height}}</view>
+<view class="g_td">{{pok_weight}}</view>
 </view>
 </view>
 <view class="g_bo-btit">
-<view class="g_td02 g_th02">1</view>
-<view class="g_td02">2</view>
+<view class="g_td02 g_th02">合计</view>
+<view class="g_td02">{{total}}</view>
 </view>
-</view>
-<view class="g_bo-block">
 
 <view class="table">
- 
   <view class="tr bg-w">
     <view class="td th">HP</view>
     <view class="td">{{current_pok_hp}}/{{pok_hp}}</view>
-    <view class="td th">攻击</view>
-    <view class="td ">{{pok_att}}</view>
+    <view class="td th">物攻</view>
+    <view class="td ">{{pok_att1}}</view>
   </view>
     <view class="tr">
-     <view class="td th">防御</view>
-    <view class="td">{{pok_def}}</view>
-    <view class="td th">速度</view>
-    <view class="td ">{{pok_speed}}</view>
+     <view class="td th">特攻</view>
+    <view class="td">{{pok_att2}}</view>
+    <view class="td th">物防</view>
+    <view class="td ">{{pok_def1}}</view>
     </view>
      <view class="tr">
-     <view class="td th">防御</view>
-    <view class="td">{{pok_def}}</view>
+     <view class="td th">特防</view>
+    <view class="td">{{pok_def2}}</view>
     <view class="td th">速度</view>
     <view class="td ">{{pok_speed}}</view>
     </view>
 </view>
-<textarea  placeholder="可以输入文字" class='g_txt' />
+
+</view>
+
+<view class="g_bo-block">
+
+<view class='g_txt'></view>
 
 </view>

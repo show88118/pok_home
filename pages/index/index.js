@@ -109,16 +109,8 @@ Page({
   onLoad: function () {
     // //获取精灵能力
     // console.log(util.get_pok_attr("001",50,1))
-    //获取是否签到
-    var today = this.get_today()
-    var signin_status = wx.getStorageSync(today);
-    if (signin_status == undefined || signin_status == "") {
-      this.setData({
-        signin_img_id: "signin_img"
-      })
-    }
     //获取首页签到和音乐随机头像
-    var random_pok_id1 = this.randomNum(1,151)
+    var random_pok_id1 = this.randomNum(1, 151)
     var random_pok_id2 = this.randomNum(1, 151)
     var random_pok_id1_length = random_pok_id1.toString().length
     var random_pok_id2_length = random_pok_id2.toString().length
@@ -137,8 +129,16 @@ Page({
     this.setData({
       random_pok_id1: random_pok_id1,
       random_pok_id2: random_pok_id2
-
     })
+    //获取是否签到
+    var today = this.get_today()
+    var signin_status = wx.getStorageSync(today);
+    if (signin_status == undefined || signin_status == "") {
+      this.setData({
+        signin_img_id: "signin_img"
+      })
+    }
+    
     //捕捉次数和经验糖后门
     // wx.setStorageSync("remain_count", 100)
     // wx.setStorageSync("candy_count", 100)

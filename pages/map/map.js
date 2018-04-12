@@ -4,7 +4,7 @@ Page({
     markers: [],
     controls: [{
       id: 0,
-      iconPath: '/assets/images/mini/001.png',
+      iconPath: '/assets/images/head/001.png',
       position: {
         left: 0,
         top: 10,

@@ -7,13 +7,77 @@ Page({
    * 页面的初始数据
    */
   data: {
-    pok_idx: app.globalData.pok_idx
+    pok_idx: app.globalData.pok_idx,
+    evo_list: app.globalData.evo_list
+  },
+  get_current_pok_hp: function () {
+    var current_pok_hp = this.data.pok_hp - this.data.current_pok_usedhp
+    if (current_pok_hp < 0) {
+      current_pok_hp = 0
+    }
+    this.setData({
+      current_pok_hp: current_pok_hp
+    })
+  },
+  change_idx: function (event){
+    var pok_id = event["currentTarget"]["dataset"]["id"]
+    console.log(pok_id)
+    //if (pok_id == "" || pok_id == undefined) { pok_id="001"}
+    var pok_idx = this.data.pok_idx
+    for (var i in pok_idx){
+      //console.log("liufan" + pok_idx[i]["id"])
+      if (pok_idx[i]["id"] == pok_id){
+        //获取pok_info
+        console.log(pok_id)
+        var pok_info = util.get_pok_info(pok_id);
+        var pok_name = pok_info[0]
+        var pok_type1 = pok_info[1]
+        var pok_type2 = pok_info[2]
+        var pok_head = pok_info[3]
+        var pok_hp = pok_info[4];
+        var pok_att = pok_info[5];
+        var pok_def = pok_info[6];
+        var pok_speed = pok_info[7];
+        var pok_att1 = pok_info[8];
+        var pok_att2 = pok_info[9];
+        var pok_def1 = pok_info[10];
+        var pok_def2 = pok_info[11];
+        var pok_total = pok_info[12];
+        var pok_describe = pok_info[13];
+        var pok_height = pok_info[14];
+        var pok_weight = pok_info[15];
+        break
+      }
+    }
+    this.setData({
+      pok_id: pok_id,
+      pok_name: pok_name,
+      pok_type1: pok_type1,
+      pok_type2: pok_type2,
+      pok_head: pok_head,
+      pok_hp: pok_hp,
+      pok_att: pok_att,
+      pok_def: pok_def,
+      pok_peed: pok_speed,
+      pok_att1: pok_att1,
+      pok_att2: pok_att2,
+      pok_def1: pok_def1,
+      pok_def2: pok_def2,
+      pok_total: pok_total,
+      pok_describe: pok_describe,
+      pok_height: pok_height,
+      pok_weight: pok_weight
+    })
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //获取当前精灵剩余血量
+    this.get_current_pok_hp()
+
     var id_exised_list=[]
     var pok_idx_list = wx.getStorageSync("pok_idx_list")
     for(var i=0;i<=151;i++){
