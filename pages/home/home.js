@@ -127,6 +127,8 @@ Page({
     })
     //刷新点击pok
     this.refresh_pok_head(current_pok_id);
+    //震动
+    wx.vibrateShort({})
   },
   //释放精灵
   release_pok:function(){
@@ -228,6 +230,8 @@ Page({
       this.setData({
         candy_count: candy_count
       })
+      //震动
+      wx.vibrateLong()
     }else{
       wx.showToast({
         title: '没有经验糖了',
@@ -384,6 +388,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //将已有精灵转化为图签list
+    util.refresh_pok_book()
     console.log(this.aes_Encrypt("你好{}"))
     console.log(this.aes_Decrypt(this.aes_Encrypt("你好{}")))
     this.load_trainer()

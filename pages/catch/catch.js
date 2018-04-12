@@ -158,6 +158,8 @@ Page({
       speed: speed,
       pok_head: pok_head
     })
+    //将已有精灵转化为图签list
+    util.refresh_pok_book()
     wx.vibrateLong()
   },
   get_remain_count:function(){

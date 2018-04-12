@@ -1,5 +1,5 @@
 <!--pages/book/book.wxml-->
 <view class="g_btit">图鉴</view>
 <view class="g_book">
-<image class="g_bimg" bindtap='' bindlongtap='' data-idx="pok.id" wx:key="pok.id" wx:for="{{pok_idx}}" wx:for-item="pok" src="/assets/images/mini/{{pok.id}}.png"></image>
+<image class="g_bimg" bindtap='' bindlongtap='' data-idx="pok_id" wx:for="{{id_exised_list}}" wx:for-item="pok_id" src="/assets/images/mini/{{pok_id}}.png"></image>
 </view>

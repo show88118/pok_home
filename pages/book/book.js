@@ -14,7 +14,27 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var id_exised_list=[]
+    var pok_idx_list = wx.getStorageSync("pok_idx_list")
+    for(var i=0;i<=151;i++){
+      var i_length = i.toString().length
+      if (i_length == 1) {
+        i = "00" + i;
+      }
+      else if (i_length == 2) {
+        i = "0" + i;
+      }else{
+        i = i.toString()
+      }
+      if (pok_idx_list.indexOf(i)>-1){
+        id_exised_list.push(i)
+      }else{
+        id_exised_list.push("000")
+      }
+    }
+    this.setData({
+      id_exised_list: id_exised_list
+    })
   },
 
   /**
