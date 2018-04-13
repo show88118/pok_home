@@ -31,7 +31,7 @@
   position: fixed;bottom: 100rpx;
   font-size: 50rpx;
   border-radius: 100rpx;
-  background-color: #EEE685;
+  background-color: #EEE9E9;
   width: 400rpx;
   height: 120rpx;
   text-align: center;

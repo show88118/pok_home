@@ -46,9 +46,10 @@ function get_pok_info(idx) {
       var describe = pok_dict[i].describe;
       var height = pok_dict[i].height;
       var weight = pok_dict[i].weight;
+      var color = pok_dict[i].color;
     }
   }
-  return [pok_name, pok_type1, pok_type2, pok_head, hp, att, def, speed, att1, att2, def1, def2, total, describe, height, weight];
+  return [pok_name, pok_type1, pok_type2, pok_head, hp, att, def, speed, att1, att2, def1, def2, total, describe, height, weight, color];
 }
 
 function get_self_pok(){
@@ -238,6 +239,20 @@ function throttle(fn, gapTime) {
   }
 }
 
+function randomNum(minNum, maxNum) {
+  switch (arguments.length) {
+    case 1:
+      return parseInt(Math.random() * minNum + 1, 10);
+      break;
+    case 2:
+      return parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10);
+      break;
+    default:
+      return 0;
+      break;
+  }
+}
+
 module.exports = {
     formatTime: formatTime,
       get_pok_info: get_pok_info,
@@ -246,5 +261,6 @@ module.exports = {
       get_pok_attr: get_pok_attr,
       refresh_pok_book: refresh_pok_book,
       sleep: sleep,
-      throttle: throttle
+      throttle: throttle,
+      randomNum: randomNum
 }

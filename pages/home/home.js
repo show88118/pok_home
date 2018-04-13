@@ -9,8 +9,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    ball_img:"/assets/images/ball/ball_1.png",
-    pok_idx_img: "/assets/images/pok_idx.png",
     aes_key : aes.CryptoJS.enc.Utf8.parse("1989022819900212"),
     aes_iv: aes.CryptoJS.enc.Utf8.parse('2016092420160924')
   },
@@ -24,7 +22,7 @@ Page({
       url: '../catch/catch',
     })
   },
-  outdoor: function () {
+  poke_map: function () {
     this.set_current_pok()
     wx.navigateTo({
       url: '../map/map',
@@ -230,6 +228,14 @@ Page({
     util.sleep(300)
     this.setData({ candy_id: "stop" })
     //
+    var current_pok_level = this.data.current_pok_level
+    //判断是否满级
+    if (current_pok_level >=100){
+      wx.showToast({
+        title: '已经满级',
+      })
+      return
+    }
     var candy_count = wx.getStorageSync("candy_count")
     if (candy_count>0){
       candy_count = candy_count - 1
