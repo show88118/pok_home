@@ -4,14 +4,15 @@
 .g_btit{text-align: center;background-color: #d19ac9;color: #fff;font-size: 30rpx;position: fixed;bottom: 600rpx;width: 100%;border-top-left-radius: 10rpx;border-top-right-radius: 10rpx}
 
 .pok_name{
-  font-size: 28rpx;font-weight: 700;text-align: center;margin-left: 100rpx;width: 120rpx;position: fixed;right: 260rpx;}
+  font-size: 36rpx;font-weight: 700;text-align: center;margin-left: 100rpx;width: 160rpx;position: fixed;right: 265rpx;top: 20rpx;}
+  .pok_no{font-size: 20rpx;position: fixed;right: 215rpx;top:55rpx;}
 .g_pname02{font-size: 20rpx;font-style: oblique;color: #708090;}
 .g_pname03{font-size: 20rpx;margin-left: 10rpx;}
 
 .g_bo-img{width: 300rpx;height: 300rpx;display: block;margin: auto;position: fixed;top: 20rpx}
 .g_bo-tick{width: 64rpx;height: 26rpx;display: inline-block;}
 .g_bt01{margin-right: 10rpx;}
-.type{text-align: center;margin-top: 0rpx;position: fixed;left: 116rpx;top: 300rpx;}
+.type{text-align: center;margin-top: 0rpx;position: fixed;left: 116rpx;top: 300rpx;justify-content: center;display:flex;}
 .g_botitle{width: 200rpx;text-align: center;float: left;margin-right: 50rpx;}
 .g_bo-box{padding: 30rpx 30rpx 0 30rpx;overflow: hidden;}
 .g_td{float:left;width: 180rpx;height: 50rpx;text-align: center;line-height: 50rpx;font-size: 20rpx;}
@@ -25,5 +26,6 @@
 .td{float:left;width:90rpx;height: 50rpx;background-color: #fff;text-align: center;line-height: 50rpx;font-size:20rpx;}
 .table{border: 1px solid #F0F0F0;border-radius: 10rpx;overflow: hidden;width: 360rpx;position: fixed;right: 30rpx;top: 85rpx;}
 .th{background-color: pink;}
-.g_txt{width:81%;height: 100rpx;font-size: 26rpx;color: #999;float: left;border: 1px solid #d19ac9;background-color: pink;border-radius: 10rpx;padding: 20rpx;margin-left: 20rpx;}
+.g_txt{width:81%;height: 120rpx;font-size: 26rpx;color: #999;float: left;border: 1px solid #d19ac9;background-color: pink;border-radius: 10rpx;padding:10rpx;margin-left: 30rpx;  overflow-x:hidden;
+  overflow-y: auto;}
 

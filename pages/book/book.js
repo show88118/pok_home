@@ -8,12 +8,27 @@ Page({
    */
   data: {
     pok_idx: app.globalData.pok_idx,
-    evo_list: app.globalData.evo_list
+    evo_list: app.globalData.evo_list,
+    pok_id: "000",
+    pok_name: "???",
+    pok_type1: "",
+    pok_type2: "",
+    pok_hp: "???",
+    pok_att: "???",
+    pok_def: "???",
+    pok_speed: "???",
+    pok_att1: "???",
+    pok_att2: "???",
+    pok_def1: "???",
+    pok_def2: "???",
+    pok_total: "???",
+    pok_describe: "无",
+    pok_height: "???",
+    pok_weight: "???"
   },
   change_idx: function (event){
     try { var pok_id = event["currentTarget"]["dataset"]["id"]}
-    catch (e) { pok_id = "001"}
-    
+    catch (e) { pok_id = "000"}
     //if (pok_id == "" || pok_id == undefined) { pok_id="001"}
     var pok_idx = this.data.pok_idx
     for (var i in pok_idx){
@@ -40,26 +55,54 @@ Page({
         break
       }
     }
-    this.setData({
-      pok_id: pok_id,
-      pok_name: pok_name,
-      pok_type1: pok_type1,
-      pok_type2: pok_type2,
-      pok_head: pok_head,
-      pok_hp: pok_hp,
-      pok_att: pok_att,
-      pok_def: pok_def,
-      pok_speed: pok_speed,
-      pok_att1: pok_att1,
-      pok_att2: pok_att2,
-      pok_def1: pok_def1,
-      pok_def2: pok_def2,
-      pok_total: pok_total,
-      pok_describe: pok_describe,
-      pok_height: pok_height,
-      pok_weight: pok_weight
-    })
+    if (pok_id != "000"){
+      //设置pok_type
+      util.pok_type(pok_type1, pok_type2);
+      var type2_display = app.globalData.type2_display;
+      this.setData({
+        type2_display: type2_display,
+        pok_id: pok_id,
+        pok_name: pok_name,
+        pok_type1: pok_type1,
+        pok_type2: pok_type2,
+        pok_head: pok_head,
+        pok_hp: pok_hp,
+        pok_att: pok_att,
+        pok_def: pok_def,
+        pok_speed: pok_speed,
+        pok_att1: pok_att1,
+        pok_att2: pok_att2,
+        pok_def1: pok_def1,
+        pok_def2: pok_def2,
+        pok_total: pok_total,
+        pok_describe: pok_describe,
+        pok_height: pok_height,
+        pok_weight: pok_weight
+      })
+    }
 
+    console.log(pok_id)
+    if (pok_id == "000") {
+      this.setData({
+        pok_id: "000",
+        pok_name: "???",
+        pok_type1: "",
+        pok_type2: "",
+        pok_hp: "???",
+        pok_att: "???",
+        pok_def: "???",
+        pok_speed: "???",
+        pok_att1: "???",
+        pok_att2: "???",
+        pok_def1: "???",
+        pok_def2: "???",
+        pok_total: "???",
+        pok_describe: "无",
+        pok_height: "???",
+        pok_weight: "???"
+      })
+      return
+    }
   },
 
   /**

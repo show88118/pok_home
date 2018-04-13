@@ -6,11 +6,11 @@
 
 <view class="g_bo-box">
 <view class="g_botitle">
-<view class="pok_name">{{pok_name}}</view>
+<view class="pok_name">{{pok_name}}</view><view class="pok_no">No.{{pok_id}}</view>
 <image src="/assets/images/head/{{pok_id}}.png" class="g_bo-img"></image>
 <view class="type">
 <image src="/assets/images/type/{{pok_type1}}.png" class="g_bo-tick g_bt01"></image>
-<image src="/assets/images/type/{{pok_type2}}.png" class="g_bo-tick"></image>
+<image src="/assets/images/type/{{pok_type2}}.png" class="g_bo-tick" style="display:{{type2_display}}"></image>
 </view>
 </view>
 <view class="g_table">
