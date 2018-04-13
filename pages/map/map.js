@@ -17,35 +17,51 @@ Page({
       clickable: true
     }]
   },
-
-  onReady: function (e) {
-    // 使用 wx.createMapContext 获取 map 上下文 
-    this.mapCtx = wx.createMapContext('map')
-    console.log('地图定位！')
-    wx.getLocation({
-      type: 'gcj02', //返回可以用于wx.openLocation的经纬度
-      success: (res) => {
-        var latitude = res.latitude;
-        var longitude = res.longitude;
-        console.log(latitude, longitude)
-        let marker = this.createMarker(res);
-        this.setData({
-          longitude: longitude,
-          latitude: latitude,
-        })
-        util.sleep(200)
-        this.setData({
-          markers: this.getPokMarkers()
-        })
-        this.mapCtx.moveToLocation()
-      }
-    });
-  },
   regionchange(e) {
-    console.log(e.type)
+    console.log(e)
   },
   markertap(e) {
-    console.log(e)
+    //获取点击精灵个性化数据
+    var wild_pok_idx = e.markerId
+    var wild_pok_list = this.data.wild_pok_list
+    var tap_wild_pok = wild_pok_list[wild_pok_idx - 1]
+    console.log(tap_wild_pok)
+    //将点击精灵数据同步globalData
+    var tap_wild_pok_id = tap_wild_pok["pok_id"]
+    var tap_wild_pok_growup = tap_wild_pok["pok_growup"]
+    var tap_wild_pok_level = tap_wild_pok["pok_level"]
+    var tap_wild_pok_usedhp = tap_wild_pok["pok_usedhp"]
+    var tap_wild_pok_sex = tap_wild_pok["pok_sex"]
+    var tap_wild_pok_master = tap_wild_pok["pok_master"]
+    var tap_wild_pok_exp = tap_wild_pok["pok_exp"]
+    var tap_wild_pok_idx = tap_wild_pok["wild_pok_idx"]
+    app.globalData.tap_wild_pok_id = tap_wild_pok_id
+    app.globalData.tap_wild_pok_growup = tap_wild_pok_growup
+    app.globalData.tap_wild_pok_level = tap_wild_pok_level
+    app.globalData.tap_wild_pok_usedhp = tap_wild_pok_usedhp
+    app.globalData.tap_wild_pok_sex = tap_wild_pok_sex
+    app.globalData.tap_wild_pok_master = tap_wild_pok_master
+    app.globalData.tap_wild_pok_exp = tap_wild_pok_exp
+    app.globalData.tap_wild_pok_idx = tap_wild_pok_idx
+    //获取pok_info
+    var wild_pok_info = util.get_pok_info(tap_wild_pok_id);
+    var wild_pok_name = wild_pok_info[0]
+    var wild_pok_type1 = wild_pok_info[1]
+    var wild_pok_type2 = wild_pok_info[2]
+    var wild_pok_head = wild_pok_info[3]
+    var wild_hp = wild_pok_info[4];
+    var wild_att = wild_pok_info[5];
+    var wild_def = wild_pok_info[6];
+    var wild_speed = wild_pok_info[7];
+    wx.showActionSheet({
+      itemList: ['战斗', '捕捉'],
+      success: function (res) {
+        console.log(res.tapIndex)
+      },
+      fail: function (res) {
+        console.log(res.errMsg)
+      }
+    })
   },
   controltap(e) {
     console.log(e.controlId)
@@ -101,21 +117,27 @@ Page({
   seed_create_pok_id: function (seed){
     var seed = parseInt(seed)
     if (seed == 10000) {
+      //梦幻
       var pok_id = 151;
     } else if (seed == 9999) {
+      //超梦
       var pok_id = 150;
     } else if (seed == 9998) {
-      var pok_id = 137;
+      //3D龙
+      // var pok_id = 137;
+      //御三家
+      var items = [1, 4, 7]
+      var pok_id = items[Math.floor(Math.random() * items.length)];
     } else if (seed > 9990 && seed < 9998) {
+      //三圣鸟
       var items = [144, 145, 146]
       var pok_id = items[Math.floor(Math.random() * items.length)];
     } else if (seed > 9900 && seed < 9991) {
+      //卡比化石翼龙乘龙
       var items = [142, 143, 131]
       var pok_id = items[Math.floor(Math.random() * items.length)];
-    } else if (seed > 9546 && seed < 9901) {
-      var items = [1, 4, 7]
-      var pok_id = items[Math.floor(Math.random() * items.length)];
-    } else if (seed > 7846 && seed < 9547) {
+    } else if (seed > 7846 && seed < 9901) {
+      //无进化
       var items = [83, 95, 106, 107, 108, 113, 114, 115, 122, 123, 124, 125, 126, 127, 128, 132]
       var pok_id = items[Math.floor(Math.random() * items.length)];
     } else {
@@ -134,8 +156,8 @@ Page({
     return pok_id
   },
   create_nearby_point: function (longitude, latitude){
-    var lo = util.randomNum(-40, 40) / 10000
-    var la = util.randomNum(-40, 40) / 10000
+    var lo = util.randomNum(-50, 50) / 10000
+    var la = util.randomNum(-50, 50) / 10000
     var longitude = parseFloat( longitude) + lo
     var latitude = parseFloat(latitude) + la
     return [longitude.toString(), latitude.toString()]
@@ -170,9 +192,7 @@ Page({
   getPokMarkers() {
     //获取upload初始化的wild_pok_list
     var wild_pok_list = this.data.wild_pok_list
-    
     var markers = [];
-
     for (var i in wild_pok_list){
       var pok_marker = {}
       //获取附近的点
@@ -228,18 +248,109 @@ Page({
     return marker;
   },
   onLoad: function () {
-    //初始化生成随机精灵20只
-    var wild_pok_list = this.create_pok_id(30)
-    this.setData({
-      wild_pok_list: wild_pok_list
-    })
-    console.log(wild_pok_list)
+    
+  },
+  onReady: function (e) {
+    // 使用 wx.createMapContext 获取 map 上下文 
+    this.mapCtx = wx.createMapContext('map')
+    console.log('地图定位！')
+    wx.getLocation({
+      type: 'gcj02', //返回可以用于wx.openLocation的经纬度
+      success: (res) => {
+        var latitude = res.latitude;
+        var longitude = res.longitude;
+        console.log(latitude, longitude)
+        let marker = this.createMarker(res);
+        this.setData({
+          longitude: longitude,
+          latitude: latitude,
+        })
+        util.sleep(200)
+        //初始化生成随机精灵30只
+        var last_wild_pok_time = wx.getStorageSync("last_wild_pok_time")
+        var now_time = new Date()
+        //判断是否生成过野外精灵
+        if (last_wild_pok_time) {
+          //判断上次生成精灵时间是否超过一小时
+          if (now_time - last_wild_pok_time > 60 * 60 * 1000) {
+            //初始化野外精灵
+            var wild_pok_list = this.create_pok_id(30)
+            //记录初始化时间
+            var last_wild_pok_time = new Date()
+            wx.setStorageSync("last_wild_pok_time", last_wild_pok_time)
+            wx.setStorageSync("wild_pok_list", wild_pok_list)
+            this.setData({
+              wild_pok_list: wild_pok_list
+            })
+          } else {
+            //判断距离上次定位位置是否过远
+            var longitude_sub = Math.abs(parseFloat(this.data.longitude) - parseFloat(wx.getStorageSync("last_longitude")))
+            var latitude_sub = Math.abs(this.data.latitude - wx.getStorageSync("last_latitude"))
+            console.log(longitude_sub)
+            console.log(latitude_sub)
+            if (longitude_sub >= 0.015 || latitude_sub >= 0.015){
+              //初始化野外精灵
+              var wild_pok_list = this.create_pok_id(30)
+              //记录初始化时间
+              var last_wild_pok_time = new Date()
+              wx.setStorageSync("last_wild_pok_time", last_wild_pok_time)
+              wx.setStorageSync("wild_pok_list", wild_pok_list)
+              this.setData({
+                wild_pok_list: wild_pok_list
+              })
+            }else{
+              var wild_pok_list = wx.getStorageSync("wild_pok_list")
+              if (wild_pok_list.length == 0){
+                //初始化野外精灵
+                var wild_pok_list = this.create_pok_id(30)
+                //记录初始化时间
+                var last_wild_pok_time = new Date()
+                wx.setStorageSync("last_wild_pok_time", last_wild_pok_time)
+                wx.setStorageSync("wild_pok_list", wild_pok_list)
+                this.setData({
+                  wild_pok_list: wild_pok_list
+                })
+              }else{
+                //继续使用历史生成精灵
+                var wild_pok_list = wx.getStorageSync("wild_pok_list")
+                this.setData({
+                  wild_pok_list: wild_pok_list
+                })
+              }
+            }
+            //保存上次获取到的经纬度
+            wx.setStorageSync("last_latitude", latitude)
+            wx.setStorageSync("last_longitude", longitude)
+            console.log(now_time - last_wild_pok_time)
+          }
+        } else {
+          //初始化野外精灵
+          var wild_pok_list = this.create_pok_id(30)
+          //记录初始化时间
+          var last_wild_pok_time = new Date()
+          wx.setStorageSync("last_wild_pok_time", last_wild_pok_time)
+          wx.setStorageSync("wild_pok_list", wild_pok_list)
+          this.setData({
+            wild_pok_list: wild_pok_list
+          })
+        }
+        //设置地图上的精灵
+        this.setData({
+          markers: this.getPokMarkers()
+        })
+        this.mapCtx.moveToLocation()
+        console.log(this.data.markers)
+      }
+    });
   },
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+   //获取上次生成周围精灵时间
+    var last_wild_pok_time = wx.getStorageSync("last_wild_pok_time")
+    var now_time = new Date()
+    //console.log(now_time - last_wild_pok_time)
   },
 
   /**

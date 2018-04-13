@@ -1,2 +1,2 @@
 <!--pages/map/map.wxml-->
-<map id="map"  scale="18" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" bindregionchange="regionchange" show-location style="width: 100%; height: 580px;"></map>
+<map id="map"  scale="18" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" bindregionchange="regionchange" show-location style="width: 100%; height: 1450rpx;"></map>
