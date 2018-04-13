@@ -53,6 +53,9 @@ Page({
     var wild_att = wild_pok_info[5];
     var wild_def = wild_pok_info[6];
     var wild_speed = wild_pok_info[7];
+    var wild_catch_rate = wild_pok_info[17]
+    console.log(wild_pok_info)
+    console.log(wild_catch_rate)
     wx.showActionSheet({
       itemList: ['战斗', '捕捉'],
       success: function (res) {
@@ -128,15 +131,15 @@ Page({
       //御三家
       var items = [1, 4, 7]
       var pok_id = items[Math.floor(Math.random() * items.length)];
-    } else if (seed > 9990 && seed < 9998) {
+    } else if (seed > 9995 && seed < 9998) {
       //三圣鸟
       var items = [144, 145, 146]
       var pok_id = items[Math.floor(Math.random() * items.length)];
-    } else if (seed > 9900 && seed < 9991) {
+    } else if (seed > 9970 && seed < 9996) {
       //卡比化石翼龙乘龙
       var items = [142, 143, 131]
       var pok_id = items[Math.floor(Math.random() * items.length)];
-    } else if (seed > 7846 && seed < 9901) {
+    } else if (seed > 9800 && seed < 9971) {
       //无进化
       var items = [83, 95, 106, 107, 108, 113, 114, 115, 122, 123, 124, 125, 126, 127, 128, 132]
       var pok_id = items[Math.floor(Math.random() * items.length)];
@@ -215,8 +218,8 @@ Page({
       pok_marker["longitude"] = pok_longitude
       pok_marker["latitude"] = pok_latitude
       pok_marker["iconPath"] = "/assets/images/mini/" + pok_id + ".png"
-      pok_marker["width"] = 40
-      pok_marker["height"] = 40
+      pok_marker["width"] = 50
+      pok_marker["height"] = 50
       let marker = this.createMarker(pok_marker);
       markers.push(marker)
     }
@@ -274,7 +277,7 @@ Page({
           //判断上次生成精灵时间是否超过一小时
           if (now_time - last_wild_pok_time > 60 * 60 * 1000) {
             //初始化野外精灵
-            var wild_pok_list = this.create_pok_id(30)
+            var wild_pok_list = this.create_pok_id(20)
             //记录初始化时间
             var last_wild_pok_time = new Date()
             wx.setStorageSync("last_wild_pok_time", last_wild_pok_time)
@@ -290,7 +293,7 @@ Page({
             console.log(latitude_sub)
             if (longitude_sub >= 0.015 || latitude_sub >= 0.015){
               //初始化野外精灵
-              var wild_pok_list = this.create_pok_id(30)
+              var wild_pok_list = this.create_pok_id(20)
               //记录初始化时间
               var last_wild_pok_time = new Date()
               wx.setStorageSync("last_wild_pok_time", last_wild_pok_time)
@@ -300,9 +303,10 @@ Page({
               })
             }else{
               var wild_pok_list = wx.getStorageSync("wild_pok_list")
+              //判断野外精灵是否为空
               if (wild_pok_list.length == 0){
                 //初始化野外精灵
-                var wild_pok_list = this.create_pok_id(30)
+                var wild_pok_list = this.create_pok_id(20)
                 //记录初始化时间
                 var last_wild_pok_time = new Date()
                 wx.setStorageSync("last_wild_pok_time", last_wild_pok_time)
@@ -325,7 +329,7 @@ Page({
           }
         } else {
           //初始化野外精灵
-          var wild_pok_list = this.create_pok_id(30)
+          var wild_pok_list = this.create_pok_id(20)
           //记录初始化时间
           var last_wild_pok_time = new Date()
           wx.setStorageSync("last_wild_pok_time", last_wild_pok_time)
