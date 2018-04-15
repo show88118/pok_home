@@ -9,7 +9,8 @@
     "pages/qr/qr",
     "pages/book/book",
     "pages/initpok/initpok",
-    "pages/map/map"
+    "pages/map/map",
+    "pages/fight/fight"
   ],
   "window": {
     "backgroundTextStyle": "light",

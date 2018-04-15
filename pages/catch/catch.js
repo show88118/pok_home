@@ -122,7 +122,15 @@ Page({
     if (haved_pok_length==1){
       var max_pok_idx = haved_pok[0]["idx"]
     }else{
-      var max_pok_idx = haved_pok[haved_pok_length - 1]["idx"]
+      //遍历当前所有精力中idx最大的值
+      var max_pok_idx = 0
+      for (var i in haved_pok){
+        var i_idx = parseInt(haved_pok[i]["idx"])
+        if (i_idx > max_pok_idx){
+          max_pok_idx = i_idx
+        }
+      }
+      //console.log(max_pok_idx)
     }
     if (haved_pok_length == 0){
       haved_pok = []

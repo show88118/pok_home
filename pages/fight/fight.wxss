@@ -1,0 +1,45 @@
+/* pages/fight/fight.wxss */
+.g_anemy-head{width: 300rpx;height: 300rpx;right: 10rpx;top: 0;position: absolute;}
+.g_dh{width: 400rpx;height:200rpx;background-color: rgba(248,247,216,0.8);border-radius: 12rpx;position: absolute;left: 30rpx;top: 40rpx;padding: 30rpx;box-sizing: border-box;border: 5rpx solid rgba(75, 93, 73, 1);}
+.g_conver{height: 300rpx;position: relative;width: 100%;margin-bottom: 200rpx;}
+.g_conver01{margin-bottom: 0;}
+.g_dh-level{float: right;font-size: 32rpx;color: #666;margin-top: 10rpx;}
+.g_dh-in01{float: left;font-size: 42rpx;color: #000;font-weight: bold;}
+.g_dh-infor{overflow: hidden;}
+.g_insex{margin-left: 5rpx;font-size: 32rpx;}
+.g_hpbox{width: 350rpx;height: 50rpx;border-radius: 510rpx;background-color: rgba(77, 104, 95,0.8); margin-top: 20rpx;position: relative;}
+.g_hname{color: #FFCC66;font-size: 32rpx;font-weight: bold;margin-left: 20rpx;}
+.g_jdt{width: 250rpx;height: 30rpx;background-color:#2F4F4F;border-radius: 30rpx;position: absolute;right: 10rpx;top: 10rpx;}
+.g_jdt01{background-color:greenyellow;width: 100%;height: 30rpx;border-radius: 30rpx;position: absolute;left: 0;top: 0; }
+.mydh{width: 400rpx;height:200rpx;background-color: rgba(248,247,216,0.8);border-radius: 12rpx;position: absolute;right: 30rpx;top: 40rpx;padding: 30rpx;box-sizing: border-box;border: 5rpx solid rgba(75, 93, 73, 1);}
+.myhead{left: 10rpx;top: 0rpx;}
+.g_zd{text-align: right;font-size: 26rpx;}
+
+.my_pok_list{
+  width: 100%;
+  height: 180rpx;
+  position: fixed;
+  bottom: 10rpx;
+  background-color: #fff;
+  overflow-x:auto;
+  overflow-y: hidden;
+  border-top-left-radius: 15rpx;border-top-right-radius: 15rpx;
+}
+.s_1{
+  display: block;
+}
+
+.my_pok{
+  width: 126rpx;
+  height: 126rpx;
+  text-align: center;
+  margin-top: 15rpx;
+}
+
+.g_button{width: 100%;overflow: hidden;}
+.g_bu01{width: 33%;height: 50rpx;border-radius: 10rpx;float: left;display:inline-block;text-align:center;}
+#g_fc{position: fixed;top: 0;bottom: 0;left: 0;right: 0;margin: auto;background-color: rgba(0, 0, 0, 0.8);}
+
+
+
+

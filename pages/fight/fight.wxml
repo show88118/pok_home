@@ -1,0 +1,50 @@
+<!--pages/fight/fight.wxml-->
+<view class="g_conver clearfix">
+  <view class="g_dh">
+    <view class='g_dh-infor'>
+      <view class='g_dh-in01'>{{tap_wild_pok_name}}<text class='g_insex'>♂</text></view>
+      <view class='g_dh-level'>Lv{{tap_wild_pok_level}}</view>
+      
+    </view>
+    <view class='g_hpbox'>
+      <view class='g_hname'>HP</view>
+      <view class='g_jdt'> <view class='g_jdt01' style="width:{{tap_wild_pok_current_hp_radio}}%"></view></view>
+     
+    </view>
+  </view>
+  <view class="g_head">
+    <image src="{{tap_wild_pok_head}}" class="g_anemy-head"></image>
+  </view>
+</view>
+
+<view class="g_conver g_conver01 clearfix">
+  <view class="mydh">
+    <view class='g_dh-infor'>
+      <view class='g_dh-in01'>{{current_pok_name}}<text class='g_insex'>{{current_pok_sex_text}}</text></view>
+      <view class='g_dh-level'>Lv{{current_pok_level}}</view>
+      
+    </view>
+    <view class='g_hpbox'>
+      <view class='g_hname'>HP</view>
+      <view class='g_jdt'> <view class='g_jdt01' style="width:{{current_pok_hp_radio}}%"></view></view>
+     
+    </view>
+    <view class='g_zd'>{{current_hp-current_pok_usedhp}}/{{current_hp}}</view>
+  </view>
+  <view class="g_head">
+    <image src='{{current_pok_head}}' class="g_anemy-head myhead"></image>
+  </view>
+</view>
+<view class='g_button'>
+  <view class='g_bu01'>捕捉</view>
+  <view class='g_bu01'>逃跑</view>
+  <view class='g_bu01'>攻击</view>
+</view>
+<view class="my_pok_list">
+<view class="s_1" style='width: {{my_pok_list_width}}rpx;'>
+<image class="my_pok" bindtap='change_pok' data-idx="{{my_pok[0]}}" wx:key="{{my_pok[0]}}" wx:for="{{my_pok_list_mini}}" wx:for-item="my_pok" src="{{my_pok[2]}}">
+</image>
+</view>
+</view>
+
+<view class='g_fc'></view>

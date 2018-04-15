@@ -21,6 +21,7 @@ Page({
     console.log(e)
   },
   markertap(e) {
+    var that = this
     //获取点击精灵个性化数据
     var wild_pok_idx = e.markerId
     var wild_pok_list = this.data.wild_pok_list
@@ -49,17 +50,39 @@ Page({
     var wild_pok_type1 = wild_pok_info[1]
     var wild_pok_type2 = wild_pok_info[2]
     var wild_pok_head = wild_pok_info[3]
-    var wild_hp = wild_pok_info[4];
-    var wild_att = wild_pok_info[5];
-    var wild_def = wild_pok_info[6];
-    var wild_speed = wild_pok_info[7];
+    // var wild_hp = wild_pok_info[4];
+    // var wild_att = wild_pok_info[5];
+    // var wild_def = wild_pok_info[6];
+    // var wild_speed = wild_pok_info[7];
     var wild_catch_rate = wild_pok_info[17]
-    console.log(wild_pok_info)
-    console.log(wild_catch_rate)
+    //根据精灵能力值转换属性
+    var pok_attr = util.get_pok_attr(tap_wild_pok_id, tap_wild_pok_growup, tap_wild_pok_level)
+    var wild_hp = pok_attr[0]
+    var wild_att = pok_attr[1]
+    var wild_def = pok_attr[2]
+    var wild_speed = pok_attr[3]
+    app.globalData.tap_wild_pok_name = wild_pok_name
+    app.globalData.tap_wild_pok_type1 = wild_pok_type1
+    app.globalData.tap_wild_pok_type2 = wild_pok_type2
+    app.globalData.tap_wild_pok_head = wild_pok_head
+    app.globalData.tap_wild_hp = wild_hp
+    app.globalData.tap_wild_att = wild_att
+    app.globalData.tap_wild_def = wild_def
+    app.globalData.tap_wild_speed = wild_speed
+    app.globalData.tap_wild_catch_rate = wild_catch_rate
     wx.showActionSheet({
-      itemList: ['战斗', '捕捉'],
+      itemList: ['战斗 : ' + wild_pok_name + " Lv" + tap_wild_pok_level],// , '捕捉'],
       success: function (res) {
-        console.log(res.tapIndex)
+        //战斗
+        if(res.tapIndex == 0){
+          wx.navigateTo({
+            url: '../fight/fight',
+          })
+        }
+        //捕捉 
+        else if (res.tapIndex == 1){
+
+        }
       },
       fail: function (res) {
         console.log(res.errMsg)
@@ -117,6 +140,62 @@ Page({
     }
     return pok_sex
   },
+  //获取精灵随机登记
+  get_pok_level: function (pok_id){
+    var max_pok_level = 1
+    var pok_level = 1
+    var haved_pok = util.get_self_pok();
+    for (var i in haved_pok) {
+      var i_level = parseInt(haved_pok[i]["level"])
+      if (i_level > max_pok_level) {
+        max_pok_level = i_level
+      }
+    }
+    if (pok_id == "143"){
+      //卡比兽
+      pok_level = 30
+    } else if (pok_id == "106") {
+      //沙瓦郎
+      pok_level = 30
+    } else if (pok_id == "107") {
+      //艾比郎
+      pok_level = 30
+    } else if (pok_id == "133") {
+      //伊布
+      pok_level = 30
+    } else if (pok_id == "138") {
+      //菊石兽
+      pok_level = 30
+    } else if (pok_id == "140") {
+      //化石盔
+      pok_level = 30
+    } else if (pok_id == "142") {
+      //化石翼龙
+      pok_level = 50
+    } else if (pok_id == "144") {
+      //急冻鸟
+      pok_level = 50
+    } else if (pok_id == "145") {
+      //闪电鸟
+      pok_level = 50
+    } else if (pok_id == "146") {
+      //火焰鸟
+      pok_level = 50
+    } else if (pok_id == "150") {
+      //超梦
+      pok_level = 70
+    } else if (pok_id == "151") {
+      //梦幻
+      pok_level = 30
+    }else{
+      if (max_pok_level==100){
+        pok_level = util.randomNum(1,98)
+      }else{
+        pok_level = util.randomNum(1, max_pok_level)
+      }
+    }
+    return pok_level
+  },
   seed_create_pok_id: function (seed){
     var seed = parseInt(seed)
     if (seed == 10000) {
@@ -136,15 +215,15 @@ Page({
       var items = [144, 145, 146]
       var pok_id = items[Math.floor(Math.random() * items.length)];
     } else if (seed > 9970 && seed < 9996) {
-      //卡比化石翼龙乘龙
-      var items = [142, 143, 131]
+      //卡比化石翼龙乘龙迷你龙
+      var items = [142, 143, 131, 147]
       var pok_id = items[Math.floor(Math.random() * items.length)];
     } else if (seed > 9800 && seed < 9971) {
       //无进化
       var items = [83, 95, 106, 107, 108, 113, 114, 115, 122, 123, 124, 125, 126, 127, 128, 132]
       var pok_id = items[Math.floor(Math.random() * items.length)];
     } else {
-      var items = [10, 13, 16, 19, 21, 23, 27, 29, 32, 41, 43, 46, 48, 50, 52, 54, 56, 60, 63, 66, 69, 72, 74, 77, 79, 81, 84, 86, 88, 92, 96, 98, 100, 104, 109, 111, 116, 118, 129, 138, 140, 147, 25, 30, 33, 35, 37, 39, 58, 90, 102, 120, 133]
+      var items = [10, 13, 16, 19, 21, 23, 27, 29, 32, 41, 43, 46, 48, 50, 52, 54, 56, 60, 63, 66, 69, 72, 74, 77, 79, 81, 84, 86, 88, 92, 96, 98, 100, 104, 109, 111, 116, 118, 129, 138, 140, 25, 30, 33, 35, 37, 39, 58, 90, 102, 120, 133]
       var pok_id = items[Math.floor(Math.random() * items.length)];
     }
     var pok_id_length = pok_id.toString().length
@@ -174,7 +253,7 @@ Page({
       var seed = util.randomNum(1, 10000)
       var pok_id = this.seed_create_pok_id(seed)
       var pok_growup = this.get_pok_growup()
-      var pok_level = 1
+      var pok_level = this.get_pok_level(pok_id)
       var wild_pok_idx = i+1
       var pok_usedhp = 0
       var pok_sex = this.get_pok_sex(pok_id)
@@ -246,7 +325,7 @@ Page({
       latitude: latitude,
       longitude: longitude,
       width: point.width,
-      height: point.height
+      height: point.height,
     };
     return marker;
   },

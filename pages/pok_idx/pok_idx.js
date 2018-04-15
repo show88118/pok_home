@@ -25,10 +25,27 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-  
+  iszhishu:function(c){
+    for(var i=2;i<c;i++){
+      if(c%i==0){
+        return false;
+      }
+    }
+    return true;
   },
-
+  isheshu:function(c){
+    if(this.iszhishu(c)){
+      return false;
+    }
+    return true;
+  },
+  onShow: function () {
+    for(var j=1;j<=1000;j++){
+      if (this.isheshu(j)){ 
+        console.log(j)
+      }
+    }
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */
