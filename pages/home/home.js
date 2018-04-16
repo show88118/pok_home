@@ -96,6 +96,7 @@ Page({
     for (var i in haved_pok) {
       var pok_id = haved_pok[i]["id"];
       var mini_img = "/assets/images/mini/" + pok_id + ".png";
+      //var mini_img = "https://raw.githubusercontent.com/show88118/pokdata/master/" + pok_id + ".gif"
       var head_img = "/assets/images/head/" + pok_id + ".png";
       my_pok_list_mini.push([i, pok_id, mini_img])
     }
