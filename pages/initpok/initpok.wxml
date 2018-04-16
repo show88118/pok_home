@@ -1,7 +1,7 @@
 <!--pages/initpok/initpok.wxml-->
 <view>
 <view>
-<image style="width:100%" src="/assets/images/init.png"></image>
+<image class="init_img" style="width:100%" src="/assets/images/init.png"></image>
 </view>
 <view class="init_title">{{title}}</view>
 <view>
