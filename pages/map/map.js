@@ -74,7 +74,7 @@ Page({
       }
     }
     wx.showActionSheet({
-      itemList: ['战斗 : ' + wild_pok_name + " Lv" + tap_wild_pok_level],// , '捕捉'],
+      itemList: ['遇敌 : ' + wild_pok_name + " Lv" + tap_wild_pok_level],// , '捕捉'],
       success: function (res) {
         //战斗
         if(res.tapIndex == 0){

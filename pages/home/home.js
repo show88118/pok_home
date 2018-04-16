@@ -279,6 +279,7 @@ Page({
       if (haved_pok[i]["idx"] == current_pok_idx){
         //达到升级经验后exp归0，level+1
         if (haved_pok[i]["exp"] + 1 >= levelup_eat_count){
+          wx.vibrateLong()
           //升级闪烁动效
           this.setData({ level_id:"twinkle2"})
           util.sleep(300)
