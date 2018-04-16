@@ -10,7 +10,7 @@
 .g_hpbox{width: 350rpx;height: 50rpx;border-radius: 510rpx;background-color: rgba(77, 104, 95,0.8); margin-top: 20rpx;position: relative;}
 .g_hname{color: #FFCC66;font-size: 32rpx;font-weight: bold;margin-left: 20rpx;}
 .g_jdt{width: 250rpx;height: 30rpx;background-color:#2F4F4F;border-radius: 30rpx;position: absolute;right: 10rpx;top: 10rpx;}
-.g_jdt01{background-color:greenyellow;width: 100%;height: 30rpx;border-radius: 30rpx;position: absolute;left: 0;top: 0; }
+.g_jdt01{background-color:greenyellow;width: 100%;height: 30rpx;border-radius: 30rpx;position: absolute;left: 0;top: 0;animation:myjd linear 0.8s forwards; }
 .mydh{width: 400rpx;height:200rpx;background-color: rgba(248,247,216,0.8);border-radius: 12rpx;position: absolute;right: 30rpx;top: 40rpx;padding: 30rpx;box-sizing: border-box;border: 5rpx solid rgba(75, 93, 73, 1);}
 .myhead{left: 10rpx;top: 0rpx;}
 .g_zd{text-align: right;font-size: 26rpx;}
@@ -36,10 +36,36 @@
   margin-top: 15rpx;
 }
 
-.g_button{width: 100%;overflow: hidden;}
+.g_button{width: 100%;overflow: hidden;margin-top: 90rpx}
 .g_bu01{width: 33%;height: 50rpx;border-radius: 10rpx;float: left;display:inline-block;text-align:center;}
 #g_fc{position: fixed;top: 0;bottom: 0;left: 0;right: 0;margin: auto;background-color: rgba(0, 0, 0, 0.8);}
 
 
+/* @keyframes myjd
+{
+0%   {opacity: 1;width: 100%;}
+100%   {opacity: 1;width:50%;}
+} */
+#att{
+  animation:att linear 0.5s forwards;animation-delay: 0.0s;opacity: 1;animation-iteration-count: 1;
+}
+ 
+@keyframes att
+{
+0%   {opacity: 1;}
+30%   {opacity: 1;transform: translate(0,-80rpx);}
+60% {opacity: 1;transform: translate(0,80rpx);}
+0% {opacity: 1;}
+} 
 
-
+#shake{
+  animation:shake linear 0.05s forwards;animation-delay: 0.0s;opacity: 1;animation-iteration-count: 10;
+}
+ 
+@keyframes shake
+{
+0%   {opacity: 1;}
+30%   {opacity: 1;transform: translate(10rpx,0);}
+60% {opacity: 1;transform: translate(-10rpx,0);}
+0% {opacity: 1;}
+} 

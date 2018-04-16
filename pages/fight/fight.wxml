@@ -1,4 +1,5 @@
 <!--pages/fight/fight.wxml-->
+
 <view class="g_conver clearfix">
   <view class="g_dh">
     <view class='g_dh-infor'>
@@ -13,7 +14,7 @@
     </view>
   </view>
   <view class="g_head">
-    <image src="{{tap_wild_pok_head}}" class="g_anemy-head"></image>
+    <image src="{{tap_wild_pok_head}}" class="g_anemy-head" id="{{tap_wild_pok_animation}}"></image>
   </view>
 </view>
 
@@ -26,13 +27,14 @@
     </view>
     <view class='g_hpbox'>
       <view class='g_hname'>HP</view>
-      <view class='g_jdt'> <view class='g_jdt01' style="width:{{current_pok_hp_radio}}%"></view></view>
+       <view class='g_jdt'> <view class='g_jdt01' style="width:{{current_pok_hp_radio}}%"></view></view> 
+      <!-- <view class='g_jdt'> <view class='g_jdt01' style="width:50%"></view></view> -->
      
     </view>
     <view class='g_zd'>{{current_hp-current_pok_usedhp}}/{{current_hp}}</view>
   </view>
   <view class="g_head">
-    <image src='{{current_pok_head}}' class="g_anemy-head myhead"></image>
+    <image src='{{current_pok_head}}' class="g_anemy-head myhead" id="{{current_pok_head_animation}}"></image>
   </view>
 </view>
 <view class='g_button'>

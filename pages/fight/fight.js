@@ -130,6 +130,7 @@ Page({
           var tap_wild_speed = that.data.tap_wild_speed
           var current_speed = that.data.current_speed
           if (parseInt(tap_wild_speed) > parseInt(current_speed)){
+            util.sleep(300)
             that.wild_start_fight()
           }else{
             //我方出手
@@ -142,7 +143,7 @@ Page({
     //震动
     wx.vibrateShort({})
   },
-  current_start_fight: function () {
+  current_start_fight: util.throttle(function () {
     //判断是否选择了精灵
     if (this.data.current_pok_level==0){
       wx.showToast({
@@ -150,6 +151,13 @@ Page({
       })
       return
     }
+    //设置我方动效
+    this.setData({
+      current_pok_head_animation: "stop"
+    })
+    this.setData({
+      current_pok_head_animation: "att",
+    })
       //我方攻击
       //计算我方对对方的攻击血量
       var usehp = this.get_damage(this.data.current_pok_level, this.data.current_att, this.data.tap_wild_def, this.data.current_pok_type1, this.data.current_pok_type2, this.data.tap_wild_pok_type1, this.data.tap_wild_pok_type2)
@@ -169,11 +177,12 @@ Page({
       //保存对方消耗血量
       wx.setStorageSync("wild_pok_list", wild_pok_list)
       var tap_wild_pok_current_hp_radio = parseInt((1 - parseFloat(this.data.tap_wild_pok_usedhp) / parseFloat(this.data.tap_wild_hp)) * 100)
-      this.setData({
-        tap_wild_pok_current_hp_radio: tap_wild_pok_current_hp_radio
-      })
+        this.setData({
+          tap_wild_pok_current_hp_radio: tap_wild_pok_current_hp_radio
+        })
       //如果对方死了
       if (tap_wild_pok_current_hp_radio == 0){
+        util.sleep(500)
         //删除野外精灵数据
         for (var i in wild_pok_list) {
           if (parseInt(wild_pok_list[i]["wild_pok_idx"]) == parseInt(this.data.tap_wild_pok_idx)) {
@@ -186,13 +195,25 @@ Page({
         candy_count = candy_count + Math.ceil(this.data.tap_wild_pok_level/10)
         wx.setStorageSync("candy_count", candy_count)
         //回到地图页
+        wx.showToast({
+          title: '野生' + this.data.tap_wild_pok_name + "阵亡",
+        })
+        util.sleep(500)
         this.return_map()
       }else{
+        util.sleep(500)
         this.wild_start_fight()
       }
-  },
+  },500),
   wild_start_fight:function(){
       //敌人攻击
+      //设置敌人动效
+    this.setData({
+      tap_wild_pok_animation: "stop",
+    })
+    this.setData({
+      tap_wild_pok_animation: "att",
+    })
       //计算对方对我方的攻击血量
       var usehp = this.get_damage(this.data.tap_wild_pok_level, this.data.tap_wild_att, this.data.current_def, this.data.tap_wild_pok_type1, this.data.tap_wild_pok_type2, this.data.current_pok_type1, this.data.current_pok_type2)
       //变更我方血量
@@ -212,8 +233,13 @@ Page({
       this.setData({
         current_pok_hp_radio: current_pok_hp_radio
       })
+      
       //如果我被对方打死了
       if (current_pok_hp_radio <= 0){
+        wx.showToast({
+          title: '我的' + this.data.current_pok_name + "阵亡",
+        })
+        util.sleep(500)
         //删除野外精灵数据
         var wild_pok_list = wx.getStorageSync("wild_pok_list");
         for (var i in wild_pok_list) {
