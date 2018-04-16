@@ -18,9 +18,7 @@ Page({
           //赠送御三家
           var haved_pok = [{ "id": "001", "growup": 60, "level": 1, "idx": "1", "usedhp": 0, "sex": 1, "master": wx.getStorageSync("user"), "exp": 0 }];
           wx.setStorageSync("pok_id_list", haved_pok);
-          wx.navigateTo({
-            url: '../home/home',
-          })
+          wx.navigateBack()
         } else if (sm.cancel) {
           console.log("cancel")
         }
@@ -37,9 +35,7 @@ Page({
           //赠送御三家
           var haved_pok = [{ "id": "004", "growup": 60, "level": 1, "idx": "1", "usedhp": 0, "sex": 1, "master": wx.getStorageSync("user"), "exp": 0 }];
           wx.setStorageSync("pok_id_list", haved_pok);
-          wx.navigateTo({
-            url: '../home/home',
-          })
+          wx.navigateBack()
         } else if (sm.cancel) {
           console.log("cancel")
         }
@@ -56,9 +52,7 @@ Page({
           //赠送御三家
           var haved_pok = [{ "id": "007", "growup": 60, "level": 1, "idx": "1", "usedhp": 0, "sex": 1, "master": wx.getStorageSync("user"), "exp": 0 }];
           wx.setStorageSync("pok_id_list", haved_pok);
-          wx.navigateTo({
-            url: '../home/home',
-          })
+          wx.navigateBack()
         } else if (sm.cancel) {
           console.log("cancel")
         }

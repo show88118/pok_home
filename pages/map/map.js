@@ -143,7 +143,7 @@ Page({
     }
     return pok_sex
   },
-  //获取精灵随机登记
+  //获取精灵随机等级
   get_pok_level: function (pok_id){
     var max_pok_level = 1
     var pok_level = 1
