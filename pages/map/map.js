@@ -377,8 +377,6 @@ Page({
             //判断距离上次定位位置是否过远
             var longitude_sub = Math.abs(parseFloat(this.data.longitude) - parseFloat(wx.getStorageSync("last_longitude")))
             var latitude_sub = Math.abs(this.data.latitude - wx.getStorageSync("last_latitude"))
-            console.log(longitude_sub)
-            console.log(latitude_sub)
             if (longitude_sub >= 0.015 || latitude_sub >= 0.015) {
               //初始化野外精灵
               var wild_pok_list = this.create_pok_id(20)

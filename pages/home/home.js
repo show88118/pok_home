@@ -493,7 +493,6 @@ Page({
       title: '全部恢复',
     })
     //刷新当前精灵头像
-    console.log(this.data.current_pok_id)
     this.refresh_pok_head(this.data.current_pok_id);
   },
   /**

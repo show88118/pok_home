@@ -126,7 +126,6 @@ Page({
             current_speed: current_pok_attr[3],
             current_pok_hp_radio: parseInt((1 - parseFloat(current_pok_usedhp) / parseFloat(current_hp)) * 100)
           })
-          console.log("liufan" + parseInt((1 - parseFloat(current_pok_usedhp) / parseFloat(current_hp)) * 100))
           //开始战斗
           var tap_wild_speed = that.data.tap_wild_speed
           var current_speed = that.data.current_speed
@@ -187,10 +186,8 @@ Page({
         candy_count = candy_count + Math.ceil(this.data.tap_wild_pok_level/10)
         wx.setStorageSync("candy_count", candy_count)
         //回到地图页
-        console.log("return map")
         this.return_map()
       }else{
-        console.log("meisi")
         this.wild_start_fight()
       }
   },
@@ -998,7 +995,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    console.log("onReady" + this.data.tap_wild_pok_usedhp)
+
   },
 
   /**
