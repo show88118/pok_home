@@ -37,8 +37,8 @@
 </view>
 <view class='g_button'>
   <view class='g_bu01'>捕捉</view>
-  <view class='g_bu01'>逃跑</view>
-  <view class='g_bu01'>攻击</view>
+  <view class='g_bu01' bindtap='escape'>逃跑</view>
+  <view class='g_bu01' bindtap='current_start_fight'>攻击</view>
 </view>
 <view class="my_pok_list">
 <view class="s_1" style='width: {{my_pok_list_width}}rpx;'>

@@ -24,52 +24,55 @@ Page({
     var that = this
     //获取点击精灵个性化数据
     var wild_pok_idx = e.markerId
-    var wild_pok_list = this.data.wild_pok_list
-    var tap_wild_pok = wild_pok_list[wild_pok_idx - 1]
-    console.log(tap_wild_pok)
-    //将点击精灵数据同步globalData
-    var tap_wild_pok_id = tap_wild_pok["pok_id"]
-    var tap_wild_pok_growup = tap_wild_pok["pok_growup"]
-    var tap_wild_pok_level = tap_wild_pok["pok_level"]
-    var tap_wild_pok_usedhp = tap_wild_pok["pok_usedhp"]
-    var tap_wild_pok_sex = tap_wild_pok["pok_sex"]
-    var tap_wild_pok_master = tap_wild_pok["pok_master"]
-    var tap_wild_pok_exp = tap_wild_pok["pok_exp"]
-    var tap_wild_pok_idx = tap_wild_pok["wild_pok_idx"]
-    app.globalData.tap_wild_pok_id = tap_wild_pok_id
-    app.globalData.tap_wild_pok_growup = tap_wild_pok_growup
-    app.globalData.tap_wild_pok_level = tap_wild_pok_level
-    app.globalData.tap_wild_pok_usedhp = tap_wild_pok_usedhp
-    app.globalData.tap_wild_pok_sex = tap_wild_pok_sex
-    app.globalData.tap_wild_pok_master = tap_wild_pok_master
-    app.globalData.tap_wild_pok_exp = tap_wild_pok_exp
-    app.globalData.tap_wild_pok_idx = tap_wild_pok_idx
-    //获取pok_info
-    var wild_pok_info = util.get_pok_info(tap_wild_pok_id);
-    var wild_pok_name = wild_pok_info[0]
-    var wild_pok_type1 = wild_pok_info[1]
-    var wild_pok_type2 = wild_pok_info[2]
-    var wild_pok_head = wild_pok_info[3]
-    // var wild_hp = wild_pok_info[4];
-    // var wild_att = wild_pok_info[5];
-    // var wild_def = wild_pok_info[6];
-    // var wild_speed = wild_pok_info[7];
-    var wild_catch_rate = wild_pok_info[17]
-    //根据精灵能力值转换属性
-    var pok_attr = util.get_pok_attr(tap_wild_pok_id, tap_wild_pok_growup, tap_wild_pok_level)
-    var wild_hp = pok_attr[0]
-    var wild_att = pok_attr[1]
-    var wild_def = pok_attr[2]
-    var wild_speed = pok_attr[3]
-    app.globalData.tap_wild_pok_name = wild_pok_name
-    app.globalData.tap_wild_pok_type1 = wild_pok_type1
-    app.globalData.tap_wild_pok_type2 = wild_pok_type2
-    app.globalData.tap_wild_pok_head = wild_pok_head
-    app.globalData.tap_wild_hp = wild_hp
-    app.globalData.tap_wild_att = wild_att
-    app.globalData.tap_wild_def = wild_def
-    app.globalData.tap_wild_speed = wild_speed
-    app.globalData.tap_wild_catch_rate = wild_catch_rate
+    var wild_pok_list =  wx.getStorageSync("wild_pok_list");
+    for (var i in wild_pok_list){
+      if (wild_pok_list[i]["wild_pok_idx"] == wild_pok_idx){
+        var tap_wild_pok = wild_pok_list[i]
+        //将点击精灵数据同步globalData
+        var tap_wild_pok_id = tap_wild_pok["pok_id"]
+        var tap_wild_pok_growup = tap_wild_pok["pok_growup"]
+        var tap_wild_pok_level = tap_wild_pok["pok_level"]
+        var tap_wild_pok_usedhp = tap_wild_pok["pok_usedhp"]
+        var tap_wild_pok_sex = tap_wild_pok["pok_sex"]
+        var tap_wild_pok_master = tap_wild_pok["pok_master"]
+        var tap_wild_pok_exp = tap_wild_pok["pok_exp"]
+        var tap_wild_pok_idx = tap_wild_pok["wild_pok_idx"]
+        app.globalData.tap_wild_pok_id = tap_wild_pok_id
+        app.globalData.tap_wild_pok_growup = tap_wild_pok_growup
+        app.globalData.tap_wild_pok_level = tap_wild_pok_level
+        app.globalData.tap_wild_pok_usedhp = tap_wild_pok_usedhp
+        app.globalData.tap_wild_pok_sex = tap_wild_pok_sex
+        app.globalData.tap_wild_pok_master = tap_wild_pok_master
+        app.globalData.tap_wild_pok_exp = tap_wild_pok_exp
+        app.globalData.tap_wild_pok_idx = tap_wild_pok_idx
+        //获取pok_info
+        var wild_pok_info = util.get_pok_info(tap_wild_pok_id);
+        var wild_pok_name = wild_pok_info[0]
+        var wild_pok_type1 = wild_pok_info[1]
+        var wild_pok_type2 = wild_pok_info[2]
+        var wild_pok_head = wild_pok_info[3]
+        // var wild_hp = wild_pok_info[4];
+        // var wild_att = wild_pok_info[5];
+        // var wild_def = wild_pok_info[6];
+        // var wild_speed = wild_pok_info[7];
+        var wild_catch_rate = wild_pok_info[17]
+        //根据精灵能力值转换属性
+        var pok_attr = util.get_pok_attr(tap_wild_pok_id, tap_wild_pok_growup, tap_wild_pok_level)
+        var wild_hp = pok_attr[0]
+        var wild_att = pok_attr[1]
+        var wild_def = pok_attr[2]
+        var wild_speed = pok_attr[3]
+        app.globalData.tap_wild_pok_name = wild_pok_name
+        app.globalData.tap_wild_pok_type1 = wild_pok_type1
+        app.globalData.tap_wild_pok_type2 = wild_pok_type2
+        app.globalData.tap_wild_pok_head = wild_pok_head
+        app.globalData.tap_wild_hp = wild_hp
+        app.globalData.tap_wild_att = wild_att
+        app.globalData.tap_wild_def = wild_def
+        app.globalData.tap_wild_speed = wild_speed
+        app.globalData.tap_wild_catch_rate = wild_catch_rate
+      }
+    }
     wx.showActionSheet({
       itemList: ['战斗 : ' + wild_pok_name + " Lv" + tap_wild_pok_level],// , '捕捉'],
       success: function (res) {
@@ -333,6 +336,12 @@ Page({
     
   },
   onReady: function (e) {
+    
+  },
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
     // 使用 wx.createMapContext 获取 map 上下文 
     this.mapCtx = wx.createMapContext('map')
     console.log('地图定位！')
@@ -370,7 +379,7 @@ Page({
             var latitude_sub = Math.abs(this.data.latitude - wx.getStorageSync("last_latitude"))
             console.log(longitude_sub)
             console.log(latitude_sub)
-            if (longitude_sub >= 0.015 || latitude_sub >= 0.015){
+            if (longitude_sub >= 0.015 || latitude_sub >= 0.015) {
               //初始化野外精灵
               var wild_pok_list = this.create_pok_id(20)
               //记录初始化时间
@@ -380,10 +389,10 @@ Page({
               this.setData({
                 wild_pok_list: wild_pok_list
               })
-            }else{
+            } else {
               var wild_pok_list = wx.getStorageSync("wild_pok_list")
               //判断野外精灵是否为空
-              if (wild_pok_list.length == 0){
+              if (wild_pok_list.length == 0) {
                 //初始化野外精灵
                 var wild_pok_list = this.create_pok_id(20)
                 //记录初始化时间
@@ -393,7 +402,7 @@ Page({
                 this.setData({
                   wild_pok_list: wild_pok_list
                 })
-              }else{
+              } else {
                 //继续使用历史生成精灵
                 var wild_pok_list = wx.getStorageSync("wild_pok_list")
                 this.setData({
@@ -425,11 +434,6 @@ Page({
         console.log(this.data.markers)
       }
     });
-  },
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
    //获取上次生成周围精灵时间
     var last_wild_pok_time = wx.getStorageSync("last_wild_pok_time")
     var now_time = new Date()
@@ -447,7 +451,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**

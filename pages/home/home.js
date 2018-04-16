@@ -188,7 +188,13 @@ Page({
     });
   },
   get_current_pok_hp: function(){
-    var current_pok_hp = this.data.pok_hp - this.data.current_pok_usedhp
+    var haved_pok = util.get_self_pok();
+    for (var i in haved_pok){
+      if (haved_pok[i]["idx"] == this.data.current_pok_idx){
+        var current_pok_usedhp = haved_pok[i]["usedhp"]
+      }
+    }
+    var current_pok_hp = this.data.pok_hp - current_pok_usedhp
     if (current_pok_hp<0){
       current_pok_hp = 0
     }
@@ -476,7 +482,19 @@ Page({
     wx.setStorageSync("current_pok_master", current_pok_master)
     wx.setStorageSync("current_pok_exp", current_pok_exp)
   },
-
+  restore_all_pok:function(){
+    var haved_pok = util.get_self_pok();
+    for (var i in haved_pok){
+      haved_pok[i]["usedhp"] = 0
+    }
+    wx.setStorageSync("pok_id_list", haved_pok)
+    wx.showToast({
+      title: '全部恢复',
+    })
+    //刷新当前精灵头像
+    console.log(this.data.current_pok_id)
+    this.refresh_pok_head(this.data.current_pok_id);
+  },
   /**
    * 生命周期函数--监听页面加载
    */

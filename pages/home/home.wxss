@@ -138,6 +138,7 @@
   display: block;
 }
 .share_text{font-size: 28rpx;position: fixed;color: #fff;right: 0rpx;background-color: #F5AD3A;line-height:50rpx;}
+.restore{font-size: 28rpx;position: fixed;color: #fff;left: 0rpx;background-color: #F5AD3A;line-height:50rpx;}
 
 #shake{
   animation:shake linear 0.05s forwards;animation-delay: 0.0s;opacity: 1;animation-iteration-count: 10;

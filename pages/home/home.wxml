@@ -1,6 +1,7 @@
 <!--pages/home/home.wxml-->
 <view class="container">
 <button class="share_text" open-type="share">分享</button>
+<button class="restore" bindtap='restore_all_pok'>精灵中心</button>
 <view class="trainer" bindtap=''> 
       <!-- <image bindtap="" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text> -->
