@@ -97,7 +97,7 @@ Page({
       wx.setStorageSync("candy_count", candy_count)
       wx.setStorageSync(app.globalData.today, "signin")
       wx.showToast({
-        title: '获得签到奖励',
+        title: "经验糖：" + app.globalData.signin_gift_candy_count + " 精灵球：" + app.globalData.signin_gift_remain_count,
       })
     } else {
       wx.showToast({
@@ -109,7 +109,9 @@ Page({
     })
   },
   onLoad: function () {
-    // //获取精灵能力
+    //初始化精灵中心delay时间
+    this.get_pc_status()
+    //获取精灵能力
     // console.log(util.get_pok_attr("001",50,1))
     //获取首页签到和音乐随机头像
     var random_pok_id1 = this.randomNum(1, 151)
@@ -185,6 +187,9 @@ Page({
     })
     //储存用户昵称
     wx.setStorageSync('user', this.data.userInfo.nickName)
+  },
+  get_pc_status:function(){
+    wx.setStorageSync("pc_status", true)
   },
   get_today:function(){
     var timestamp = Date.parse(new Date());

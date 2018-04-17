@@ -138,7 +138,8 @@
   display: block;
 }
 .share_text{font-size: 28rpx;position: fixed;color: #fff;right: 0rpx;background-color: #F5AD3A;line-height:50rpx;}
-.restore{font-size: 28rpx;position: fixed;color: #fff;left: 0rpx;background-color: #F5AD3A;line-height:50rpx;}
+.restore{position: fixed;right: 10rpx;width: 100rpx;height: 100rpx;top: 10rpx;}
+.pc_time{position: fixed;right: 55rpx;font-size: 20rpx;top: 110rpx;}
 
 #shake{
   animation:shake linear 0.05s forwards;animation-delay: 0.0s;opacity: 1;animation-iteration-count: 10;

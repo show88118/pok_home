@@ -1,7 +1,8 @@
 /**index.wxss**/
   page{
-  background-image: url("https://raw.githubusercontent.com/show88118/pok_home/master/assets/images/home.png");
+  background-image: url("https://raw.githubusercontent.com/show88118/pok_home/master/assets/images/home.png?123");
   background-repeat: no-repeat;
+  background-size: 750rpx 1500rpx;
 }  
 .container{
   width: 100%;
@@ -31,11 +32,13 @@
   position: fixed;bottom: 100rpx;
   font-size: 50rpx;
   border-radius: 100rpx;
-  background-color: #EEE9E9;
+  background-color: #EEE9BF;
   width: 400rpx;
   height: 120rpx;
   text-align: center;
   line-height: 120rpx;
+  color: #3B58A4;
+  font-weight: 600;
 }
 .bgm_btn{
   position: fixed;

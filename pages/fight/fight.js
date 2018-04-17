@@ -35,6 +35,7 @@ Page({
     })
   },
   return_map: function () {
+    util.sleep(1200)
     wx.navigateBack()
   },
   set_wlid_pok_data:function(){
@@ -94,6 +95,7 @@ Page({
     if (current_hp - current_pok_usedhp <= 0){
         wx.showToast({
           title: current_pok_name+'需要恢复',
+          duration: 1000
         })
         return
     }
@@ -148,6 +150,7 @@ Page({
     if (this.data.current_pok_level==0){
       wx.showToast({
         title: '请选择出战精灵',
+        duration: 1000
       })
       return
     }
@@ -197,15 +200,16 @@ Page({
         //回到地图页
         wx.showToast({
           title: '野生' + this.data.tap_wild_pok_name + "阵亡",
+          duration: 1000
         })
         util.sleep(500)
         this.return_map()
       }else{
-        util.sleep(500)
+        util.sleep(1000)
         this.wild_start_fight()
       }
-  },500),
-  wild_start_fight:function(){
+  },2500),
+  wild_start_fight: util.throttle(function(){
       //敌人攻击
       //设置敌人动效
     this.setData({
@@ -250,7 +254,7 @@ Page({
         wx.setStorageSync("wild_pok_list", wild_pok_list)
         this.return_map()
       }
-  },
+  },1500),
   get_damage:function(att_level,att_att,def_def,att_type1,att_type2,def_type1,def_type2){
     var att_level = parseInt(att_level)
     var att_att = parseInt(att_att)

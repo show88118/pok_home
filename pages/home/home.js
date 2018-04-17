@@ -18,9 +18,12 @@ Page({
     })
   },
   bind_my_pok: function () {
-    wx.navigateTo({
-      url: '../catch/catch',
+    wx.showToast({
+      title: '暂未开放',
     })
+    // wx.navigateTo({
+    //   url: '../shop/shop',
+    // })
   },
   poke_map: function () {
     this.set_current_pok()
@@ -485,21 +488,51 @@ Page({
     wx.setStorageSync("current_pok_exp", current_pok_exp)
   },
   restore_all_pok:function(){
-    var haved_pok = util.get_self_pok();
-    for (var i in haved_pok){
-      haved_pok[i]["usedhp"] = 0
+    var pc_status = wx.getStorageSync("pc_status")
+    if (pc_status){
+      var haved_pok = util.get_self_pok();
+      for (var i in haved_pok) {
+        haved_pok[i]["usedhp"] = 0
+      }
+      wx.setStorageSync("pok_id_list", haved_pok)
+      wx.showToast({
+        title: '全部恢复',
+      })
+      wx.setStorageSync("pc_status", false)
+      this.countDown(this, 30);
+      //刷新当前精灵头像
+      this.refresh_pok_head(this.data.current_pok_id);
+    }else{
+      wx.showToast({
+        title: '精灵中心排队中',
+      })
     }
-    wx.setStorageSync("pok_id_list", haved_pok)
-    wx.showToast({
-      title: '全部恢复',
-    })
-    //刷新当前精灵头像
-    this.refresh_pok_head(this.data.current_pok_id);
   },
+  //倒计时60秒
+  countDown:function (that, count) {
+    var pc_status = wx.getStorageSync("pc_status")
+    if (count == 0 || pc_status) {
+      that.setData({
+        timeCountDownTop: '0 ',
+        counting: false
+      })
+      wx.setStorageSync("pc_status", true)
+      return;
+    }
+  that.setData({
+      counting: true,
+      timeCountDownTop: count,
+    })
+  setTimeout(function() {
+      count--;
+      that.countDown(that, count);
+    }, 1000);
+},
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.countDown(this, 30);
     //将已有精灵转化为图签list
     util.refresh_pok_book()
     console.log(this.aes_Encrypt("你好{}"))

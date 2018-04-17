@@ -10,11 +10,12 @@
     "pages/book/book",
     "pages/initpok/initpok",
     "pages/map/map",
-    "pages/fight/fight"
+    "pages/fight/fight",
+    "pages/shop/shop"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#FFFF00",
+    "navigationBarBackgroundColor": "#FFCC03",
     "navigationBarTitleText": "口袋妖怪大作战",
     "navigationBarTextStyle": "black"
   }
