@@ -16,6 +16,12 @@ Page({
         url: '../home/home',
       })
     }else{
+      var ball_list = {}
+      ball_list["ball01"] = 10
+      ball_list["ball02"] = 0
+      ball_list["ball03"] = 0
+      ball_list["ball04"] = 0
+      wx.setStorageSync("ball_list", ball_list)
       wx.navigateTo({
         url: '../initpok/initpok',
       })
@@ -98,10 +104,12 @@ Page({
       wx.setStorageSync(app.globalData.today, "signin")
       wx.showToast({
         title: "经验糖：" + app.globalData.signin_gift_candy_count + " 精灵球：" + app.globalData.signin_gift_remain_count,
+        icon: "none"
       })
     } else {
       wx.showToast({
         title: '已签到',
+        icon: "none"
       })
     }
     this.setData({

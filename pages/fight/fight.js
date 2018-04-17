@@ -15,6 +15,7 @@ Page({
     current_hp : 0,
     current_pok_usedhp : 0,
     current_pok_hp_radio: 100,
+    ball_list_display : "none"
   },
   //刷新我的精灵list
   refresh_pok_list: function (haved_pok) {
@@ -95,7 +96,8 @@ Page({
     if (current_hp - current_pok_usedhp <= 0){
         wx.showToast({
           title: current_pok_name+'需要恢复',
-          duration: 1000
+          duration: 1000,
+          icon: "none"
         })
         return
     }
@@ -150,7 +152,8 @@ Page({
     if (this.data.current_pok_level==0){
       wx.showToast({
         title: '请选择出战精灵',
-        duration: 1000
+        duration: 1000,
+        icon: "none"
       })
       return
     }
@@ -164,6 +167,11 @@ Page({
       //我方攻击
       //计算我方对对方的攻击血量
       var usehp = this.get_damage(this.data.current_pok_level, this.data.current_att, this.data.tap_wild_def, this.data.current_pok_type1, this.data.current_pok_type2, this.data.tap_wild_pok_type1, this.data.tap_wild_pok_type2)
+      //展示攻击信息
+      wx.showToast({
+        title: '造成' + usehp +"点伤害",
+        icon: "none"
+      })
       //变更对方血量
       var wild_pok_list = wx.getStorageSync("wild_pok_list");
       for (var i in wild_pok_list){
@@ -200,7 +208,8 @@ Page({
         //回到地图页
         wx.showToast({
           title: '野生' + this.data.tap_wild_pok_name + "阵亡",
-          duration: 1000
+          duration: 1000,
+          icon: "none"
         })
         util.sleep(500)
         this.return_map()
@@ -220,6 +229,11 @@ Page({
     })
       //计算对方对我方的攻击血量
       var usehp = this.get_damage(this.data.tap_wild_pok_level, this.data.tap_wild_att, this.data.current_def, this.data.tap_wild_pok_type1, this.data.tap_wild_pok_type2, this.data.current_pok_type1, this.data.current_pok_type2)
+      //展示被攻击信息
+      wx.showToast({
+        title: '受到' + usehp + "点伤害",
+        icon: "none"
+      })
       //变更我方血量
       var haved_pok = util.get_self_pok();
       for (var i in haved_pok){
@@ -242,6 +256,7 @@ Page({
       if (current_pok_hp_radio <= 0){
         wx.showToast({
           title: '我的' + this.data.current_pok_name + "阵亡",
+          icon: "none"
         })
         util.sleep(500)
         //删除野外精灵数据
@@ -1013,6 +1028,90 @@ Page({
   },
   escape:function(){
     wx.navigateBack()
+  },
+  ball:function(){
+    //判断是否选择了精灵
+    if (this.data.current_pok_level == 0) {
+      wx.showToast({
+        title: '请选择出战精灵',
+        duration: 1000,
+        icon: "none"
+      })
+      return
+    }
+    //展示精灵球列表
+    this.setData({
+      ball_list_display: "block"
+    })
+  },
+  //消耗一个精灵球
+  expend_ball:function(ball_id){
+    var ball_list = wx.getStorageSync("ball_list")
+    if (ball_id == "ball1"){
+      ball_list["ball1"] = ball_list["ball1"] - 1
+    } else if (ball_id == "ball2") {
+      ball_list["ball2"] = ball_list["ball2"] - 1
+    } else if (ball_id == "ball3") {
+      ball_list["ball3"] = ball_list["ball3"] - 1
+    } else if (ball_id == "ball4") {
+      ball_list["ball4"] = ball_list["ball4"] - 1
+    }
+    wx.setStorageSync("ball_list", ball_list)
+  },
+  ball_catch:function(event){
+    var ball_id = event["currentTarget"]["dataset"]["ball_id"]
+    //获取精灵球列表数量
+    var ball_list = wx.getStorageSync("ball_list")
+    console.log(ball_id)
+    if (ball_id == "ball01"){
+      var ball_name = "精灵球"
+      var ball_catch_rate = 1
+      var ball_count = ball_list["ball01"]
+    } else if (ball_id == "ball02") {
+      var ball_name = "超级球"
+      var ball_catch_rate = 1.5
+      var ball_count = ball_list["ball02"]
+    } else if (ball_id == "ball03") {
+      var ball_name = "高级球"
+      var ball_catch_rate = 2
+      var ball_count = ball_list["ball03"]
+    } else if (ball_id == "ball04") {
+      var ball_name = "大师球"
+      var ball_catch_rate = 255
+      var ball_count = ball_list["ball04"]
+    }
+    var that = this
+    wx.showModal({
+      title: ball_name + "剩余：" + ball_count,
+      content: '确定使用' + ball_name + "捕捉吗?",
+      success: function (sm) {
+        if (sm.confirm) {
+          //判断是否还有精灵球
+          if (ball_count <= 0){
+            wx.showToast({
+              title: '数量不足',
+              icon:"none"
+            })
+          }else{
+            //开始捕捉
+            //特效
+            //(4 * maxhp - 2 * currenthp) * rate * ball / maxhp + 1 
+            var seed = util.randomNum(1,255)
+            var tap_wild_crrent_hp = parseInt(that.data.tap_wild_hp) - parseInt(that.data.tap_wild_pok_usedhp)
+            if (tap_wild_crrent_hp <= 0) { that.return_map(); return }
+            var catch_rate = (4 * parseFloat(that.data.tap_wild_hp) - 2 * parseFloat(tap_wild_crrent_hp)) * parseFloat(that.data.tap_wild_catch_rate) * parseFloat(ball_catch_rate) / parseFloat(that.data.tap_wild_hp) + 1
+            console.log("catch_rate " + catch_rate)
+            if (seed < catch_rate){
+              console.log("捕捉成功")
+            }else{
+              console.log("捕捉失败")
+            }
+          }
+        } else if (sm.cancel) {
+          console.log("cancel")
+        }
+      }
+    });
   },
   /**
    * 生命周期函数--监听页面加载

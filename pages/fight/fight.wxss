@@ -15,9 +15,12 @@
 .myhead{left: 10rpx;top: 0rpx;}
 .g_zd{text-align: right;font-size: 26rpx;}
 
+.ball{display: flex}
+.ball_img{width: 188rpx;height: 188rpx}
+
 .my_pok_list{
   width: 100%;
-  height: 180rpx;
+  height: 150rpx;
   position: fixed;
   bottom: 10rpx;
   background-color: #fff;
@@ -33,10 +36,10 @@
   width: 126rpx;
   height: 126rpx;
   text-align: center;
-  margin-top: 15rpx;
+  margin-top: 10rpx;
 }
 
-.g_button{width: 100%;overflow: hidden;margin-top: 90rpx}
+.g_button{width: 100%;overflow: hidden;margin-top: 50rpx}
 .g_bu01{width: 33%;height: 50rpx;border-radius: 10rpx;float: left;display:inline-block;text-align:center;}
 #g_fc{position: fixed;top: 0;bottom: 0;left: 0;right: 0;margin: auto;background-color: rgba(0, 0, 0, 0.8);}
 

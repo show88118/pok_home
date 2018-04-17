@@ -38,9 +38,15 @@
   </view>
 </view>
 <view class='g_button'>
-  <view class='g_bu01'>捕捉</view>
   <view class='g_bu01' bindtap='escape'>逃跑</view>
+  <view class='g_bu01' bindtap="ball">捕捉</view>
   <view class='g_bu01' bindtap='current_start_fight'>攻击</view>
+</view>
+<view class='ball' style='display:{{ball_list_display}}'>
+<image class="ball_img" src="/assets/images/ball/ball_1.png" bindtap='ball_catch' data-ball_id="ball01"></image>
+<image class="ball_img" src="/assets/images/ball/ball_2.png" bindtap='ball_catch' data-ball_id="ball02"></image>
+<image class="ball_img" src="/assets/images/ball/ball_3.png" bindtap='ball_catch' data-ball_id="ball03"></image>
+<image class="ball_img" src="/assets/images/ball/ball_4.png" bindtap='ball_catch' data-ball_id="ball04"></image>
 </view>
 <view class="my_pok_list">
 <view class="s_1" style='width: {{my_pok_list_width}}rpx;'>
