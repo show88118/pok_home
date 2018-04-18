@@ -10,7 +10,12 @@ Page({
    */
   data: {
     aes_key : aes.CryptoJS.enc.Utf8.parse("1989022819900212"),
-    aes_iv: aes.CryptoJS.enc.Utf8.parse('2016092420160924')
+    aes_iv: aes.CryptoJS.enc.Utf8.parse('2016092420160924'),
+    fire:0,
+    electric:0,
+    grass:0,
+    water:0,
+    moon:0
   },
   load_trainer:function(){
     this.setData({
@@ -19,7 +24,7 @@ Page({
   },
   bind_my_pok: function () {
     //判断日期
-    if (parseInt(this.get_today()) > 20180413) {
+    if (parseInt(this.get_today()) > 20180423) {
       console.log("open")
     } else {
       wx.showToast({
@@ -34,7 +39,7 @@ Page({
   },
   poke_map: function () {
     //判断日期
-    if (parseInt(this.get_today()) > 20180413) {
+    if (parseInt(this.get_today()) > 20180423) {
       console.log("open")
     } else {
       wx.showToast({
@@ -50,7 +55,7 @@ Page({
   },
   poke_transfer: function () {
     //判断日期
-    if (parseInt(this.get_today()) > 20180413) {
+    if (parseInt(this.get_today()) > 20180423) {
       console.log("open")
     } else {
       wx.showToast({
@@ -1073,6 +1078,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var signin_status = wx.getStorageSync(this.get_today());
+    if (signin_status == undefined || signin_status == "") {
+      wx.showToast({
+        title: '首次转发得糖果',
+        icon: "none"
+      })
+    }
     this.countDown(this, 30);
     //将已有精灵转化为图签list
     util.refresh_pok_book()
@@ -1080,8 +1092,7 @@ Page({
     var haved_pok = util.get_self_pok();
     var haved_pok_count = haved_pok.length
     if (haved_pok_count == 0) {
-      //赠送御三家
-      var haved_pok = [{ "id": "001", "growup": 50, "level": 1, "idx": "1", "usedhp": 0, "sex": 1, "master": wx.getStorageSync("user"), "exp": 0 }]
+      wx.navigateBack()
     }
     //倒序排列我的精灵
     haved_pok = haved_pok.reverse()
@@ -1123,6 +1134,11 @@ Page({
   onShow: function () {
     //获取我的精灵
     var haved_pok = util.get_self_pok();
+    var haved_pok_count = haved_pok.length
+    if (haved_pok_count == 0) {
+      wx.navigateBack()
+      return
+    }
     //获取candy个数
     var candy_count = wx.getStorageSync("candy_count")
     if (candy_count == "") { candy_count=0}
@@ -1179,6 +1195,63 @@ Page({
     this.refresh_pok_head(near_pok_idx);
     //获取我的精灵列表数据
     this.refresh_pok_list(haved_pok);
+    if (["075", "093", "067", "064"].indexOf(current_pok_id) >= 0 && current_pok_master == "other"){
+      //触发通信进化
+      //抖动动效
+      this.setData({ pok_head_id: "shake" })
+      util.sleep(1000)
+      this.setData({ pok_head_id: "stop" })
+      this.setData({ pok_head_id: "shake" })
+      util.sleep(1000)
+      this.setData({ pok_head_id: "stop" })
+      this.setData({ pok_head_id: "shake" })
+      util.sleep(1000)
+      this.setData({ pok_head_id: "stop" })
+      this.setData({ pok_head_id: "twinkle" })
+      //
+      //进化，变更pok的id和usehp
+      var haved_pok = util.get_self_pok();
+      for (var i in haved_pok){
+        if (haved_pok[i]["idx"] == current_pok_idx){
+          haved_pok[i]["id"] = this.int_pok_id_to_str(parseInt(current_pok_id) + 1)
+          this.setData({
+            current_pok_id: haved_pok[i]["id"],
+          })
+        }
+      }
+      //将已有精灵转化为图签list
+      util.refresh_pok_book()
+      //haved_pok入库
+      wx.setStorageSync("pok_id_list", haved_pok)
+      //将已有精灵转化为图签list
+      util.refresh_pok_book()
+      //倒序排列我的精灵
+      haved_pok = haved_pok.reverse()
+      //设置当前精灵数据
+      var current_pok_id = this.data.current_pok_id
+      var current_pok_idx = this.data.current_pok_idx
+      var current_pok_level = this.data.current_pok_level
+      var current_pok_growup = this.data.current_pok_growup
+      var current_pok_usedhp = this.data.current_pok_usedhp
+      var current_pok_sex = this.data.current_pok_sex
+      var current_pok_master = this.data.current_pok_master
+      var current_pok_exp = this.data.current_pok_exp
+      this.setData({
+        haved_pok: haved_pok,
+        current_pok_idx: current_pok_idx,
+        current_pok_id: current_pok_id,
+        current_pok_level: current_pok_level,
+        current_pok_growup: current_pok_growup,
+        current_pok_usedhp: current_pok_usedhp,
+        current_pok_sex: current_pok_sex,
+        current_pok_master: current_pok_master,
+        current_pok_exp: current_pok_exp
+      })
+      //获取头像部分数据
+      this.refresh_pok_head(current_pok_id);
+      //获取我的精灵列表数据
+      this.refresh_pok_list(haved_pok);
+    }
   },
 
   /**
@@ -1213,10 +1286,46 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+    var that = this
     return {
       title: '这是我的' + this.data.pok_name + "!",
       path: 'pages/index/index',//分享的页面地址
       //imageUrl: '/assets/images/mini/' + this.data.pok_num + ".png",
+      success:function(res){
+        var signin_status = wx.getStorageSync(that.get_today());
+        if (signin_status == undefined || signin_status == "") {
+          wx.setStorageSync(that.get_today(), "signin")
+          //增加经验糖果
+          var candy_count = wx.getStorageSync("candy_count");
+          candy_count = candy_count + 30
+          wx.setStorageSync("candy_count", candy_count)
+          that.setData({
+            candy_count: candy_count
+          })
+          wx.showToast({
+            title: '分享获得30糖果',
+            icon:"none"
+          })
+        }
+      }
     }
+  },
+  get_today: function () {
+    var timestamp = Date.parse(new Date());
+    var date = new Date(timestamp);
+    //年  
+    var Y = date.getFullYear();
+    //月  
+    var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
+    //日  
+    var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+    //时  
+    var h = date.getHours();
+    //分  
+    var m = date.getMinutes();
+    //秒  
+    var s = date.getSeconds();
+    //console.log("当前时间：" + Y + M + D + h + ":" + m + ":" + s);  
+    return Y + M + D
   }
 })

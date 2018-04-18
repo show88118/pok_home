@@ -11,10 +11,10 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
-  <view bindtap='signin' class="signin">
+  <!-- <view bindtap='signin' class="signin">
   <text class="signin_text">signin</text>
   <image src="/assets/images/head/{{random_pok_id2}}.png" class="signin_img" id="{{signin_img_id}}"></image>
-  </view>
+  </view> -->
   <view catchtap="click_start" class="usermotto">
     <text class="user-motto">{{motto}}</text>
   </view>

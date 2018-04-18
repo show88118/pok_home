@@ -485,6 +485,11 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+    var that = this
+    return {
+      title: '我附近发现了稀有的口袋妖怪!',
+      path: 'pages/index/index',//分享的页面地址
+      //imageUrl: '/assets/images/mini/' + this.data.pok_num + ".png",
+    }
   }
 })

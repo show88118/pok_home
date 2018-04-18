@@ -13,14 +13,93 @@ Page({
     wx.scanCode({
       success: (res) => {
         var data = res.result;
-        console.log(data)
-        data = that.aes_Decrypt(data)
-        console.log(data)
-        that.setData({
-          rev_data:data
-        })
+        var rev_data = that.aes_Decrypt(data)
+        if (rev_data.indexOf("transfer_pok") < 0) {
+          wx.showToast({
+            title: '无效二维码',
+            icon: "none"
+          })
+          return
+        }
+        var rev_data_list = rev_data.split("|")
+        var transfer_type = rev_data_list[0]
+        var transfer_time = rev_data_list[1]
+        var transfer_pok_info = rev_data_list[2]
+        //transfer_pok|1524056869379|1,004,1,60,8,1,,0
+        console.log(transfer_type)
+        console.log(transfer_time)
+        console.log(transfer_pok_info)
+        var last_transfer_time = wx.getStorageSync("last_transfer_time")
+        if (last_transfer_time == "" || last_transfer_time == undefined){
+        }else{
+          if (parseInt(last_transfer_time) == parseInt(transfer_time)){
+            wx.showToast({
+              title: '该精灵已被接收',
+              icon:"none"
+            })
+            return
+          }
+        }
+        
+        //判断传输类型
+        if (transfer_type == "transfer_pok"){
+          var now_time = new Date().getTime()
+
+          if (now_time - parseInt(transfer_time) > 30*60*1000){
+            wx.showToast({
+              title: '已逃跑',
+              icon: "none"
+            })
+            return
+          }else{
+            //成功接收精灵
+            //更新最后传输时间
+            wx.setStorageSync("last_transfer_time", transfer_time)
+            var rev_pok_info = transfer_pok_info.split(",")
+            var rev_pok_id = rev_pok_info[1]
+            var rev_pok_level = parseInt(rev_pok_info[2])
+            var rev_pok_growup = parseInt(rev_pok_info[3])
+            var rev_pok_usedhp = parseInt(rev_pok_info[4])
+            var rev_pok_sex = parseInt(rev_pok_info[5])
+            var rev_pok_master = rev_pok_info[6]
+            var rev_pok_exp = parseInt(rev_pok_info[7])
+            //通信精灵加入我的精灵列表
+            var haved_pok = util.get_self_pok();
+            var max_pok_idx = 0
+            for (var i in haved_pok) {
+              var i_idx = parseInt(haved_pok[i]["idx"])
+              if (i_idx > max_pok_idx) {
+                max_pok_idx = i_idx
+              }
+            }
+            var my_pok = {}
+            my_pok["idx"] = (max_pok_idx + 1).toString()
+            my_pok["id"] = rev_pok_id
+            my_pok["level"] = rev_pok_level
+            my_pok["growup"] = rev_pok_growup
+            my_pok["usedhp"] = rev_pok_usedhp
+            my_pok["sex"] = rev_pok_sex
+            my_pok["master"] = "other"
+            my_pok["exp"] = rev_pok_exp
+            //保存刷新到我的精灵
+            haved_pok.push(my_pok)
+            wx.setStorageSync("pok_id_list", haved_pok)
+            that.refresh_pok_list()
+            //通信进化
+            if (["075", "093", "067", "064"].indexOf(rev_pok_id) >= 0){
+              wx.navigateBack()
+            }else{
+              wx.showToast({
+                title: '通信成功',
+                icon:"none"
+              })
+            }
+          }
+        }
         }
     });
+    
+    console.log(that.data.rev_data)
   },
   //刷新我的精灵list
   refresh_pok_list: function () {
@@ -79,7 +158,7 @@ Page({
     var that = this;
     wx.showModal({
       title: "通信" + pok_name + "cp:" + current_pok_growup,
-      content: "30分钟内必须有训练家接收，否则口袋妖怪将逃走",
+      content: "30分钟内必须有训练家接收,否则口袋妖怪将逃走,无法撤销",
       success: function (sm) {
         if (sm.confirm) {
           //生成密文精灵数据
@@ -87,6 +166,18 @@ Page({
           console.log(qr_content)
           //console.log(transfer_data)
           that.create_qr(qr_content)
+          //将本地精灵移除
+          var haved_pok = util.get_self_pok();
+          for (var i in haved_pok) {
+            if (haved_pok[i]["idx"] == current_pok_idx) {
+              haved_pok.splice(i, 1)
+            }
+          }
+          //haved_pok入库
+          wx.setStorageSync("pok_id_list", haved_pok)
+          //倒序排列我的精灵
+          haved_pok = haved_pok.reverse()
+          that.refresh_pok_list(haved_pok);
         } else if (sm.cancel) {
           console.log("cancel")
         }

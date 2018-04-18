@@ -24,8 +24,8 @@
   margin-left: 50%
 }
 
-.rev_img{width:126rpx;height: 126rpx;position: fixed;bottom: 50rpx; left: 320rpx;}
-.rev_text{font-size: 26rpx;position: fixed;bottom: 10rpx;left: 305rpx;font-weight: 800}
+.rev_img{width:126rpx;height: 126rpx;position: fixed;bottom: 80rpx; left: 320rpx;}
+.rev_text{font-size: 26rpx;position: fixed;bottom: 40rpx;left: 305rpx;font-weight: 800}
 
 
 
@@ -39,7 +39,7 @@
   width: 100%;
   height: 180rpx;
   position: fixed;
-  bottom: 190rpx;
+  bottom: 240rpx;
   background-color: #fff;
   overflow-x:auto;
   overflow-y: hidden;

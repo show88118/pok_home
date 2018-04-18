@@ -33,12 +33,11 @@ App({
       }
     })
     //启动播放音乐
-    // wx.playBackgroundAudio({
-    //   dataUrl: 'https://github.com/show88118/pok_home/blob/master/assets/files/bgm.MP3?raw=true',
-    //   title: '口袋妖怪大作战',
-    //   coverImgUrl: 'https://raw.githubusercontent.com/show88118/pok_home/master/assets/images/home.png'
-    // })
-    // this.globalData.bg_play = true;
+    wx.playBackgroundAudio({
+      dataUrl: 'https://github.com/show88118/pok_home/blob/master/assets/files/bgm.MP3?raw=true',
+      title: '口袋妖怪大作战',
+    })
+    this.globalData.bg_play = true;
   },
   globalData: {
     signin_gift_remain_count: 5,

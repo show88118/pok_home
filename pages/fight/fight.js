@@ -1027,7 +1027,18 @@ Page({
     return type_effect
   },
   escape:function(){
-    wx.navigateBack()
+    wx.showModal({
+      title: this.data.pok_name,
+      content: '确定要逃跑吗？',
+      success: function (sm) {
+        if (sm.confirm) {
+          wx.navigateBack()
+        } else if (sm.cancel) {
+          console.log("cancel")
+        }
+      }
+    });
+    
   },
   ball:function(){
     //判断是否选择了精灵
