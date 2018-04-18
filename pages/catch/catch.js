@@ -130,7 +130,6 @@ Page({
           max_pok_idx = i_idx
         }
       }
-      //console.log(max_pok_idx)
     }
     if (haved_pok_length == 0){
       haved_pok = []

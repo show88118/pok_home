@@ -1047,14 +1047,14 @@ Page({
   //消耗一个精灵球
   expend_ball:function(ball_id){
     var ball_list = wx.getStorageSync("ball_list")
-    if (ball_id == "ball1"){
-      ball_list["ball1"] = ball_list["ball1"] - 1
-    } else if (ball_id == "ball2") {
-      ball_list["ball2"] = ball_list["ball2"] - 1
-    } else if (ball_id == "ball3") {
-      ball_list["ball3"] = ball_list["ball3"] - 1
-    } else if (ball_id == "ball4") {
-      ball_list["ball4"] = ball_list["ball4"] - 1
+    if (ball_id == "ball01"){
+      ball_list["ball01"] = ball_list["ball01"] - 1
+    } else if (ball_id == "ball02") {
+      ball_list["ball02"] = ball_list["ball02"] - 1
+    } else if (ball_id == "ball03") {
+      ball_list["ball03"] = ball_list["ball03"] - 1
+    } else if (ball_id == "ball04") {
+      ball_list["ball04"] = ball_list["ball04"] - 1
     }
     wx.setStorageSync("ball_list", ball_list)
   },
@@ -1092,19 +1092,69 @@ Page({
               title: '数量不足',
               icon:"none"
             })
+            return
           }else{
             //开始捕捉
+            that.expend_ball(ball_id)
             //特效
-            //(4 * maxhp - 2 * currenthp) * rate * ball / maxhp + 1 
+            that.setData({
+              tap_wild_pok_animation:"waggle",
+              tap_wild_pok_head: "/assets/images/ball/" + ball_id+".png"
+            })
+            util.sleep(4500)
+            that.setData({
+              tap_wild_pok_animation: "stop"
+            })
+            //(4 * maxhp - 2 * currenthp) * rate * ball / maxhp + 1
             var seed = util.randomNum(1,255)
+            console.log("seed"+seed)
             var tap_wild_crrent_hp = parseInt(that.data.tap_wild_hp) - parseInt(that.data.tap_wild_pok_usedhp)
             if (tap_wild_crrent_hp <= 0) { that.return_map(); return }
-            var catch_rate = (4 * parseFloat(that.data.tap_wild_hp) - 2 * parseFloat(tap_wild_crrent_hp)) * parseFloat(that.data.tap_wild_catch_rate) * parseFloat(ball_catch_rate) / parseFloat(that.data.tap_wild_hp) + 1
+            var catch_rate = (4 * parseFloat(that.data.tap_wild_hp) - 2 * parseFloat(tap_wild_crrent_hp)) * parseFloat(that.data.tap_wild_catch_rate) * parseFloat(ball_catch_rate) / 3 / parseFloat(that.data.tap_wild_hp) + 1
             console.log("catch_rate " + catch_rate)
             if (seed < catch_rate){
-              console.log("捕捉成功")
+              wx.showToast({
+                title: '捕捉成功',
+                icon: "none"
+              })
+              //野生精灵加入我的精灵列表
+              var haved_pok = util.get_self_pok();
+              var wild_pok_list = wx.getStorageSync("wild_pok_list");
+              var catch_pok = {}
+              var max_pok_idx = 0
+              for (var i in haved_pok) {
+                var i_idx = parseInt(haved_pok[i]["idx"])
+                if (i_idx > max_pok_idx) {
+                  max_pok_idx = i_idx
+                }
+              }
+              catch_pok["id"] = app.globalData.tap_wild_pok_id
+              catch_pok["idx"] = (parseInt(max_pok_idx) + 1).toString()
+              catch_pok["level"] = app.globalData.tap_wild_pok_level
+              catch_pok["growup"] = app.globalData.tap_wild_pok_growup
+              catch_pok["usedhp"] = app.globalData.tap_wild_pok_usedhp
+              catch_pok["sex"] = app.globalData.tap_wild_pok_sex
+              catch_pok["master"] = app.globalData.tap_wild_pok_master
+              catch_pok["exp"] = app.globalData.tap_wild_pok_exp
+              //删除野外精灵数据
+              for (var i in wild_pok_list) {
+                if (parseInt(wild_pok_list[i]["wild_pok_idx"]) == parseInt(app.globalData.tap_wild_pok_idx)) {
+                  wild_pok_list.splice(i, 1)
+                }
+              }
+              wx.setStorageSync("wild_pok_list", wild_pok_list)
+              //入库
+              haved_pok.push(catch_pok)
+              wx.setStorageSync("pok_id_list", haved_pok)
+              that.return_map()
             }else{
-              console.log("捕捉失败")
+              wx.showToast({
+                title: '捕捉失败',
+                icon: "none"
+              })
+              that.setData({
+                tap_wild_pok_head: app.globalData.tap_wild_pok_head
+              })
             }
           }
         } else if (sm.cancel) {

@@ -103,7 +103,7 @@ Page({
       wx.setStorageSync("candy_count", candy_count)
       wx.setStorageSync(app.globalData.today, "signin")
       wx.showToast({
-        title: "经验糖：" + app.globalData.signin_gift_candy_count + " 精灵球：" + app.globalData.signin_gift_remain_count,
+        title: "获得经验糖：" + app.globalData.signin_gift_candy_count,
         icon: "none"
       })
     } else {

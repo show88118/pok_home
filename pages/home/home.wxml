@@ -9,7 +9,9 @@
       <view class="pok_idx"><image bindtap="pok_book" class="pok_idx_img" src="/assets/images/pokedex.png" background-size="cover"></image></view>
       <view class="ball"><image bindtap="bind_my_pok" class="ball_img" src="/assets/images/pokeball.png"   background-size="cover"></image></view>
       <view class="pokemap"><image bindtap="poke_map" class="pokemap_img" src="/assets/images/pokemap.png"   background-size="cover"></image></view>
-      
+      <view class="pok_idx_img_name">图鉴</view>
+      <view class="pokemap_img_name">地图</view>
+      <view class="ball_img_name">商店</view>
 </view>
 <view>
 <view class="pok_name">

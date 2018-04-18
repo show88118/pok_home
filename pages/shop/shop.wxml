@@ -1,2 +1,36 @@
 <!--pages/shop/shop.wxml-->
-<text>pages/shop/shop.wxml</text>
+<view>
+<view>
+
+
+</view>
+<view class="candy">
+<image class="candy_img" src="/assets/images/props/candy.png"></image>
+</view>
+<view class="candy_count">x{{candy_count}}</view>
+<view class='ball_img_list' style='display:{{ball_list_display}}'>
+<image class="ball_img" src="/assets/images/ball/ball01.png" bindtap='buy_ball01' data-ball_id="ball01"></image>
+<image class="ball_img" src="/assets/images/ball/ball02.png" bindtap='buy_ball02' data-ball_id="ball02"></image>
+<image class="ball_img" src="/assets/images/ball/ball03.png" bindtap='buy_ball03' data-ball_id="ball03"></image>
+<image class="ball_img" src="/assets/images/ball/ball04.png" bindtap='buy_ball04' data-ball_id="ball04"></image>
+<view class='ball_count_list'>
+<text class="ball_count1"  bindtap='buy_ball01'>x{{ball01}}</text>
+<text class="ball_count2"  bindtap='buy_ball02'>x{{ball02}}</text>
+<text class="ball_count3"  bindtap='buy_ball03'>x{{ball03}}</text>
+<text class="ball_count4"  bindtap='buy_ball04'>x{{ball04}}</text>
+</view>
+</view>
+<view class='ball_price1' bindtap='buy_ball01'>
+<text class="ball_price1_text">10</text><image class="ball_price1_img" src="/assets/images/props/candy.png"></image>
+</view>
+<view class='ball_price2'  bindtap='buy_ball02'>
+<text class="ball_price2_text">20</text><image class="ball_price2_img" src="/assets/images/props/candy.png"></image>
+</view>
+<view class='ball_price3'  bindtap='buy_ball03'>
+<text class="ball_price3_text">50</text><image class="ball_price3_img" src="/assets/images/props/candy.png"></image>
+</view>
+<view class='ball_price4'  bindtap='buy_ball04'>
+<text class="ball_price4_text">1000</text><image class="ball_price4_img" src="/assets/images/props/candy.png"></image>
+</view>
+
+</view>

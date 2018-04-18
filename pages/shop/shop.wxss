@@ -1,1 +1,25 @@
 /* pages/shop/shop.wxss */
+.ball_img_list{display: flex;position: fixed;bottom:70rpx;left: 7rpx}
+.ball_img{width: 187rpx;height: 187rpx;}
+.ball_count_list{display: flex;}
+.ball_count1{font-size: 24rpx;position: fixed;left: 75rpx;bottom: 45rpx}
+.ball_count2{font-size: 24rpx;position: fixed;left: 260rpx;bottom: 45rpx}
+.ball_count3{font-size: 24rpx;position: fixed;right: 263rpx;bottom: 45rpx}
+.ball_count4{font-size: 24rpx;position: fixed;right: 75rpx;bottom: 45rpx}
+
+.candy{position: fixed;left: 300rpx}
+.candy_img{width: 150rpx;height: 150rpx;position: fixed;}
+.candy_count{font-size: 24rpx;position: fixed;top: 150rpx;left: 340rpx;}
+
+
+.ball_price1_img{width: 40rpx;height: 40rpx;position: fixed;bottom: 236rpx;left: 100rpx;}
+.ball_price2_img{width: 40rpx;height: 40rpx;position: fixed;bottom: 236rpx;left: 290rpx;}
+.ball_price3_img{width: 40rpx;height: 40rpx;position: fixed;bottom: 236rpx;left: 480rpx;}
+.ball_price4_img{width: 40rpx;height: 40rpx;position: fixed;bottom: 236rpx;left: 680rpx;}
+.ball_price1{font-size: 24rpx;position: fixed;bottom: 240rpx;left: 62rpx;}
+.ball_price2{font-size: 24rpx;position: fixed;bottom: 240rpx;left: 250rpx;}
+.ball_price3{font-size: 24rpx;position: fixed;bottom: 240rpx;left: 440rpx;}
+.ball_price4{font-size: 24rpx;position: fixed;bottom: 240rpx;left: 620rpx;}
+page{
+  background-color: #FFEB9A
+}

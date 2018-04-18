@@ -18,13 +18,19 @@ Page({
     })
   },
   bind_my_pok: function () {
-    wx.showToast({
-      title: '暂未开放',
-      icon: "none"
+    //判断日期
+    if (parseInt(this.get_today()) > 20180413) {
+      console.log("open")
+    } else {
+      wx.showToast({
+        title: '暂未开放',
+        icon: "none"
+      })
+      return
+    }
+    wx.navigateTo({
+      url: '../shop/shop',
     })
-    // wx.navigateTo({
-    //   url: '../shop/shop',
-    // })
   },
   poke_map: function () {
     //判断日期

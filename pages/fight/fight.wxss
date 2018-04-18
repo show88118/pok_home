@@ -16,7 +16,7 @@
 .g_zd{text-align: right;font-size: 26rpx;}
 
 .ball{display: flex}
-.ball_img{width: 188rpx;height: 188rpx}
+.ball_img{width: 187rpx;height: 187rpx}
 
 .my_pok_list{
   width: 100%;
@@ -70,5 +70,17 @@
 0%   {opacity: 1;}
 30%   {opacity: 1;transform: translate(10rpx,0);}
 60% {opacity: 1;transform: translate(-10rpx,0);}
+0% {opacity: 1;}
+} 
+
+#waggle{
+  animation:waggle linear 1.2s forwards;animation-delay: 0.0s;opacity: 1;animation-iteration-count: 3;
+}
+ 
+@keyframes waggle
+{
+0%   {opacity: 1;}
+60%   {opacity: 1;transform: translate(25rpx,0);}
+86% {opacity: 1;transform: translate(-25rpx,0);}
 0% {opacity: 1;}
 } 
