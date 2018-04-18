@@ -6,5 +6,13 @@
 </view>
 <!-- <view hidden="{{maskHidden}}" class="mask"></view> -->
 <view class="canvas-box">
-<button class="qrcode-btn" bindtap="callQRcode">扫一扫</button>
+<image src="/assets/images/rev.png" class="rev_img" bindtap="callQRcode"></image>
+<text class="rev_text">接收口袋妖怪</text>
+</view>
+<!-- my_pok -->
+<view class="my_pok_list">
+<view class="s_1" style='width: {{my_pok_list_width}}rpx;'>
+<image class="my_pok" bindtap='change_head' bindlongtap='change_idx' data-idx="{{my_pok[0]}}" wx:key="{{my_pok[0]}}" wx:for="{{my_pok_list_mini}}" wx:for-item="my_pok" src="{{my_pok[2]}}">
+</image>
+</view>
 </view>

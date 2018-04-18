@@ -1,4 +1,6 @@
 // pages/shop/shop.js
+var util = require('../../utils/util.js');
+const app = getApp()
 Page({
 
   /**
@@ -141,7 +143,66 @@ Page({
       }
     });
   },
-
+random_evo_stone:function(){
+  //获取我的经验糖数量
+  var candy_count = wx.getStorageSync("candy_count")
+  if (candy_count < 100){
+    wx.showToast({
+      title: '经验糖不足',
+      icon:"none"
+    })
+    return
+  }
+  var that = this
+  wx.showModal({
+    title: "进化石",
+    content: '花费100经验糖购买随机进化石？',
+    success: function (sm) {
+      if (sm.confirm) {
+        //获取我的进化石列表
+        var evo_stone_list = wx.getStorageSync("evo_stone_list")
+        var seed = util.randomNum(1, 5)
+        if (seed == 1) {
+          evo_stone_list["fire"] = evo_stone_list["fire"] + 1
+          wx.showToast({
+            title: '获得火之石',
+            icon: "none"
+          })
+        } else if (seed == 2) {
+          evo_stone_list["water"] = evo_stone_list["water"] + 1
+          wx.showToast({
+            title: '获得水之石',
+            icon: "none"
+          })
+        } else if (seed == 3) {
+          evo_stone_list["grass"] = evo_stone_list["grass"] + 1
+          wx.showToast({
+            title: '获得叶之石',
+            icon: "none"
+          })
+        } else if (seed == 4) {
+          evo_stone_list["electric"] = evo_stone_list["electric"] + 1
+          wx.showToast({
+            title: '获得雷之石',
+            icon: "none"
+          })
+        } else if (seed == 5) {
+          evo_stone_list["moon"] = evo_stone_list["moon"] + 1
+          wx.showToast({
+            title: '获得月之石',
+            icon: "none"
+          })
+        }
+        wx.setStorageSync("evo_stone_list", evo_stone_list)
+        candy_count = candy_count - 100
+        wx.setStorageSync("candy_count", candy_count)
+      } else if (sm.cancel) {
+        return
+      }
+    }
+  });
+ 
+},
 
   /**
    * 生命周期函数--监听页面加载

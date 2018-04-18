@@ -202,8 +202,8 @@ Page({
   seed_create_pok_id: function (seed){
     var seed = parseInt(seed)
     if (seed == 10000) {
-      //梦幻
-      var pok_id = 151;
+      //梦幻不出了、改为超梦
+      var pok_id = 150;
     } else if (seed == 9999) {
       //超梦
       var pok_id = 150;

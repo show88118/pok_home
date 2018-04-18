@@ -33,4 +33,15 @@
 <text class="ball_price4_text">1000</text><image class="ball_price4_img" src="/assets/images/props/candy.png"></image>
 </view>
 
+<view class="evo_stone_list" bindtap='random_evo_stone'>
+<image src="/assets/images/props/fire_stone.png" class="evo_stone_img"></image>
+<image src="/assets/images/props/water_stone.png" class="evo_stone_img"></image>
+<image src="/assets/images/props/grass_stone.png" class="evo_stone_img"></image>
+<image src="/assets/images/props/electric_stone.png" class="evo_stone_img"></image>
+<image src="/assets/images/props/moon_stone.png" class="evo_stone_img"></image>
+</view>
+
+<text class="evo_price">100</text><image class="evo_price_img" src="/assets/images/props/candy.png"></image>
+<text class = "random">随机进化石</text>
+
 </view>

@@ -1,6 +1,6 @@
 /**index.wxss**/
   page{
-  background-image: url("https://raw.githubusercontent.com/show88118/pok_home/master/assets/images/home.png?123");
+  background-image: url("https://github.com/show88118/pokdata/blob/master/home.png?raw=true");
   background-repeat: no-repeat;
   background-size: 750rpx 1500rpx;
 }  

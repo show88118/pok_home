@@ -48,6 +48,22 @@ Page({
       url: '../map/map',
     })
   },
+  poke_transfer: function () {
+    //判断日期
+    if (parseInt(this.get_today()) > 20180413) {
+      console.log("open")
+    } else {
+      wx.showToast({
+        title: '暂未开放',
+        icon: "none"
+      })
+      return
+    }
+    this.set_current_pok()
+    wx.navigateTo({
+      url: '../qr/qr',
+    })
+  },
   pok_book: function () {
     wx.navigateTo({
       url: '../book/book',
@@ -237,18 +253,6 @@ Page({
       current_pok_sex_color: current_pok_sex_color
     })
   },
-  aes_Encrypt: function (word) {
-    var srcs = aes.CryptoJS.enc.Utf8.parse(word);
-    var encrypted = aes.CryptoJS.AES.encrypt(srcs, this.data.aes_key, { iv: this.data.aes_iv, mode: aes.CryptoJS.mode.CBC, padding: aes.CryptoJS.pad.Pkcs7 });
-    return encrypted.ciphertext.toString().toUpperCase();
-  },
-  aes_Decrypt: function (word) {
-    var encryptedHexStr = aes.CryptoJS.enc.Hex.parse(word);
-    var srcs = aes.CryptoJS.enc.Base64.stringify(encryptedHexStr);
-    var decrypt = aes.CryptoJS.AES.decrypt(srcs, this.data.aes_key, { iv: this.data.aes_iv, mode: aes.CryptoJS.mode.CBC, padding: aes.CryptoJS.pad.Pkcs7 });
-    var decryptedStr = decrypt.toString(aes.CryptoJS.enc.Utf8);
-    return decryptedStr.toString();
-  },
   eat_candy: util.throttle(function(){
     //闪烁动效
     this.setData({ candy_id:"twinkle2"})
@@ -283,7 +287,7 @@ Page({
         icon: "none"
       })
     }
-  }, 500),
+  }, 700),
   //吃经验糖
   eat_exp:function(){
     //设置当前精灵数据
@@ -316,6 +320,9 @@ Page({
             current_pok_level: haved_pok[i]["level"]
           })
           //判断是否进化
+          if (evolution_level == "无" || evolution_level == "通信" || evolution_level == "火之石" || evolution_level == "水之石" || evolution_level == "叶之石" || evolution_level == "雷之石" || evolution_level == "月之石" || evolution_level == "水、雷、火之石"){
+            evolution_level = 101
+          }
           if (haved_pok[i]["level"] >= parseInt(evolution_level)){
             var that = this
             //抖动动效
@@ -567,6 +574,501 @@ Page({
     //console.log("当前时间：" + Y + M + D + h + ":" + m + ":" + s);  
     return Y + M + D
   },
+  eat_evo_stone:function(event){
+    var evo_stone_list = wx.getStorageSync("evo_stone_list")
+    //获取我拥有的精灵
+    var haved_pok = util.get_self_pok();
+    var that = this
+    var evo_type = event["currentTarget"]["dataset"]["type"]
+    var pok_evo_info = this.get_evolution_level(this.data.current_pok_id)
+    var pok_id = pok_evo_info[0]
+    var pok_evo = pok_evo_info[1]
+    console.log(pok_evo)
+    console.log(evo_type)
+    //判断是否有该进化石
+    if (evo_stone_list[evo_type] <= 0){
+      wx.showToast({
+        title: '进化石不足',
+        icon:"none"
+      })
+      return
+    }
+    if (evo_type == "fire" && pok_evo=="火之石"){
+      //火之石进化
+      wx.showModal({
+        title: "火之石",
+        content: '确定进化吗？',
+        success: function (sm) {
+          if (sm.confirm) {
+            wx.vibrateLong()
+            //抖动动效
+            that.setData({ pok_head_id: "shake" })
+            util.sleep(1000)
+            that.setData({ pok_head_id: "stop" })
+            that.setData({ pok_head_id: "shake" })
+            util.sleep(1000)
+            that.setData({ pok_head_id: "stop" })
+            that.setData({ pok_head_id: "shake" })
+            util.sleep(1000)
+            that.setData({ pok_head_id: "stop" })
+            that.setData({ pok_head_id: "twinkle" })
+            //
+            for (var i in haved_pok) {
+              if (haved_pok[i]["idx"] == that.data.current_pok_idx) {
+                //进化，变更pok的id和usehp
+                haved_pok[i]["id"] = that.int_pok_id_to_str(pok_id + 1)
+                haved_pok[i]["usedhp"] = 0
+                that.setData({
+                  current_pok_id: haved_pok[i]["id"],
+                  current_pok_usedhp: 0
+                })
+                //将已有精灵转化为图签list
+                util.refresh_pok_book()
+              }
+              }
+            //haved_pok入库
+            wx.setStorageSync("pok_id_list", haved_pok)
+            //将已有精灵转化为图签list
+            util.refresh_pok_book()
+            //倒序排列我的精灵
+            haved_pok = haved_pok.reverse()
+            //设置当前精灵数据
+            var current_pok_id = that.data.current_pok_id
+            var current_pok_idx = that.data.current_pok_idx
+            var current_pok_level = that.data.current_pok_level
+            var current_pok_growup = that.data.current_pok_growup
+            var current_pok_usedhp = that.data.current_pok_usedhp
+            var current_pok_sex = that.data.current_pok_sex
+            var current_pok_master = that.data.current_pok_master
+            var current_pok_exp = that.data.current_pok_exp
+            that.setData({
+              haved_pok: haved_pok,
+              current_pok_idx: current_pok_idx,
+              current_pok_id: current_pok_id,
+              current_pok_level: current_pok_level,
+              current_pok_growup: current_pok_growup,
+              current_pok_usedhp: current_pok_usedhp,
+              current_pok_sex: current_pok_sex,
+              current_pok_master: current_pok_master,
+              current_pok_exp: current_pok_exp
+            })
+            //获取头像部分数据
+            that.refresh_pok_head(current_pok_id);
+            //获取我的精灵列表数据
+            that.refresh_pok_list(haved_pok);
+            //减少火之石
+            evo_stone_list["fire"] = evo_stone_list["fire"] - 1
+            wx.setStorageSync("evo_stone_list", evo_stone_list)
+            that.setData({
+              fire: evo_stone_list["fire"]
+            })
+            //进化完毕
+          } else if (sm.cancel) {
+            console.log("cancel")
+          }
+        }
+      });
+    } else if (evo_type == "water" && pok_evo == "水之石") {
+      //水之石进化
+      wx.showModal({
+        title: "水之石",
+        content: '确定进化吗？',
+        success: function (sm) {
+          if (sm.confirm) {
+            wx.vibrateLong()
+            //抖动动效
+            that.setData({ pok_head_id: "shake" })
+            util.sleep(1000)
+            that.setData({ pok_head_id: "stop" })
+            that.setData({ pok_head_id: "shake" })
+            util.sleep(1000)
+            that.setData({ pok_head_id: "stop" })
+            that.setData({ pok_head_id: "shake" })
+            util.sleep(1000)
+            that.setData({ pok_head_id: "stop" })
+            that.setData({ pok_head_id: "twinkle" })
+            //
+            for (var i in haved_pok) {
+              if (haved_pok[i]["idx"] == that.data.current_pok_idx) {
+                //进化，变更pok的id和usehp
+                haved_pok[i]["id"] = that.int_pok_id_to_str(pok_id + 1)
+                haved_pok[i]["usedhp"] = 0
+                that.setData({
+                  current_pok_id: haved_pok[i]["id"],
+                  current_pok_usedhp: 0
+                })
+                //将已有精灵转化为图签list
+                util.refresh_pok_book()
+              }
+            }
+            //haved_pok入库
+            wx.setStorageSync("pok_id_list", haved_pok)
+            //将已有精灵转化为图签list
+            util.refresh_pok_book()
+            //倒序排列我的精灵
+            haved_pok = haved_pok.reverse()
+            //设置当前精灵数据
+            var current_pok_id = that.data.current_pok_id
+            var current_pok_idx = that.data.current_pok_idx
+            var current_pok_level = that.data.current_pok_level
+            var current_pok_growup = that.data.current_pok_growup
+            var current_pok_usedhp = that.data.current_pok_usedhp
+            var current_pok_sex = that.data.current_pok_sex
+            var current_pok_master = that.data.current_pok_master
+            var current_pok_exp = that.data.current_pok_exp
+            that.setData({
+              haved_pok: haved_pok,
+              current_pok_idx: current_pok_idx,
+              current_pok_id: current_pok_id,
+              current_pok_level: current_pok_level,
+              current_pok_growup: current_pok_growup,
+              current_pok_usedhp: current_pok_usedhp,
+              current_pok_sex: current_pok_sex,
+              current_pok_master: current_pok_master,
+              current_pok_exp: current_pok_exp
+            })
+            //获取头像部分数据
+            that.refresh_pok_head(current_pok_id);
+            //获取我的精灵列表数据
+            that.refresh_pok_list(haved_pok);
+            //减少水之石
+            evo_stone_list["water"] = evo_stone_list["water"] - 1
+            wx.setStorageSync("evo_stone_list", evo_stone_list)
+            that.setData({
+              water: evo_stone_list["water"]
+            })
+      //进化完毕
+          } else if (sm.cancel) {
+            console.log("cancel")
+          }
+        }
+      });
+    } else if (evo_type == "grass" && pok_evo == "叶之石") {
+      //叶之石进化
+      wx.showModal({
+        title: "叶之石",
+        content: '确定进化吗？',
+        success: function (sm) {
+          if (sm.confirm) {
+      wx.vibrateLong()
+      //抖动动效
+      that.setData({ pok_head_id: "shake" })
+      util.sleep(1000)
+      that.setData({ pok_head_id: "stop" })
+      that.setData({ pok_head_id: "shake" })
+      util.sleep(1000)
+      that.setData({ pok_head_id: "stop" })
+      that.setData({ pok_head_id: "shake" })
+      util.sleep(1000)
+      that.setData({ pok_head_id: "stop" })
+      that.setData({ pok_head_id: "twinkle" })
+      //
+      for (var i in haved_pok) {
+        if (haved_pok[i]["idx"] == that.data.current_pok_idx) {
+          //进化，变更pok的id和usehp
+          haved_pok[i]["id"] = that.int_pok_id_to_str(pok_id + 1)
+          haved_pok[i]["usedhp"] = 0
+          that.setData({
+            current_pok_id: haved_pok[i]["id"],
+            current_pok_usedhp: 0
+          })
+          //将已有精灵转化为图签list
+          util.refresh_pok_book()
+        }
+      }
+      //haved_pok入库
+      wx.setStorageSync("pok_id_list", haved_pok)
+      //将已有精灵转化为图签list
+      util.refresh_pok_book()
+      //倒序排列我的精灵
+      haved_pok = haved_pok.reverse()
+      //设置当前精灵数据
+      var current_pok_id = that.data.current_pok_id
+      var current_pok_idx = that.data.current_pok_idx
+      var current_pok_level = that.data.current_pok_level
+      var current_pok_growup = that.data.current_pok_growup
+      var current_pok_usedhp = that.data.current_pok_usedhp
+      var current_pok_sex = that.data.current_pok_sex
+      var current_pok_master = that.data.current_pok_master
+      var current_pok_exp = that.data.current_pok_exp
+      that.setData({
+        haved_pok: haved_pok,
+        current_pok_idx: current_pok_idx,
+        current_pok_id: current_pok_id,
+        current_pok_level: current_pok_level,
+        current_pok_growup: current_pok_growup,
+        current_pok_usedhp: current_pok_usedhp,
+        current_pok_sex: current_pok_sex,
+        current_pok_master: current_pok_master,
+        current_pok_exp: current_pok_exp
+      })
+      //获取头像部分数据
+      that.refresh_pok_head(current_pok_id);
+      //获取我的精灵列表数据
+      that.refresh_pok_list(haved_pok);
+      //减少叶之石
+      evo_stone_list["grass"] = evo_stone_list["grass"] - 1
+      wx.setStorageSync("evo_stone_list", evo_stone_list)
+      that.setData({
+        grass: evo_stone_list["grass"]
+      })
+      //进化完毕
+          } else if (sm.cancel) {
+            console.log("cancel")
+          }
+        }
+      });
+    } else if (evo_type == "electric" && pok_evo == "雷之石") {
+      //雷之石进化
+      wx.showModal({
+        title: "雷之石",
+        content: '确定进化吗？',
+        success: function (sm) {
+          if (sm.confirm) {
+      wx.vibrateLong()
+      //抖动动效
+      that.setData({ pok_head_id: "shake" })
+      util.sleep(1000)
+      that.setData({ pok_head_id: "stop" })
+      that.setData({ pok_head_id: "shake" })
+      util.sleep(1000)
+      that.setData({ pok_head_id: "stop" })
+      that.setData({ pok_head_id: "shake" })
+      util.sleep(1000)
+      that.setData({ pok_head_id: "stop" })
+      that.setData({ pok_head_id: "twinkle" })
+      //
+      for (var i in haved_pok) {
+        if (haved_pok[i]["idx"] == that.data.current_pok_idx) {
+          //进化，变更pok的id和usehp
+          haved_pok[i]["id"] = that.int_pok_id_to_str(pok_id + 1)
+          haved_pok[i]["usedhp"] = 0
+          that.setData({
+            current_pok_id: haved_pok[i]["id"],
+            current_pok_usedhp: 0
+          })
+          //将已有精灵转化为图签list
+          util.refresh_pok_book()
+        }
+      }
+      //haved_pok入库
+      wx.setStorageSync("pok_id_list", haved_pok)
+      //将已有精灵转化为图签list
+      util.refresh_pok_book()
+      //倒序排列我的精灵
+      haved_pok = haved_pok.reverse()
+      //设置当前精灵数据
+      var current_pok_id = that.data.current_pok_id
+      var current_pok_idx = that.data.current_pok_idx
+      var current_pok_level = that.data.current_pok_level
+      var current_pok_growup = that.data.current_pok_growup
+      var current_pok_usedhp = that.data.current_pok_usedhp
+      var current_pok_sex = that.data.current_pok_sex
+      var current_pok_master = that.data.current_pok_master
+      var current_pok_exp = that.data.current_pok_exp
+      that.setData({
+        haved_pok: haved_pok,
+        current_pok_idx: current_pok_idx,
+        current_pok_id: current_pok_id,
+        current_pok_level: current_pok_level,
+        current_pok_growup: current_pok_growup,
+        current_pok_usedhp: current_pok_usedhp,
+        current_pok_sex: current_pok_sex,
+        current_pok_master: current_pok_master,
+        current_pok_exp: current_pok_exp
+      })
+      //获取头像部分数据
+      that.refresh_pok_head(current_pok_id);
+      //获取我的精灵列表数据
+      that.refresh_pok_list(haved_pok);
+      //减少雷之石
+      evo_stone_list["electric"] = evo_stone_list["electric"] - 1
+      wx.setStorageSync("evo_stone_list", evo_stone_list)
+      that.setData({
+        electric: evo_stone_list["electric"]
+      })
+      //进化完毕
+          } else if (sm.cancel) {
+            console.log("cancel")
+          }
+        }
+      });
+    } else if (evo_type == "moon" && pok_evo == "月之石") {
+      //月之石进化
+      wx.showModal({
+        title: "月之石",
+        content: '确定进化吗？',
+        success: function (sm) {
+          if (sm.confirm) {
+      wx.vibrateLong()
+      //抖动动效
+      that.setData({ pok_head_id: "shake" })
+      util.sleep(1000)
+      that.setData({ pok_head_id: "stop" })
+      that.setData({ pok_head_id: "shake" })
+      util.sleep(1000)
+      that.setData({ pok_head_id: "stop" })
+      that.setData({ pok_head_id: "shake" })
+      util.sleep(1000)
+      that.setData({ pok_head_id: "stop" })
+      that.setData({ pok_head_id: "twinkle" })
+      //
+      for (var i in haved_pok) {
+        if (haved_pok[i]["idx"] == that.data.current_pok_idx) {
+          //进化，变更pok的id和usehp
+          haved_pok[i]["id"] = that.int_pok_id_to_str(pok_id + 1)
+          haved_pok[i]["usedhp"] = 0
+          that.setData({
+            current_pok_id: haved_pok[i]["id"],
+            current_pok_usedhp: 0
+          })
+          //将已有精灵转化为图签list
+          util.refresh_pok_book()
+        }
+      }
+      //haved_pok入库
+      wx.setStorageSync("pok_id_list", haved_pok)
+      //将已有精灵转化为图签list
+      util.refresh_pok_book()
+      //倒序排列我的精灵
+      haved_pok = haved_pok.reverse()
+      //设置当前精灵数据
+      var current_pok_id = that.data.current_pok_id
+      var current_pok_idx = that.data.current_pok_idx
+      var current_pok_level = that.data.current_pok_level
+      var current_pok_growup = that.data.current_pok_growup
+      var current_pok_usedhp = that.data.current_pok_usedhp
+      var current_pok_sex = that.data.current_pok_sex
+      var current_pok_master = that.data.current_pok_master
+      var current_pok_exp = that.data.current_pok_exp
+      that.setData({
+        haved_pok: haved_pok,
+        current_pok_idx: current_pok_idx,
+        current_pok_id: current_pok_id,
+        current_pok_level: current_pok_level,
+        current_pok_growup: current_pok_growup,
+        current_pok_usedhp: current_pok_usedhp,
+        current_pok_sex: current_pok_sex,
+        current_pok_master: current_pok_master,
+        current_pok_exp: current_pok_exp
+      })
+      //获取头像部分数据
+      that.refresh_pok_head(current_pok_id);
+      //获取我的精灵列表数据
+      that.refresh_pok_list(haved_pok);
+      //减少月之石
+      evo_stone_list["moon"] = evo_stone_list["moon"] - 1
+      wx.setStorageSync("evo_stone_list", evo_stone_list)
+      that.setData({
+        electric: evo_stone_list["moon"]
+      })
+      //进化完毕
+          } else if (sm.cancel) {
+            console.log("cancel")
+          }
+        }
+      });
+    } else if ((evo_type == "water" || evo_type == "fire" || evo_type == "electric") && pok_evo == "水、雷、火之石") {
+      //伊布进化
+      wx.showModal({
+        title: "水、雷、火之石",
+        content: '确定进化吗？',
+        success: function (sm) {
+          if (sm.confirm) {
+      wx.vibrateLong()
+      //抖动动效
+      that.setData({ pok_head_id: "shake" })
+      util.sleep(1000)
+      that.setData({ pok_head_id: "stop" })
+      that.setData({ pok_head_id: "shake" })
+      util.sleep(1000)
+      that.setData({ pok_head_id: "stop" })
+      that.setData({ pok_head_id: "shake" })
+      util.sleep(1000)
+      that.setData({ pok_head_id: "stop" })
+      that.setData({ pok_head_id: "twinkle" })
+      //
+      for (var i in haved_pok) {
+        if (haved_pok[i]["idx"] == that.data.current_pok_idx) {
+          //进化，变更pok的id和usehp
+          //134水135雷136火
+          if (evo_type == "fire"){
+            haved_pok[i]["id"] = "136"
+          } else if (evo_type == "water"){
+            haved_pok[i]["id"] = "134"
+          } else if (evo_type == "electric") {
+            haved_pok[i]["id"] = "135"
+          }
+          haved_pok[i]["usedhp"] = 0
+          that.setData({
+            current_pok_id: haved_pok[i]["id"],
+            current_pok_usedhp: 0
+          })
+          //将已有精灵转化为图签list
+          util.refresh_pok_book()
+        }
+      }
+      //haved_pok入库
+      wx.setStorageSync("pok_id_list", haved_pok)
+      //将已有精灵转化为图签list
+      util.refresh_pok_book()
+      //倒序排列我的精灵
+      haved_pok = haved_pok.reverse()
+      //设置当前精灵数据
+      var current_pok_id = that.data.current_pok_id
+      var current_pok_idx = that.data.current_pok_idx
+      var current_pok_level = that.data.current_pok_level
+      var current_pok_growup = that.data.current_pok_growup
+      var current_pok_usedhp = that.data.current_pok_usedhp
+      var current_pok_sex = that.data.current_pok_sex
+      var current_pok_master = that.data.current_pok_master
+      var current_pok_exp = that.data.current_pok_exp
+      that.setData({
+        haved_pok: haved_pok,
+        current_pok_idx: current_pok_idx,
+        current_pok_id: current_pok_id,
+        current_pok_level: current_pok_level,
+        current_pok_growup: current_pok_growup,
+        current_pok_usedhp: current_pok_usedhp,
+        current_pok_sex: current_pok_sex,
+        current_pok_master: current_pok_master,
+        current_pok_exp: current_pok_exp
+      })
+      //获取头像部分数据
+      that.refresh_pok_head(current_pok_id);
+      //获取我的精灵列表数据
+      that.refresh_pok_list(haved_pok);
+      //减少叶之石
+      if (evo_type == "fire") {
+        evo_stone_list["fire"] = evo_stone_list["fire"] - 1
+        that.setData({
+          fire: evo_stone_list["fire"]
+        })
+      } else if (evo_type == "water") {
+        evo_stone_list["water"] = evo_stone_list["water"] - 1
+        that.setData({
+          water: evo_stone_list["water"]
+        })
+      } else if (evo_type == "electric") {
+        evo_stone_list["electric"] = evo_stone_list["electric"] - 1
+        that.setData({
+          electric: evo_stone_list["electric"]
+        })
+      }
+      wx.setStorageSync("evo_stone_list", evo_stone_list)
+      //进化完毕
+          } else if (sm.cancel) {
+            console.log("cancel")
+          }
+        }
+      });
+    }else{
+      wx.showToast({
+        title: '不能进化',
+        icon: "none"
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -574,8 +1076,6 @@ Page({
     this.countDown(this, 30);
     //将已有精灵转化为图签list
     util.refresh_pok_book()
-    console.log(this.aes_Encrypt("你好{}"))
-    console.log(this.aes_Decrypt(this.aes_Encrypt("你好{}")))
     this.load_trainer()
     var haved_pok = util.get_self_pok();
     var haved_pok_count = haved_pok.length
@@ -628,6 +1128,15 @@ Page({
     if (candy_count == "") { candy_count=0}
     this.setData({
       candy_count: candy_count
+    })
+    //获取进化石数量
+    var evo_stone_list = wx.getStorageSync("evo_stone_list")
+    this.setData({
+      fire: evo_stone_list["fire"],
+      electric: evo_stone_list["electric"],
+      grass: evo_stone_list["grass"],
+      water: evo_stone_list["water"],
+      moon: evo_stone_list["moon"]
     })
     //老用户清除本地精灵
     try{

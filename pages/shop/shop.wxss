@@ -23,3 +23,8 @@
 page{
   background-color: #FFEB9A
 }
+.evo_stone_list{display: flex;position: fixed;bottom:500rpx;left: 130rpx}
+.evo_stone_img{width: 100rpx;height: 100rpx;}
+.evo_price{font-size: 24rpx;position: fixed;bottom: 600rpx;left: 350rpx;}
+.evo_price_img{width: 40rpx;height: 40rpx;position: fixed;bottom: 596rpx;left: 400rpx;}
+.random{font-size: 24rpx;position: fixed;bottom: 460rpx;left: 320rpx}

@@ -43,11 +43,16 @@
   margin-left: 10rpx;
 }
 .pok_idx_img_name{position: fixed;bottom: 5rpx;font-size: 28rpx;font-weight: 800;left: 49rpx}
-.pokemap_img_name{position: fixed;bottom: 5rpx;font-size: 28rpx;font-weight: 800;right: 345rpx}
+.pokemap_img_name{position: fixed;bottom: 5rpx;font-size: 28rpx;font-weight: 800;left: 250rpx}
 .ball_img_name{position: fixed;bottom: 5rpx;font-size: 28rpx;font-weight: 800;right: 54rpx}
-.ball_img{
-    width: 140rpx;
-      height: 140rpx;
+.transfer_img_name{position: fixed;bottom: 5rpx;font-size: 28rpx;font-weight: 800;right: 250rpx}
+.transfer_img{
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 45rpx;
+  right: 205rpx; 
 }
 .ball_img{
   width: 140rpx;
@@ -71,7 +76,7 @@
   border-radius: 50%;
   position: fixed;
   bottom: 45rpx;
-  right: 300rpx; 
+  left: 215rpx; 
 }
 .pokemap{
   display:flex;

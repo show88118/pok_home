@@ -9,9 +9,11 @@
       <view class="pok_idx"><image bindtap="pok_book" class="pok_idx_img" src="/assets/images/pokedex.png" background-size="cover"></image></view>
       <view class="ball"><image bindtap="bind_my_pok" class="ball_img" src="/assets/images/pokeball.png"   background-size="cover"></image></view>
       <view class="pokemap"><image bindtap="poke_map" class="pokemap_img" src="/assets/images/pokemap.png"   background-size="cover"></image></view>
+            <view class="transfer"><image bindtap="poke_transfer" class="transfer_img" src="/assets/images/transfer.png"   background-size="cover"></image></view>
       <view class="pok_idx_img_name">图鉴</view>
       <view class="pokemap_img_name">地图</view>
       <view class="ball_img_name">商店</view>
+      <view class="transfer_img_name">通信</view>
 </view>
 <view>
 <view class="pok_name">
@@ -57,20 +59,20 @@
 <view class='g_props' bindtap='eat_candy'>
 <image id="{{candy_id}}" class='prop' src="/assets/images/props/candy.png"></image><text class="prop_count">x{{candy_count}}</text>
 </view>
-<view class='g_props'>
-<image class='prop' src="/assets/images/props/fire_stone.png"></image><text class="prop_count">x0</text>
+<view class='g_props' bindtap='eat_evo_stone' data-type="fire">
+<image class='prop' src="/assets/images/props/fire_stone.png"></image><text class="prop_count">x{{fire}}</text>
 </view>
-<view class='g_props'>
-<image class='prop' src="/assets/images/props/electric_stone.png"></image><text class="prop_count">x0</text>
+<view class='g_props'  bindtap='eat_evo_stone' data-type="electric">
+<image class='prop' src="/assets/images/props/electric_stone.png"></image><text class="prop_count">x{{electric}}</text>
 </view>
-<view class='g_props'>
-<image class='prop' src="/assets/images/props/water_stone.png"></image><text class="prop_count">x0</text>
+<view class='g_props'  bindtap='eat_evo_stone' data-type="water">
+<image class='prop' src="/assets/images/props/water_stone.png"></image><text class="prop_count">x{{water}}</text>
 </view>
-<view class='g_props'>
-<image class='prop' src="/assets/images/props/grass_stone.png"></image><text class="prop_count">x0</text>
+<view class='g_props'  bindtap='eat_evo_stone' data-type="grass">
+<image class='prop' src="/assets/images/props/grass_stone.png"></image><text class="prop_count">x{{grass}}</text>
 </view>
-<view class='g_props'>
-<image class='prop' src="/assets/images/props/moon_stone.png"></image><text class="prop_count">x0</text>
+<view class='g_props'  bindtap='eat_evo_stone' data-type="moon">
+<image class='prop' src="/assets/images/props/moon_stone.png"></image><text class="prop_count">x{{moon}}</text>
 </view>
 </view>
 </view>

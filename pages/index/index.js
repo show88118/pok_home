@@ -16,12 +16,21 @@ Page({
         url: '../home/home',
       })
     }else{
+      //初始化精灵球数量
       var ball_list = {}
       ball_list["ball01"] = 10
       ball_list["ball02"] = 0
       ball_list["ball03"] = 0
       ball_list["ball04"] = 0
       wx.setStorageSync("ball_list", ball_list)
+      //初始化进化石数量
+      var evo_stone_list = {}
+      evo_stone_list["fire"] = 0
+      evo_stone_list["water"] = 0
+      evo_stone_list["grass"] = 0
+      evo_stone_list["moon"] = 0
+      evo_stone_list["electric"] = 0
+      wx.setStorageSync("evo_stone_list", evo_stone_list)
       wx.navigateTo({
         url: '../initpok/initpok',
       })
