@@ -7,13 +7,13 @@
       <!-- <image bindtap="" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text> -->
       <view class="pok_idx"><image bindtap="pok_book" class="pok_idx_img" src="/assets/images/pokedex.png" background-size="cover"></image></view>
-      <view class="ball"><image bindtap="bind_my_pok" class="ball_img" src="/assets/images/pokeball.png"   background-size="cover"></image></view>
-      <view class="pokemap"><image bindtap="poke_map" class="pokemap_img" src="/assets/images/pokemap.png"   background-size="cover"></image></view>
-            <view class="transfer"><image bindtap="poke_transfer" class="transfer_img" src="/assets/images/transfer.png"   background-size="cover"></image></view>
-      <view class="pok_idx_img_name">图鉴</view>
-      <view class="pokemap_img_name">地图</view>
-      <view class="ball_img_name">商店</view>
-      <view class="transfer_img_name">通信</view>
+      <view class="ball" style="display:{{shenhe}}"><image bindtap="bind_my_pok" class="ball_img" src="/assets/images/pokeball.png"   background-size="cover"></image></view>
+      <view class="pokemap" style="display:{{shenhe}}"><image bindtap="poke_map" class="pokemap_img" src="/assets/images/pokemap.png"   background-size="cover"></image></view>
+            <view class="transfer" style="display:{{shenhe}}"><image bindtap="poke_transfer" class="transfer_img" src="/assets/images/transfer.png"   background-size="cover"></image></view>
+      <view class="pok_idx_img_name" style="display:{{shenhe}}">图鉴</view>
+      <view class="pokemap_img_name" style="display:{{shenhe}}">地图</view>
+      <view class="ball_img_name" style="display:{{shenhe}}">商店</view>
+      <view class="transfer_img_name" style="display:{{shenhe}}">通信</view>
 </view>
 <view>
 <view class="pok_name">

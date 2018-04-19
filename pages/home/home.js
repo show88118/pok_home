@@ -23,47 +23,47 @@ Page({
     })
   },
   bind_my_pok: function () {
-    //判断日期
-    if (parseInt(this.get_today()) > 20180424) {
-      console.log("open")
-    } else {
-      wx.showToast({
-        title: '暂未开放',
-        icon: "none"
-      })
-      return
-    }
+    // //判断日期
+    // if (parseInt(this.get_today()) > 20180424) {
+    //   console.log("open")
+    // } else {
+    //   wx.showToast({
+    //     title: '暂未开放',
+    //     icon: "none"
+    //   })
+    //   return
+    // }
     wx.navigateTo({
       url: '../shop/shop',
     })
   },
   poke_map: function () {
-    //判断日期
-    if (parseInt(this.get_today()) > 20180424) {
-      console.log("open")
-    } else {
-      wx.showToast({
-        title: '暂未开放',
-        icon: "none"
-      })
-      return
-    }
+    // //判断日期
+    // if (parseInt(this.get_today()) > 20180422) {
+    //   console.log("open")
+    // } else {
+    //   wx.showToast({
+    //     title: '暂未开放',
+    //     icon: "none"
+    //   })
+    //   return
+    // }
     this.set_current_pok()
     wx.navigateTo({
       url: '../map/map',
     })
   },
   poke_transfer: function () {
-    //判断日期
-    if (parseInt(this.get_today()) > 20180424) {
-      console.log("open")
-    } else {
-      wx.showToast({
-        title: '暂未开放',
-        icon: "none"
-      })
-      return
-    }
+    // //判断日期
+    // if (parseInt(this.get_today()) > 20180424) {
+    //   console.log("open")
+    // } else {
+    //   wx.showToast({
+    //     title: '暂未开放',
+    //     icon: "none"
+    //   })
+    //   return
+    // }
     this.set_current_pok()
     wx.navigateTo({
       url: '../qr/qr',
@@ -1078,6 +1078,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (parseInt(this.get_today()) > 20180420) {
+      this.setData({
+        shenhe: "open"
+      })
+    } else {
+      this.setData({
+        shenhe: "none"
+      })
+    }
     var signin_status = wx.getStorageSync(this.get_today());
     if (signin_status == undefined || signin_status == "") {
       wx.showToast({
