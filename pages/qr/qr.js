@@ -161,6 +161,7 @@ Page({
       content: "30分钟内必须有训练家接收,否则口袋妖怪将逃走,无法撤销",
       success: function (sm) {
         if (sm.confirm) {
+          // var transfer_data = "transfer_pok|" + new Date().getTime() + "|1,093,47,60,8,1,,0"
           //生成密文精灵数据
           var qr_content = that.aes_Encrypt(transfer_data.toString())
           console.log(qr_content)
