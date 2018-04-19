@@ -24,7 +24,7 @@ Page({
   },
   bind_my_pok: function () {
     //判断日期
-    if (parseInt(this.get_today()) > 20180423) {
+    if (parseInt(this.get_today()) > 20180424) {
       console.log("open")
     } else {
       wx.showToast({
@@ -39,7 +39,7 @@ Page({
   },
   poke_map: function () {
     //判断日期
-    if (parseInt(this.get_today()) > 20180423) {
+    if (parseInt(this.get_today()) > 20180424) {
       console.log("open")
     } else {
       wx.showToast({
@@ -55,7 +55,7 @@ Page({
   },
   poke_transfer: function () {
     //判断日期
-    if (parseInt(this.get_today()) > 20180423) {
+    if (parseInt(this.get_today()) > 20180424) {
       console.log("open")
     } else {
       wx.showToast({

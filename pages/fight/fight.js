@@ -212,6 +212,11 @@ Page({
           icon: "none"
         })
         util.sleep(500)
+        wx.showToast({
+          title: '获得经验糖果',
+          duration: 800,
+          icon: "none"
+        })
         this.return_map()
       }else{
         util.sleep(1000)

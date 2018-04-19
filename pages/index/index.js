@@ -49,6 +49,7 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     random_pok_id1: "000",
     random_pok_id2: "000",
+    bgm_img_id:"bgm_img"
   },
   //事件处理函数
   bindViewTap: function() {
