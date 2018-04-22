@@ -260,7 +260,7 @@ Page({
       success: function (sm) {
         if (sm.confirm) {
           //后门
-          // var transfer_data = "transfer_pok|" + new Date().getTime() + "|1,093,47,60,8,1,,0"
+        //  var transfer_data = "transfer_pok|" + new Date().getTime() + "|1,144,47,60,8,1,,0"
         //map_pok|1524056869379|id,gu,level
         //candy|1524056869379|count
          // var transfer_data = "candy|" + new Date().getTime() + "|20000"

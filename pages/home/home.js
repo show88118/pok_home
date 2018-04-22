@@ -258,6 +258,47 @@ Page({
       current_pok_sex_color: current_pok_sex_color
     })
   },
+  eat_candy_forlevel: util.throttle(function () {
+    //闪烁动效
+    this.setData({ candy_id: "twinkle2" })
+    util.sleep(300)
+    this.setData({ candy_id: "stop" })
+    //
+    var current_pok_level = this.data.current_pok_level
+    //判断是否满级
+    if (current_pok_level >= 100) {
+      wx.showToast({
+        title: '已经满级',
+        icon: "none"
+      })
+      return
+    }
+    var current_pok_exp = this.data.current_pok_exp
+    var levelup_eat_count = this.get_levelup_eat_count(current_pok_level)
+    var long_eat_candy_count = levelup_eat_count - current_pok_exp
+    console.log(long_eat_candy_count)
+    for (var i = 1; i < long_eat_candy_count;i++){
+      var candy_count = wx.getStorageSync("candy_count")
+      if (candy_count > 0) {
+        candy_count = candy_count - 1
+        //消耗一颗经验糖
+        wx.setStorageSync("candy_count", candy_count)
+        //吃糖增加经验
+        this.eat_exp()
+        //设置当前经验糖个数
+        this.setData({
+          candy_count: candy_count
+        })
+        //震动
+        //wx.vibrateLong()
+      } else {
+        wx.showToast({
+          title: '没有经验糖了',
+          icon: "none"
+        })
+      }
+    }
+  }, 700),
   eat_candy: util.throttle(function(){
     //闪烁动效
     this.setData({ candy_id:"twinkle2"})

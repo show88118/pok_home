@@ -56,7 +56,7 @@
 <!--props  -->
 <view class='props'>
 <view class="s_2" style='width: 1000rpx;'>
-<view class='g_props' bindtap='eat_candy'>
+<view class='g_props' bindtap='eat_candy' bindlongtap='eat_candy_forlevel'>
 <image id="{{candy_id}}" class='prop' src="/assets/images/props/candy.png"></image><text class="prop_count">x{{candy_count}}</text>
 </view>
 <view class='g_props' bindtap='eat_evo_stone' data-type="fire">
