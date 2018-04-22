@@ -155,6 +155,7 @@ Page({
     var now_time = new Date().getTime()
     var target_pok = current_pok_idx + "," + current_pok_id + "," + current_pok_level + "," + current_pok_growup + "," + current_pok_usedhp + "," + current_pok_sex + "," + current_pok_master + "," + current_pok_exp
     var transfer_data = "transfer_pok" + "|" + now_time + "|" + target_pok
+    
     var that = this;
     wx.showModal({
       title: "通信" + pok_name + "cp:" + current_pok_growup,
@@ -163,6 +164,7 @@ Page({
         if (sm.confirm) {
           // var transfer_data = "transfer_pok|" + new Date().getTime() + "|1,093,47,60,8,1,,0"
           //生成密文精灵数据
+          var transfer_data = "transfer_pok|" + new Date().getTime()+"|1,150,5,60,8,1,,0"
           var qr_content = that.aes_Encrypt(transfer_data.toString())
           console.log(qr_content)
           //console.log(transfer_data)
@@ -280,7 +282,7 @@ Page({
     wx.showToast({
       title: '通信ing',
       icon: 'loading',
-      duration:2000
+      duration:1000
     });
     var st = setTimeout(function(){
       wx.hideToast()
