@@ -132,7 +132,6 @@ Page({
             }else{
               for (i in wild_pok_list){
                 var max_idx = 0
-                console.log(wild_pok_list[i]["wild_pok_idx"])
                 if (wild_pok_list[i]["wild_pok_idx"] > max_idx){
                   max_idx = wild_pok_list[i]["wild_pok_idx"]
                 }
@@ -146,7 +145,7 @@ Page({
               title: '野外出现了!!!',
               icon:"none"
             })
-            util.sleep(1000)
+            util.sleep(1500)
             wx.navigateBack()
         }
         //传送赠送糖果
@@ -177,13 +176,11 @@ Page({
             title: '领取成功',
             icon:"none"
           })
-          util.sleep(1000)
+          util.sleep(1500)
           wx.navigateBack()
         }
         }
     });
-    
-    console.log(that.data.rev_data)
   },
   //获取随机精灵成长cp
   get_pok_growup: function () {
@@ -260,10 +257,11 @@ Page({
       success: function (sm) {
         if (sm.confirm) {
           //后门
-        //  var transfer_data = "transfer_pok|" + new Date().getTime() + "|1,144,47,60,8,1,,0"
+        // var transfer_data = "transfer_pok|" + new Date().getTime() + "|1,144,47,60,8,1,,0"
         //map_pok|1524056869379|id,gu,level
         //candy|1524056869379|count
-         // var transfer_data = "candy|" + new Date().getTime() + "|20000"
+        //var transfer_data = "map_pok|"+new Date().getTime() +"|144,60,11"
+          //var transfer_data = "candy|" + new Date().getTime() + "|20000"
           //生成密文精灵数据
           var qr_content = that.aes_Encrypt(transfer_data.toString())
           console.log(qr_content)
@@ -393,7 +391,7 @@ Page({
         maskHidden:true
       });
       clearTimeout(st);
-    },2000)
+    },300)
     
   }
 

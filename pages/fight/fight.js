@@ -40,6 +40,11 @@ Page({
     wx.navigateBack()
   },
   set_wlid_pok_data:function(){
+    if (app.globalData.tap_wild_pok_sex == 1){
+      var tap_wild_pok_sex_text = "♂"
+    }else{
+       var tap_wild_pok_sex_text = "♀"
+    }
     this.setData({
       tap_wild_pok_id: app.globalData.tap_wild_pok_id,
       tap_wild_pok_growup: app.globalData.tap_wild_pok_growup,
@@ -57,7 +62,8 @@ Page({
       tap_wild_att: app.globalData.tap_wild_att,
       tap_wild_def: app.globalData.tap_wild_def,
       tap_wild_speed: app.globalData.tap_wild_speed,
-      tap_wild_catch_rate: app.globalData.tap_wild_catch_rate
+      tap_wild_catch_rate: app.globalData.tap_wild_catch_rate,
+      tap_wild_pok_sex_text: tap_wild_pok_sex_text
     })
 
   },
@@ -213,7 +219,7 @@ Page({
         })
         util.sleep(500)
         wx.showToast({
-          title: '获得经验糖果',
+          title: '获得' +candy_count+'经验糖果',
           duration: 800,
           icon: "none"
         })

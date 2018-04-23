@@ -3,7 +3,7 @@
 <view class="g_conver clearfix">
   <view class="g_dh">
     <view class='g_dh-infor'>
-      <view class='g_dh-in01'>{{tap_wild_pok_name}}<text class='g_insex'>♂</text></view>
+      <view class='g_dh-in01'>{{tap_wild_pok_name}}<text class='g_insex'>{{tap_wild_pok_sex_text}}</text></view>
       <view class='g_dh-level'>Lv{{tap_wild_pok_level}}</view>
       
     </view>
