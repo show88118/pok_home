@@ -1119,22 +1119,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (parseInt(this.get_today()) > 20180416) {
+    if (parseInt(this.get_today()) > 20180426) {
       this.setData({
         shenhe: "open"
       })
+      var signin_status = wx.getStorageSync(this.get_today());
+      if (signin_status == undefined || signin_status == "") {
+        wx.showToast({
+          title: '首次转发得糖果',
+          icon: "none"
+        })
+      }
     } else {
       this.setData({
         shenhe: "none"
       })
     }
-    var signin_status = wx.getStorageSync(this.get_today());
-    if (signin_status == undefined || signin_status == "") {
-      wx.showToast({
-        title: '首次转发得糖果',
-        icon: "none"
-      })
-    }
+
     this.countDown(this, 30);
     //将已有精灵转化为图签list
     util.refresh_pok_book()

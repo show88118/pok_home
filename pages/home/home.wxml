@@ -1,6 +1,6 @@
 <!--pages/home/home.wxml-->
 <view class="container">
- <button class="share_text" open-type="share">分享</button> 
+ <button class="share_text" open-type="share" style="display:{{shenhe}}">分享</button> 
 <image class="restore" bindtap='restore_all_pok' src="/assets/images/pc.png">精灵中心</image>
 <text class="pc_time">{{timeCountDownTop}}</text>
 <view class="trainer" bindtap=''> 
