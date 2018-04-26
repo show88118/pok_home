@@ -1119,7 +1119,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (parseInt(this.get_today()) > 20180426) {
+    if (parseInt(this.get_today()) > 20180428) {
       this.setData({
         shenhe: "open"
       })
