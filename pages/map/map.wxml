@@ -1,2 +1,4 @@
 <!--pages/map/map.wxml-->
+
 <map id="map"  scale="18" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" bindregionchange="regionchange" show-location style="width: 100%; height: 1450rpx;"></map>
+<ad unit-id="adunit-941a6c9cb030ac7c"></ad>
