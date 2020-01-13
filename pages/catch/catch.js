@@ -187,6 +187,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.setStorageSync("remain_count", 10)
     this.get_remain_count();
     /*wx.showToast({
       title: '点击头像开始抽奖',

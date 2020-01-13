@@ -11,7 +11,18 @@ Page({
     }
   },
   click_start:function(){
-    if (parseInt(this.get_today()) < 20180429){
+        //判断日期
+        if (parseInt(this.get_today()) > 20200112) {
+          console.log("open")
+        } else {
+          var haved_pok = [{ "id": "001", "growup": 50, "level": 1, "idx": "1", "usedhp": 0, "sex": 1, "master": wx.getStorageSync("user"), "exp": 0 }]
+          wx.setStorageSync("pok_id_list", haved_pok)
+          wx.navigateTo({
+            url: '../catch/catch',
+          })
+          return
+        }
+    if (parseInt(this.get_today()) < 20200111){
       //赠送御三家
       var haved_pok = [{ "id": "001", "growup": 50, "level": 1, "idx": "1", "usedhp": 0, "sex": 1, "master": wx.getStorageSync("user"), "exp": 0 }]
       wx.setStorageSync("pok_id_list", haved_pok)

@@ -13,10 +13,16 @@
     "pages/fight/fight",
     "pages/shop/shop"
   ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#FFCC03",
     "navigationBarTitleText": "口袋妖怪大作战",
     "navigationBarTextStyle": "black"
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

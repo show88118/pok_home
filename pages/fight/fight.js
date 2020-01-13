@@ -219,7 +219,7 @@ Page({
         })
         util.sleep(500)
         wx.showToast({
-          title: '获得' +candy_count+'经验糖果',
+          title: '获得' +Math.ceil(this.data.tap_wild_pok_level/10)+'经验糖果',
           duration: 800,
           icon: "none"
         })

@@ -132,8 +132,10 @@ Page({
     this.change_idx()
     var id_exised_list=[]
     var pok_idx_list = wx.getStorageSync("pok_idx_list")
+    console.log("liufan")
+    console.log(pok_idx_list)
     var pok_idx_length = pok_idx_list.length
-    for(var i=1;i<=151;i++){
+    for(var i=1;i<=251;i++){
       var i_length = i.toString().length
       if (i_length == 1) {
         i = "00" + i;

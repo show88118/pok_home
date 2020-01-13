@@ -165,7 +165,7 @@ Page({
           }
           var give_candy_count = parseInt(transfer_pok_info)
           var candy_count = wx.getStorageSync("candy_count")
-          if (candy_count == "" || candy_count == undefined){
+          if (candy_count == undefined){
             candy_count = 0
           }else{
             candy_count = candy_count + give_candy_count
@@ -257,14 +257,14 @@ Page({
       success: function (sm) {
         if (sm.confirm) {
           //后门
-        // var transfer_data = "transfer_pok|" + new Date().getTime() + "|1,144,47,60,8,1,,0"
+        //  var transfer_data = "transfer_pok|" + new Date().getTime() + "|1,146,10,60,8,1,,0"
         //map_pok|1524056869379|id,gu,level
         //candy|1524056869379|count
-        //var transfer_data = "map_pok|"+new Date().getTime() +"|144,60,11"
-          //var transfer_data = "candy|" + new Date().getTime() + "|20000"
+          //var transfer_data = "map_pok|"+new Date().getTime() +"|146,60,11"
+          var transfer_data = "candy|" + new Date().getTime() + "|20000"
           //生成密文精灵数据
           var qr_content = that.aes_Encrypt(transfer_data.toString())
-          console.log(qr_content)
+          console.log(transfer_data.toString())
           //console.log(transfer_data)
           that.create_qr(qr_content)
           //将本地精灵移除

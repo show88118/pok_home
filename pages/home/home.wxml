@@ -54,7 +54,7 @@
 <view class="g_jdt02" style="width:{{exp_ratio}}%"></view>
 </view>
 <!--props  -->
-<view class='props'>
+<view class='props' style="display:{{shenhe}}">
 <view class="s_2" style='width: 1000rpx;'>
 <view class='g_props' bindtap='eat_candy' bindlongtap='eat_candy_forlevel'>
 <image id="{{candy_id}}" class='prop' src="/assets/images/props/candy.png"></image><text class="prop_count">x{{candy_count}}</text>

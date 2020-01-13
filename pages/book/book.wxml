@@ -1,5 +1,5 @@
 <!--pages/book/book.wxml-->
-<button class="g_btit" open-type="share">图鉴({{pok_idx_length}}/151)</button>
+<button class="g_btit" open-type="share">图鉴({{pok_idx_length}}/251)</button>
 <button class="share_text" open-type="share">分享</button>
 <view class="g_book">
 <image class="g_bimg" bindtap='change_idx' bindlongtap='' wx:key="{{pok_id}}" data-id="{{pok_id}}" wx:for="{{id_exised_list}}" wx:for-item="pok_id" src="/assets/images/mini/{{pok_id}}.png"></image>

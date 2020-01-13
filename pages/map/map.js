@@ -203,27 +203,33 @@ Page({
     var seed = parseInt(seed)
     if (seed == 10000) {
       //梦幻不出了、改为超梦
-      var pok_id = 150;
+      var pok_id = 151;
     } else if (seed == 9999) {
       //超梦
       var pok_id = 150;
     } else if (seed == 9998) {
       //3D龙
-      // var pok_id = 137;
+      var items = [137,233]
+      var pok_id = items[Math.floor(Math.random() * items.length)];
+    } else if (seed >= 8600 && seed < 9000) {
       //御三家
-      var items = [1, 4, 7]
+      var items = [1, 4, 7, 152, 155, 158]
       var pok_id = items[Math.floor(Math.random() * items.length)];
-    } else if (seed > 9995 && seed < 9998) {
+    } else if (seed == 9997) {
+      //金银鸟
+      var items = [249,250,251]
+      var pok_id = items[Math.floor(Math.random() * items.length)];
+    } else if (seed >= 9991 && seed < 9996) {
       //三圣鸟
-      var items = [144, 145, 146]
+      var items = [144, 145, 146 , 243, 244, 245]
       var pok_id = items[Math.floor(Math.random() * items.length)];
-    } else if (seed > 9970 && seed < 9996) {
+    } else if (seed >= 9970 && seed < 9991) {
       //卡比化石翼龙乘龙迷你龙
-      var items = [142, 143, 131, 147]
+      var items = [142, 143, 131, 147, 246]
       var pok_id = items[Math.floor(Math.random() * items.length)];
-    } else if (seed > 9800 && seed < 9971) {
+    } else if (seed >= 6000 && seed < 9970) {
       //无进化
-      var items = [83, 95, 106, 107, 108, 113, 114, 115, 122, 123, 124, 125, 126, 127, 128, 132]
+      var items = [83, 95, 106, 107, 108, 113, 114, 115, 122, 123, 124, 125, 126, 127, 128, 132,169,172,173,174,182,185,186,190,193,196,197,198,199,200,201,202,203,206,207,208,211,212,213,214,215,222,223,224,225,226,227,230,234,235,238,239,240,241,242]
       var pok_id = items[Math.floor(Math.random() * items.length)];
     } else {
       var items = [10, 13, 16, 19, 21, 23, 27, 29, 32, 41, 43, 46, 48, 50, 52, 54, 56, 60, 63, 66, 69, 72, 74, 77, 79, 81, 84, 86, 88, 92, 96, 98, 100, 104, 109, 111, 116, 118, 129, 138, 140, 25, 30, 33, 35, 37, 39, 58, 90, 102, 120, 133]
@@ -357,6 +363,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+
     // 使用 wx.createMapContext 获取 map 上下文 
     this.mapCtx = wx.createMapContext('map')
     console.log('地图定位！')
